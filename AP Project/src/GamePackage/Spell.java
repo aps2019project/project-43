@@ -1,6 +1,7 @@
 package GamePackage;
 
 public class Spell extends Card {
-    int coolDown;
-
+    private int coolDown;
+    private int manaCost;
+    private Buff effect;
 }

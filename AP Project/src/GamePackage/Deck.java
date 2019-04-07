@@ -3,5 +3,6 @@ package GamePackage;
 import java.util.ArrayList;
 
 public class Deck {
-    ArrayList<Card> cards = new ArrayList<>();
+    private String name;
+    private ArrayList<Card> cards = new ArrayList<>();
 }
