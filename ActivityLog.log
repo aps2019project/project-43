@@ -5,3 +5,6 @@ commit 1#: doc page 1-6 fields added
 commit 1*: doc page 7-10 fields added
 commit 2#: game menu func added
 commit 3#: classes remastered, unnecessary classes removed, .png UML file added
+commit 4#:constructor and methods added to minion, hero, spell class
+commit 1$:troopSample Enum and some methods added to minion class 
+commit 2$:20 minion samples & .gitignore file added
