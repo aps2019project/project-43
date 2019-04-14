@@ -1,6 +1,7 @@
 package GamePackage;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.security.PublicKey;
 import java.util.UUID;
 
@@ -38,6 +39,7 @@ public class Minion extends Card {
 
     public void init() {
         troopSample.doSomething();
+        currentMinion.printStats();
     }
 
     public void attackTroops() {
@@ -49,12 +51,16 @@ public class Minion extends Card {
         Minion.currentMinion = this;
     }
 
-    private Minion(String name, int moneyCost, int manaCost, int hp, int ap, String troopType, Spell specialPower) {
+    public Minion(String name, int moneyCost, int manaCost, int hp, int ap, String troopType, Spell specialPower) {
         super(name, UUID.randomUUID(), moneyCost, manaCost);
         this.hp = hp;
         this.ap = ap;
         this.troopType = AttackType.valueOf(troopType.toUpperCase());
         this.specialPower = specialPower;
+    }
+
+    public static void setMinion(String name, int moneyCost, int manaCost, int hp, int ap, String troopType, Spell specialPower) {
+        currentMinion = new Minion(name, moneyCost, manaCost, hp, ap, troopType, specialPower);
     }
 
     public Minion getInstance() {
@@ -65,10 +71,23 @@ public class Minion extends Card {
         PERSIAN_ARCHER {
             @Override
             public void doSomething() {
+                try {
+                    fileReader = new FileReader("MinionSamples/PersianArcher.txt");
+                    char[] c = new char[100];
+                    fileReader.read(c);
+                    String[] s = new String(c).split(" ");
+                    setMinion("Persian Archer", Integer.parseInt(s[0])
+                            , Integer.parseInt(s[1]), Integer.parseInt(s[2])
+                            , Integer.parseInt(s[3]), s[4].toUpperCase(), null);
+                } catch (IOException ignore) {
+                    System.out.println("file not found");
+                }
             }
         };
 
         public void doSomething() {
         }
+
+        FileReader fileReader;
     }
 }

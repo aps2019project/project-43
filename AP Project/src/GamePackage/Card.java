@@ -42,4 +42,20 @@ public class Card {
         this.moneyCost = moneyCost;
         this.manaCost = manaCost;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMoneyCost(int moneyCost) {
+        this.moneyCost = moneyCost;
+    }
+
+    public void setManaCost(int manaCost) {
+        this.manaCost = manaCost;
+    }
+
+    public void setCardID(UUID cardID) {
+        this.cardID = cardID;
+    }
 }

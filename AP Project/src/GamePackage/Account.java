@@ -13,6 +13,10 @@ public class Account {
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck = new Deck();
 
+    {
+
+    }
+
     public String getUsername() {
         return username;
     }
