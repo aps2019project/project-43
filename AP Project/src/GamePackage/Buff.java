@@ -1,6 +1,11 @@
 package GamePackage;
 
 public enum Buff {
+    ON_ATTACK {
+        @Override
+        public void affectBuff() {
+        }
+    },
     HOLY {
         @Override
         public void affectBuff() {

@@ -6,6 +6,13 @@ public class Spell extends Card {
 
     @Override
     public void printStats() {
+    }
 
+    public Spell(String effect) {
+        try {
+            this.effect = Buff.valueOf(effect);
+        } catch (Exception e) {
+            this.effect = null;
+        }
     }
 }
