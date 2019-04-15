@@ -1,1 +1,1 @@
-600$2$1$8$melee$0$Holy Buff Is Uneffective FOr Target$ON_ATTACK
+600$2$1$8$melee$1$Holy Buff Is Uneffective FOr Target$ON_ATTACK

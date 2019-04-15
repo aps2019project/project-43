@@ -1,1 +1,1 @@
-600$9$24$6$melee$0$Deals 5 More Damage To An Enemy That Attacks In Earlier Turns$ON_ATTACK 
+600$9$24$6$melee$1$Deals 5 More Damage To An Enemy That Attacks In Earlier Turns$ON_ATTACK 
