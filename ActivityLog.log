@@ -8,3 +8,5 @@ commit 3#: classes remastered, unnecessary classes removed, .png UML file added
 commit 4#:constructor and methods added to minion, hero, spell class
 commit 1$:troopSample Enum and some methods added to minion class 
 commit 2$:20 minion samples & .gitignore file added
+commit 5#: minor change to minion constructor and methods
+commit 6#: change in account and main menu and world methods

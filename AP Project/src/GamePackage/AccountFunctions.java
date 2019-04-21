@@ -4,37 +4,43 @@ public enum AccountFunctions {
     CREATE_ACCOUNT {
         @Override
         public void runFunc(String[] input) {
+            World.getInstance().createAccount(input[2]);
         }
     },
     LOGIN {
         @Override
         public void runFunc(String[] input) {
+            World.getInstance().login(input[1]);
         }
     },
     SHOW_LEADERBOARD {
         @Override
         public void runFunc(String[] input) {
+            World.getInstance().showLeaderBoard();
         }
     },
     SAVE {
         @Override
         public void runFunc(String[] input) {
+            World.getInstance().save();
         }
     },
     LOGOUT {
         @Override
         public void runFunc(String[] input) {
+            World.getInstance().logout();
         }
     },
     HELP {
         @Override
         public void runFunc(String[] input) {
+            AccountFunctions.showMenu();
         }
     },
     INVALID {
         @Override
         public void runFunc(String[] input) {
-            System.out.println("invalid option");
+            System.out.println("invalid command");
         }
     };
 

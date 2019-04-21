@@ -12,9 +12,11 @@ public class Account {
     private Match currentMatch;
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck = new Deck();
+    private int wins = 0;
 
-    {
-
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -53,12 +55,21 @@ public class Account {
         return mainDeck;
     }
 
-    public boolean equals(String username) {
-        if(this.username.equals(username)) {
-            System.out.println("this username already exist");
-            return false;
-        } else {
+    public int getWins() {
+        return wins;
+    }
+
+    public boolean equals(Account account) {
+        if (this.username.equals(account.getUsername())
+                && this.password.equals(account.getPassword())) {
             return true;
+        } else {
+            return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "UserName: " + username + " - Wins: " + wins;
     }
 }
