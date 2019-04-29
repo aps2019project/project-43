@@ -1,5 +1,6 @@
 package GamePackage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -84,5 +85,35 @@ public class World {
         } else {
             System.out.println("you are not logged in");
         }
+    }
+
+    public void search(String name) {
+        loggedAccount.search(name);
+    }
+
+    public void show() {
+        loggedAccount.getCollection().show();
+    }
+
+    public void showDeck(String name) {
+    }
+
+    public void showALlDecks() {
+    }
+
+    public void createDeck(String name) {
+        loggedAccount.createDeck(name);
+    }
+
+    public void deleteDeck(String name) {
+        loggedAccount.deleteDeck(name);
+    }
+
+    public void validateDeck(String name) {
+        loggedAccount.getDeck(name).validate();
+    }
+
+    public void selectMainDeck(String name) {
+        loggedAccount.setMainDeck(name);
     }
 }
