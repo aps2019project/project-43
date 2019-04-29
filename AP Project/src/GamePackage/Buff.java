@@ -35,6 +35,24 @@ public enum Buff {
         @Override
         public void affectBuff() {
         }
+    },
+    CELL_ON_FIRE{
+        @Override
+        public void affectBuff() {
+
+        }
+    },
+    POISONOUS_CELL{
+        @Override
+        public void affectBuff() {
+
+        }
+    },
+    REMOVE{
+        @Override
+        public void affectBuff() {
+
+        }
     };
 
     public abstract void affectBuff();

@@ -1,0 +1,14 @@
+{
+  "name" : "Dispel",
+  "moneyCost" : 2100,
+  "manaCost" : 0,
+  "effects" : [ "REMOVE" ],
+  "cardID" : null,
+  "info" : "Remove Negative Buffs For One Ally Force or Positive Buffs For One Enemy Force",
+  "owner" : null,
+  "coolDown" : 0,
+  "target" : "ANYTHING",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

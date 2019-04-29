@@ -1,0 +1,14 @@
+{
+  "name" : "KingsGuard",
+  "moneyCost" : 1750,
+  "manaCost" : 9,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : "Kills The Enemy Minion Nearby The Ally Hero",
+  "owner" : null,
+  "coolDown" : 1,
+  "target" : "ENEMY_MINION",
+  "changeHP" : -100,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

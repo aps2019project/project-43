@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31cc0edb-73d8-4764-adb3-748fa3c54ad2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AP Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP Project/src/GamePackage/MainMenuFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP Project/src/GamePackage/MainMenuFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP Project/src/GamePackage/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP Project/src/GamePackage/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityLog.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="238">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -76,7 +71,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="119">
               <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
             </state>
           </provider>
@@ -109,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -119,28 +114,27 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Repo" type="462c0819:PsiDirectoryNode" />
+              <item name="APproject-43" type="b2602c69:ProjectViewProjectNode" />
+              <item name="APproject-43" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Repo" type="462c0819:PsiDirectoryNode" />
+              <item name="APproject-43" type="b2602c69:ProjectViewProjectNode" />
+              <item name="APproject-43" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Repo" type="462c0819:PsiDirectoryNode" />
+              <item name="APproject-43" type="b2602c69:ProjectViewProjectNode" />
+              <item name="APproject-43" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Repo" type="462c0819:PsiDirectoryNode" />
+              <item name="APproject-43" type="b2602c69:ProjectViewProjectNode" />
+              <item name="APproject-43" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GamePackage" type="462c0819:PsiDirectoryNode" />
@@ -149,6 +143,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -156,6 +151,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556555577883" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/AP Project" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -196,9 +192,9 @@
     <option name="totallyTimeSpent" value="2176000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1536" height="864" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25704697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26040268" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -237,10 +233,13 @@
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Hand.java" />
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="238">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/MainMenuFunctions.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Hero.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -267,12 +266,9 @@
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Minion.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/MainMenuFunctions.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="119">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>

@@ -1,0 +1,14 @@
+{
+  "name" : "GodStrength",
+  "moneyCost" : 450,
+  "manaCost" : 2,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : "Adds 4 AttackPoints to Ally Hero",
+  "owner" : null,
+  "coolDown" : 1,
+  "target" : "ALLY_HERO",
+  "changeHP" : 0,
+  "changeAP" : 4,
+  "targetArea" : 1
+}

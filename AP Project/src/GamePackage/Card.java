@@ -9,6 +9,8 @@ public class Card {
     private int manaCost;
     private ArrayList<Buff> effects = new ArrayList<>();
     private UUID cardID;
+    private String info;
+    private Account owner;
 
     public void printStats(){
     }
@@ -36,11 +38,13 @@ public class Card {
     public Card() {
     }
 
-    public Card(String name, UUID cardID, int moneyCost, int manaCost) {
+    public Card(String name, int moneyCost, int manaCost, Buff buff, String info) {
         this.name = name;
-        this.cardID = cardID;
+//        this.cardID = cardID;
         this.moneyCost = moneyCost;
         this.manaCost = manaCost;
+        this.effects.add(buff);
+        this.info = info;
     }
 
     public void setName(String name) {
@@ -57,5 +61,17 @@ public class Card {
 
     public void setCardID(UUID cardID) {
         this.cardID = cardID;
+    }
+
+    public Account getOwner() {
+        return owner;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void addBuff(Buff buff){
+        this.effects.add(buff);
     }
 }
