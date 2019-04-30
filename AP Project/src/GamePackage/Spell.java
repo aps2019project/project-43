@@ -8,10 +8,26 @@ public class Spell extends Card {
     private int changeAP;
     private int targetArea;
 
-     @Override
-    public void printStats() {
-        System.out.printf("Type : Spell - Name : %s - MP : %d - Desc : %s\n"
-                , getName(), getManaCost());
+
+
+    public int getCoolDown() {
+        return coolDown;
+    }
+
+    public SpellTarget getTarget() {
+        return target;
+    }
+
+    public int getChangeHP() {
+        return changeHP;
+    }
+
+    public int getChangeAP() {
+        return changeAP;
+    }
+
+    public int getTargetArea() {
+        return targetArea;
     }
 
 //    public Spell(String effect) {
@@ -34,23 +50,10 @@ public class Spell extends Card {
         this.targetArea = targetArea;
     }
 
-    public int getCoolDown() {
-        return coolDown;
+    @Override
+    public void printStats() {
+        System.out.printf("Type : Spell - Name : %s - MP : %d - Desc : \n"
+                , getName(), getManaCost());
     }
 
-    public SpellTarget getTarget() {
-        return target;
-    }
-
-    public int getChangeHP() {
-        return changeHP;
-    }
-
-    public int getChangeAP() {
-        return changeAP;
-    }
-
-    public int getTargetArea() {
-        return targetArea;
-    }
 }
