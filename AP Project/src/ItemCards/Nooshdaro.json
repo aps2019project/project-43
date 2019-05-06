@@ -1,0 +1,11 @@
+{
+  "name" : "Nooshdaro",
+  "description" : "Increase HP by 6 for random force",
+  "buff" : null,
+  "changeAP" : 0,
+  "changeHP" : 6,
+  "changeMana" : 0,
+  "cooldown" : 100,
+  "target" : "ANYTHING",
+  "unused" : true
+}

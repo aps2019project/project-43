@@ -1,0 +1,11 @@
+{
+  "name" : "Two-headedArrow",
+  "description" : "Increase AP by 6 for random ranged or hybrid force",
+  "buff" : null,
+  "changeAP" : 2,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 100,
+  "target" : "ANYTHING",
+  "unused" : true
+}

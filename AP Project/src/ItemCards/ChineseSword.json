@@ -1,0 +1,11 @@
+{
+  "name" : "ChineseSword",
+  "description" : "Give 5 AP to melee troops",
+  "buff" : null,
+  "changeAP" : 5,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 100,
+  "target" : "ANYTHING",
+  "unused" : true
+}

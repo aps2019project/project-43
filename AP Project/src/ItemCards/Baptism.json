@@ -1,0 +1,12 @@
+{
+  "name" : "Baptism",
+  "description" : "Each minion get Holy buff for 2 rounds when spawning",
+  "buff" : "HOLY",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 2,
+  "price" : 20000,
+  "target" : "ALLY_MINION",
+  "unused" : true
+}

@@ -1,0 +1,28 @@
+{
+  "name" : "Myth",
+  "moneyCost" : 11000,
+  "manaCost" : 1,
+  "effects" : [ "REMOVE" ],
+  "cardID" : null,
+  "info" : "Dispel one enemy force",
+  "owner" : null,
+  "hp" : 40,
+  "ap" : 3,
+  "attackRange" : 3,
+  "coolDown" : 2,
+  "specialPower" : {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "REMOVE" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 100,
+    "target" : "ALLY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 13
+  },
+  "troopType" : "RANGED"
+}

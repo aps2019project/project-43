@@ -1,0 +1,28 @@
+{
+  "name" : "Seven-headedDragon",
+  "moneyCost" : 8000,
+  "manaCost" : 0,
+  "effects" : [ "DISARM" ],
+  "cardID" : null,
+  "info" : "Disarm one player",
+  "owner" : null,
+  "hp" : 50,
+  "ap" : 4,
+  "attackRange" : 0,
+  "coolDown" : 1,
+  "specialPower" : {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "DISARM" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 1,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 13
+  },
+  "troopType" : "MELEE"
+}
