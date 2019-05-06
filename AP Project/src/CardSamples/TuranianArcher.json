@@ -1,0 +1,16 @@
+{
+  "name" : "TuranianArcher",
+  "moneyCost" : 500,
+  "manaCost" : 1,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 3,
+  "ap" : 4,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

@@ -52,8 +52,12 @@ public class Spell extends Card {
 
     @Override
     public void printStats() {
-        System.out.printf("Type : Spell - Name : %s - MP : %d - Desc : \n"
-                , getName(), getManaCost());
-    }
+        System.out.printf("Type : Spell - Name : %s - MP : %d - Desc : %s\n"
+                , getName(), getManaCost(), getInfo());
+    } //Use for Show Deck in Collection
 
+    @Override
+    public String toString() {
+        return "Type : Spell - Name : " + getName() + "- MP : " + getManaCost() + "- Desc : " + getInfo() + "- Sell Cost : " + getMoneyCost();
+    } //Use for Show Command in Shop
 }

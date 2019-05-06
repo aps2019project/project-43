@@ -1,0 +1,16 @@
+{
+  "name" : "Iraj",
+  "moneyCost" : 500,
+  "manaCost" : 4,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 6,
+  "ap" : 20,
+  "attackRange" : 3,
+  "troopType" : "RANGED",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

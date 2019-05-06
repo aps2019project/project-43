@@ -1,0 +1,30 @@
+{
+  "name" : "Pahlavan",
+  "moneyCost" : 600,
+  "manaCost" : 9,
+  "effects" : [ "ON_ATTACK" ],
+  "cardID" : null,
+  "info" : "Deals 5 More Damage to Enemy Force",
+  "owner" : null,
+  "hp" : 24,
+  "ap" : 6,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ null ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 0,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : -5,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

@@ -1,0 +1,30 @@
+{
+  "name" : "Eagle",
+  "moneyCost" : 200,
+  "manaCost" : 2,
+  "effects" : [ "PASSIVE" ],
+  "cardID" : null,
+  "info" : "Has 10 PowerBuff with Additional HP",
+  "owner" : null,
+  "hp" : 0,
+  "ap" : 2,
+  "attackRange" : 3,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "POWER" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 100,
+    "target" : null,
+    "changeHP" : 10,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

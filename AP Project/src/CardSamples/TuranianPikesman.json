@@ -1,0 +1,16 @@
+{
+  "name" : "TuranianPikesman",
+  "moneyCost" : 600,
+  "manaCost" : 1,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 4,
+  "ap" : 4,
+  "attackRange" : 3,
+  "troopType" : "HYBRID",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

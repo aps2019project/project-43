@@ -1,8 +1,15 @@
 package GamePackage;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Item {
     private String name;
     private String description;
+    private AtomicInteger itemID = new AtomicInteger();
+
+    public void setItemID(){
+        this.itemID.incrementAndGet();
+    }
 
     public String getName() {
         return name;

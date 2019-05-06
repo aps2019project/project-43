@@ -2,13 +2,14 @@ package GamePackage;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Card {
     private String name;
     private int moneyCost;
     private int manaCost;
     private ArrayList<Buff> effects = new ArrayList<>();
-    private UUID cardID;
+    private AtomicInteger cardID = new AtomicInteger();
     private String info;
     private Account owner;
 
@@ -31,7 +32,7 @@ public class Card {
         return effects;
     }
 
-    public UUID getCardID() {
+    public AtomicInteger getCardID() {
         return cardID;
     }
 
@@ -59,8 +60,8 @@ public class Card {
         this.manaCost = manaCost;
     }
 
-    public void setCardID(UUID cardID) {
-        this.cardID = cardID;
+    public void setCardID() {
+        this.cardID.incrementAndGet();
     }
 
     public Account getOwner() {

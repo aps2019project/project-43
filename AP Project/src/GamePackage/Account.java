@@ -15,6 +15,7 @@ public class Account {
     private Deck mainDeck;
     private HashMap<String, Deck> deckHashMap = new HashMap<>();
     private int wins = 0;
+    private Shop shop = new Shop();
 
     public Account(String username, String password) {
         this.username = username;

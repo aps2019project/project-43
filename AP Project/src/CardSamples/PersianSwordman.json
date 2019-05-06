@@ -1,0 +1,30 @@
+{
+  "name" : "PersianSwordman",
+  "moneyCost" : 400,
+  "manaCost" : 2,
+  "effects" : [ "ON_ATTACK" ],
+  "cardID" : null,
+  "info" : "Stun the Enemy On Attack",
+  "owner" : null,
+  "hp" : 6,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "STUN" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 0,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

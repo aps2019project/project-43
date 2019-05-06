@@ -42,6 +42,15 @@ public class Minion extends Card {
     }
 
 
+    public void setStunned(boolean stunned) {
+        isStunned = stunned;
+    }
+
+    public void setDisarmed(boolean disarmed) {
+        isDisarmed = disarmed;
+    }
+
+
     public Minion() {
     }
 
@@ -58,13 +67,28 @@ public class Minion extends Card {
 
     @Override
     public void printStats() {
-        System.out.printf("Type : Minion - Name : %s - Class : %s - AP : %d" +
-                        " - HP : %d - MP : %d - Special Power :\n", getName()
-                , troopType.toString().toLowerCase(), ap, hp, getManaCost());
+        System.out.println("Type : Minion - Name : " +  getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " + ap +
+                " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo());
+    } //Use for Show Deck in Collection
+
+//    @Override
+    public void sellDetails() {
+        System.out.println("Type : Minion - Name : " + getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " +
+                    ap + " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo() + " - Sell Cost : " + getMoneyCost());
+    } //Use for Show Command in Shop
+
+//    @Override
+    public void buyDetails() {
+        System.out.println("Type : Minion - Name : " + getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " +
+                ap + " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo() +" - Buy Cost : " + getMoneyCost());
     }
 
-    public void attackTroops() {
+    public void attack() {
         troopType.attack();
+    }
+
+    public void defend(){
+        troopType.defend();
     }
 
 }

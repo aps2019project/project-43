@@ -1,0 +1,30 @@
+{
+  "name" : "GiantSnake",
+  "moneyCost" : 500,
+  "manaCost" : 8,
+  "effects" : [ "ON_SPAWN" ],
+  "cardID" : null,
+  "info" : "Minion Up to 2 Cells away takes one more damage",
+  "owner" : null,
+  "hp" : 14,
+  "ap" : 7,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "ON_DEFEND" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 100,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -1,
+    "changeAP" : 0,
+    "targetArea" : 2,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

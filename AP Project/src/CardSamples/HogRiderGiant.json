@@ -1,0 +1,16 @@
+{
+  "name" : "HogRiderGiant",
+  "moneyCost" : 300,
+  "manaCost" : 6,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 16,
+  "ap" : 8,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

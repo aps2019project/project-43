@@ -1,0 +1,30 @@
+{
+  "name" : "Bahman",
+  "moneyCost" : 450,
+  "manaCost" : 8,
+  "effects" : [ "ON_SPAWN" ],
+  "cardID" : null,
+  "info" : "Decrease 16 unit of Randomly Enemy minion's HP",
+  "owner" : null,
+  "hp" : 16,
+  "ap" : 9,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ null ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 1,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -16,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

@@ -1,0 +1,16 @@
+{
+  "name" : "WildHug",
+  "moneyCost" : 500,
+  "manaCost" : 6,
+  "effects" : [ "ON_DEFEND" ],
+  "cardID" : null,
+  "info" : "Won't Disarm",
+  "owner" : null,
+  "hp" : 10,
+  "ap" : 14,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}
