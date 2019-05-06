@@ -1,0 +1,12 @@
+{
+  "name" : "SoulEater",
+  "description" : "When an ally force killed, random ally force's ap increase by 1 with power buff",
+  "buff" : "POWER",
+  "changeAP" : 1,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 100,
+  "price" : 25000,
+  "target" : "ALLY_FORCE",
+  "unused" : true
+}

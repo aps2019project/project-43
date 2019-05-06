@@ -1,0 +1,12 @@
+{
+  "name" : "AssassinationDagger",
+  "description" : "Decrease enemy's hero hp by 1 whenever adding new ally troop",
+  "buff" : null,
+  "changeAP" : 0,
+  "changeHP" : 1,
+  "changeMana" : 0,
+  "cooldown" : 100,
+  "price" : 15000,
+  "target" : "ENEMY_HERO",
+  "unused" : true
+}
