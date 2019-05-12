@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1366d15f-33d6-469d-81f6-824da5f36f5a" name="Default Changelist" comment="3$ Spell Cards json added">
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/AllAttack.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/AllDisarm.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/AllPoison.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/AllPower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/AreaDispel.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Dispel.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Empower.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/FireBall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/GodStrength.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/HealthWithProfit.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/HellFire.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/KingsGuard.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/LightingBolt.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Madness.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/PoisonLake.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/PowerUp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Sacrifice.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Shock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/TotalDisarm.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CardSamples/Weakening.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GamePackage/SpellTarget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePackage/Buff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePackage/Buff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePackage/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePackage/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePackage/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePackage/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePackage/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePackage/Spell.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,23 +17,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GamePackage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="75">
               <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GamePackage/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="94" column="45" lean-forward="true" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+            <state relative-caret-position="1185">
+              <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2808#2809#0" expanded="true" />
-                <element signature="e#2861#2862#0" expanded="true" />
+                <element signature="e#2860#2861#0" expanded="true" />
                 <element signature="method#showDeck#0;class#World#0" />
                 <element signature="method#showALlDecks#0;class#World#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GamePackage/MainMenuFunctions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="727">
+              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+              <folding>
+                <element signature="e#423#424#0" expanded="true" />
+                <element signature="e#475#476#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GamePackage/SpellTarget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="30">
               <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
             </state>
           </provider>
@@ -118,17 +104,16 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="-40" />
-    <option name="width" value="1935" />
-    <option name="height" value="1040" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -152,7 +137,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,23 +205,25 @@
       <workItem from="1556095905994" duration="686000" />
       <workItem from="1556096634333" duration="93000" />
       <workItem from="1556099067963" duration="1448000" />
+      <workItem from="1557212067232" duration="471000" />
+      <workItem from="1557254100083" duration="445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35835000" />
+    <option name="totallyTimeSpent" value="36751000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49417248" visible="true" weight="0.14630872" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49417248" visible="true" weight="0.15105008" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Structure" order="2" sideWeight="0.5058275" side_tool="true" weight="0.138833" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
@@ -339,17 +325,6 @@
           <folding>
             <element signature="e#186#187#0" expanded="true" />
             <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/MainMenuFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding>
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -490,28 +465,39 @@
     <entry file="file://F:/TestP/src/MinionGenerator.java" />
     <entry file="file://$PROJECT_DIR$/src/GamePackage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="75">
           <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/SpellTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="94" column="45" lean-forward="true" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+        <state relative-caret-position="1185">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2808#2809#0" expanded="true" />
-            <element signature="e#2861#2862#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
             <element signature="method#showDeck#0;class#World#0" />
             <element signature="method#showALlDecks#0;class#World#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePackage/SpellTarget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePackage/MainMenuFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+          <folding>
+            <element signature="e#423#424#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
           </folding>
         </state>
       </provider>

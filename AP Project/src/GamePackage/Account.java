@@ -15,6 +15,7 @@ public class Account {
     private Deck mainDeck;
     private HashMap<String, Deck> deckHashMap = new HashMap<>();
     private int wins = 0;
+    private Shop shop = new Shop();
 
     public Account(String username, String password) {
         this.username = username;
@@ -70,7 +71,29 @@ public class Account {
     }
 
     public void showDeck(String name) {
-        Deck deck = getDeck(name);
+        if(getDeck(name) != null) {
+            getDeck(name).show();
+        }
+        else{
+            System.out.println("there is no such deck!");
+        }
+    }
+
+    public void showAllDecks(){
+        int counter = 0;
+        if(this.mainDeck != null){
+            counter++;
+            System.out.println(counter + " : " + "deck_" + counter + " :");
+            this.mainDeck.show();
+        }
+        for (Deck deck : this.decks){
+            if(deck.getName() != mainDeck.getName()){
+                counter++;
+                System.out.println(counter + " : " + "deck_" + counter + " :");
+                deck.show();
+            }
+        }
+
     }
 
     public void createDeck(String name) {
@@ -85,21 +108,153 @@ public class Account {
         if (getDeck(name) == null) {
             decks.remove(getDeck(name));
         } else {
-            System.out.println("deck doesn't exists");
+            System.out.println("there is no such deck!");
         }
     }
 
-    public void search(String name) {
-        boolean found = false;
-        for (Card card : collection.getCards()) {
-            if (card.getName().equals(name)) {
-                System.out.println(card.getCardID());
-                found = true;
+    public void selectDeck (String name){
+        if (getDeck(name) != null){
+            this.mainDeck = getDeck(name);
+        }
+        else{
+            System.out.println("there's no such deck!");
+        }
+    }
+
+
+
+    public Card findCardInDeck (String cardName, String deckName){
+
+        Deck deck = this.getDeck(deckName);
+
+        for (Card card : deck.getCards()){
+            if(card.getName.equals(cardName)){
+                return card;
             }
         }
-        if (!found) {
-            System.out.println(name + " doesn't exist");
+        return null;
+    }
+
+
+    public Card findCardInCollection (String cardName){
+
+        Collection collection = this.getCollection();
+
+        for (Card card : collection.getCards()){
+            if(card.getName.equals(cardName)){
+                return card;
+            }
         }
+        return null;
+    }
+
+    public Hero findHeroInCollection (String heroName){
+        Collection collection = this.getCollection();
+
+        for (Hero hero : collection.getHeroes()){
+            if(hero.getName.equals(heroName)){
+                return hero;
+            }
+        }
+        return null;
+    }
+
+
+    public Item findItemInCollection (String itemName){
+
+        Collection collection = this.getCollection();
+
+        for (Item item : collection.getItems()){
+            if(item.getName.equals(itemName)){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void search(String name) {
+        if (this.findItemInCollection(name) != null){
+            System.out.println("the item exists in the collection:" + this.findItemInCollection(name).getItemID());
+        }
+        else if (this.findCardInCollection(name) != null){
+            System.out.println("the card exists in the collection:" + this.findCardInCollection(name).getCardID());
+        }
+        else if (this.findHeroInCollection(name) != null){
+            System.out.println("the card exists in the collection:" + this.findHeroInCollection(name).getHeroID());
+        }
+        else{
+            System.out.println("the card/item doesn't exist in the collection!");
+        }
+    }
+
+    public void addObjectToDeck (String objectName, String deckName){
+
+        Deck deck = this.getDeck(deckName);
+        Card cardInCollection = this.findCardInCollection(objectName);
+        Item itemInCollection = this.findItemInCollection(objectName);
+        Hero heroInCollection = this.findHeroInCollection(objectName);
+
+        if(deck != null) {
+
+
+            if (heroInCollection != null) {
+
+                if (deck.getHero() != null) {
+                    System.out.println("there's a hero in the deck!");
+                } else {
+                    deck.setHero(this.findHeroInCollection(objectName));
+                }
+            } else if (cardInCollection != null) {
+
+                if (deck.getSize() < deck.getMaxSize()) {
+                    if (findCardInDeck(objectName).getName.equals(objectName)) {
+                        System.out.println("the card exists in the deck!");
+                    } else {
+                        deck.setCard(this.findCardInCollection(objectName));
+                    }
+                } else {
+                    System.out.println("there's no free space!");
+                }
+
+            } else if (itemInCollection != null) {
+
+                if (deck.getItem() != null) {
+                    System.out.println("there's an item in the deck!");
+                } else {
+                    deck.setItem(this.findItemInCollection(objectName));
+                }
+
+            } else {
+                System.out.println("there's no such card/item in the collection!");
+            }
+        }
+        else{
+            System.out.println("there is no such deck!");
+        }
+
+    }
+
+    public void removeObjectFromDeck (String objectName, String deckName){
+
+        Deck deck = this.getDeck(deckName);
+        Hero hero = deck.getHero();
+        Card card = this.findCardInDeck(objectName, deckName);
+        Item item = deck.getItem();
+
+        if( deck != null) {
+
+            if (item != null) {
+                this.getDeck(deckName).removeItem();
+            } else if (hero != null) {
+                this.getDeck(deckName).removeHero();
+            } else if (card != null) {
+                this.getDeck(deckName).removeCard(this.findCardInDeck(objectName, deckName));
+            }
+        }
+        else{
+            System.out.println("there is no such deck!");
+        }
+
     }
 
     @Override

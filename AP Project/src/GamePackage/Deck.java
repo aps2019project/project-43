@@ -17,6 +17,21 @@ public class Deck {
         this.name = name;
     }
 
+    public void setItem(Item item){
+
+        this.item = item;
+
+    }
+    public void setHero(Hero hero){
+
+        this.hero = hero;
+
+    }
+    public void setCard(Card card){
+
+        this.cards.add(card);
+    }
+
     public String getName() {
         return name;
     }
@@ -46,6 +61,20 @@ public class Deck {
         return hero;
     }
 
+    public int getSize() {
+        this.size = cards.size();
+        return size;
+    }
+
+    public int getMaxSize(){
+        return maxSize;
+    }
+
+    public void removeHero() {this.hero = null;}
+    public void removeCard(Card card) {this.cards.remove(card);}
+    public void removeItem() {this.item = null;}
+
+
     public void validate() {
         if(cards.size() == 21 && getHero() != null) {
             System.out.println("deck is valid");
@@ -53,4 +82,10 @@ public class Deck {
             System.out.println("deck is not valid");
         }
     }
+
+    public void show(){
+
+    }
+
+
 }
