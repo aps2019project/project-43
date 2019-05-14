@@ -2,6 +2,7 @@ package GamePackage;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Collection {
     private ArrayList<Card> heroes = new ArrayList<>();
@@ -31,6 +32,16 @@ public class Collection {
         }
     }
 
+    public void removeFromCollection(Object object) {
+        if (object instanceof Hero) {
+            heroes.remove(object);
+        } else if (object instanceof Item) {
+            items.remove(object);
+        } else {
+            cards.remove((Card) object);
+        }
+    }
+
 
 
     // Show cards and items
@@ -57,6 +68,49 @@ public class Collection {
             item.printStats();
         }
     }
+
+    public Object searchCard(int ID) {
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getCardID() == ID) {
+                return heroes.get(i);
+            }
+        }
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getCardID() == ID) {
+                return cards.get(i);
+            }
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getItemID() == ID) {
+                return items.get(i);
+            }
+        }
+        return null;
+    }
+
+    public List<Object> searchCard(String name){
+        List<Object> list = new ArrayList<>();
+        for (Card card :
+                heroes) {
+            if (card.getName().equals(name)){
+                list.add(card);
+            }
+        }
+        for (Card card:
+                cards) {
+            if (card.getName().equals(name)){
+                list.add(card);
+            }
+        }
+        for (Item item :
+                items) {
+            if (item.getName().equals(name)){
+                list.add(item);
+            }
+        }return list;
+    }
+
+
 
     public static void help() {
         System.out.println("1. show");

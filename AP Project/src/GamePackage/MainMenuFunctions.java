@@ -4,11 +4,13 @@ public enum MainMenuFunctions {
     COLLECTION {
         @Override
         public void enter() {
+            World.getInstance().enterCollectionMenu();
         }
     },
     SHOP {
         @Override
         public void enter() {
+            World.getInstance().enterShopMenu();
         }
     },
     BATTLE {
@@ -19,6 +21,7 @@ public enum MainMenuFunctions {
     EXIT {
         @Override
         public void enter() {
+            World.getInstance().enterMainMenu();
         }
     },
     HELP {
@@ -46,8 +49,8 @@ public enum MainMenuFunctions {
         try {
             if (input.length == 1) {
                 state = MainMenuFunctions.valueOf(input[0]);
-            } else if (input.length == 2) {
-                state = MainMenuFunctions.valueOf(input[1]);
+//            } else if (input.length == 2) {
+//                state = MainMenuFunctions.valueOf(input[1]);
             } else {
                 throw new Exception();
             }

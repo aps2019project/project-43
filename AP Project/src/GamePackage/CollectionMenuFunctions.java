@@ -4,11 +4,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public enum CollectionMenuFunctions {
-
     SHOW {
         @Override
         public void doSomething(String[] userInput) {
-            World.getInstance().show();
+//            World.getInstance().show();
             //should define a show method in Collection(print)
 
         }

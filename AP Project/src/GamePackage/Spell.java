@@ -58,6 +58,6 @@ public class Spell extends Card {
 
     @Override
     public String toString() {
-        return "Type : Spell - Name : " + getName() + "- MP : " + getManaCost() + "- Desc : " + getInfo() + "- Sell Cost : " + getMoneyCost();
+        return "Type : Spell - Name : " + getName() + "- MP : " + getManaCost() + "- Desc : " + getInfo();
     } //Use for Show Command in Shop
 }

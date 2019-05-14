@@ -16,6 +16,11 @@ public class Card {
     public void printStats(){
     }
 
+    @Override
+    public String toString(){
+        return null;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,8 +37,8 @@ public class Card {
         return effects;
     }
 
-    public AtomicInteger getCardID() {
-        return cardID;
+    public int getCardID() {
+        return cardID.get();
     }
 
     public Card() {

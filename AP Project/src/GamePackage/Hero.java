@@ -14,6 +14,11 @@ public class Hero extends Card {
                 , troopType.toString().toLowerCase(), specialPowerDescription);
     }
 
+    @Override
+    public String toString() {
+        return null;
+    }
+
     public void castSpell() {
     }
 }

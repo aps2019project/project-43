@@ -9,7 +9,12 @@ public class World {
     private HashMap<String, Account> userMap = new HashMap<>();
     private Account loggedAccount;
     private Game activeGame;
+    //    private String currentMenu = "AccountMenu";
     private static World world = new World();
+    private boolean AccountMenu = true;
+    private boolean MainMenu = false;
+    private boolean ShopMenu = false;
+    private boolean CollectionMenu = false;
 
     private World() {
     }
@@ -22,14 +27,48 @@ public class World {
         return accounts;
     }
 
+    public Account getLoggedAccount() {
+        return loggedAccount;
+    }
+
     public Game getActiveGame() {
         return activeGame;
     }
 
+    public void enterShopMenu() {
+        this.ShopMenu = true;
+        this.MainMenu = false;
+    }
+
+    public void enterMainMenu() {
+        this.MainMenu = true;
+        this.ShopMenu = false;
+        this.CollectionMenu = false;
+    }
+
+    public void enterCollectionMenu() {
+        this.CollectionMenu = true;
+        this.MainMenu = false;
+    }
+
+    public void MenuController() {
+        while (true) {
+            while (AccountMenu) {
+                AccountMenu();
+            }
+            while (MainMenu) {
+                MainMenu();
+            }
+            while (ShopMenu) {
+                ShopMenu();
+            }
+        }
+    }
+
     public void AccountMenu() {
         AccountFunctions accountFunctions = AccountFunctions.INVALID;
-        while(true) {
-            String[] userInput = Main.scan.nextLine().split(" ");
+        while (AccountMenu) {
+            String[] userInput = Main.scan.nextLine().toUpperCase().split(" ");
             accountFunctions.setState(userInput);
             accountFunctions.getState().runFunc(userInput);
         }
@@ -38,10 +77,29 @@ public class World {
     public void MainMenu() {
         MainMenuFunctions mainMenuFunctions = MainMenuFunctions.INVALID;
         do {
-            String[] userInput = Main.scan.nextLine().split(" ");
+            String[] userInput = Main.scan.nextLine().toUpperCase().split(" ");
             mainMenuFunctions.setState(userInput);
             mainMenuFunctions.getState().enter();
-        } while (mainMenuFunctions.getState() != MainMenuFunctions.EXIT);
+
+        } while (MainMenu);
+        if (mainMenuFunctions.getState() == MainMenuFunctions.EXIT){
+            AccountMenu = true;
+            MainMenu = false;
+            ShopMenu = false;
+        }
+    }
+
+    public void ShopMenu() {
+        ShopFunctions shopFunctions = ShopFunctions.INVALID;
+        do {
+            String[] userInput = Main.scan.nextLine().toUpperCase().split(" ");
+            shopFunctions.setState(userInput);
+            shopFunctions.doSomething(userInput);
+        } while (ShopMenu);
+        if (shopFunctions.getState() == ShopFunctions.EXIT){
+            MainMenu = true;
+            ShopMenu = false;
+        }
     }
 
     public void createAccount(String username) {
@@ -53,6 +111,8 @@ public class World {
             accounts.add(account);
             userMap.put(username, account);
             loggedAccount = account;
+            AccountMenu = false;
+            MainMenu = true;
         }
     }
 
@@ -64,10 +124,13 @@ public class World {
             if (origin.equals(account)) {
                 System.out.println("you are logged in");
                 loggedAccount = origin;
+                AccountMenu = false;
+                MainMenu = true;
             } else {
                 System.out.println("your password is incorrect");
             }
-        }
+        } else
+            System.out.println("/Nothing Found/"); //todo remove
     }
 
     public void showLeaderBoard() {
@@ -91,9 +154,9 @@ public class World {
         loggedAccount.search(name);
     }
 
-    public void show() {
-        loggedAccount.getCollection().show();
-    }
+//    public void show() {
+//        loggedAccount.getCollection().show();
+//    }
 
     public void showDeck(String name) {
     }

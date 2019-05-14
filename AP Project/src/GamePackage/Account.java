@@ -42,6 +42,10 @@ public class Account {
         return collection;
     }
 
+    public Shop getShop(){
+        return shop;
+    }
+
     public ArrayList<Match> getMatches() {
         return matches;
     }
@@ -128,7 +132,7 @@ public class Account {
         Deck deck = this.getDeck(deckName);
 
         for (Card card : deck.getCards()){
-            if(card.getName.equals(cardName)){
+            if(card.getName().equals(cardName)){
                 return card;
             }
         }
@@ -141,7 +145,7 @@ public class Account {
         Collection collection = this.getCollection();
 
         for (Card card : collection.getCards()){
-            if(card.getName.equals(cardName)){
+            if(card.getName().equals(cardName)){
                 return card;
             }
         }
@@ -151,9 +155,9 @@ public class Account {
     public Hero findHeroInCollection (String heroName){
         Collection collection = this.getCollection();
 
-        for (Hero hero : collection.getHeroes()){
-            if(hero.getName.equals(heroName)){
-                return hero;
+        for (Card hero : collection.getHeroes()){
+            if(hero.getName().equals(heroName)){
+                return (Hero) hero;
             }
         }
         return null;
@@ -165,7 +169,7 @@ public class Account {
         Collection collection = this.getCollection();
 
         for (Item item : collection.getItems()){
-            if(item.getName.equals(itemName)){
+            if(item.getName().equals(itemName)){
                 return item;
             }
         }
@@ -180,7 +184,7 @@ public class Account {
             System.out.println("the card exists in the collection:" + this.findCardInCollection(name).getCardID());
         }
         else if (this.findHeroInCollection(name) != null){
-            System.out.println("the card exists in the collection:" + this.findHeroInCollection(name).getHeroID());
+            System.out.println("the card exists in the collection:" + this.findHeroInCollection(name).getCardID());
         }
         else{
             System.out.println("the card/item doesn't exist in the collection!");
@@ -206,12 +210,12 @@ public class Account {
                 }
             } else if (cardInCollection != null) {
 
-                if (deck.getSize() < deck.getMaxSize()) {
-                    if (findCardInDeck(objectName).getName.equals(objectName)) {
-                        System.out.println("the card exists in the deck!");
-                    } else {
-                        deck.setCard(this.findCardInCollection(objectName));
-                    }
+                if (deck.getSize() < deck.getMaxSize()) {//todo debug
+//                    if (findCardInDeck(objectName).getName.equals(objectName)) {
+//                        System.out.println("the card exists in the deck!");
+//                    } else {
+//                        deck.setCard(this.findCardInCollection(objectName));
+//                    }
                 } else {
                     System.out.println("there's no free space!");
                 }
@@ -237,7 +241,7 @@ public class Account {
     public void removeObjectFromDeck (String objectName, String deckName){
 
         Deck deck = this.getDeck(deckName);
-        Hero hero = deck.getHero();
+        Card hero = deck.getHero();
         Card card = this.findCardInDeck(objectName, deckName);
         Item item = deck.getItem();
 
@@ -265,5 +269,13 @@ public class Account {
     public boolean equals(Account account) {
         return this.username.equals(account.getUsername())
                 && this.password.equals(account.getPassword());
+    }
+
+    public void MoneyTransaction(int X){
+        this.money = money + X;
+    }
+
+    public void addCard(){
+
     }
 }

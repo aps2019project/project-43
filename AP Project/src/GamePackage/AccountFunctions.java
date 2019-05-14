@@ -64,7 +64,9 @@ public enum AccountFunctions {
                 state = SHOW_LEADERBOARD;
             } else if (input[0].equals("CREATE")) {
                 state = CREATE_ACCOUNT;
-            } else {
+            } else if (input[0].equals("LOGIN")){
+                state = LOGIN;
+            }else{
                 state = INVALID;
             }
         }

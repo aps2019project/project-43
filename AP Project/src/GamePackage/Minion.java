@@ -71,16 +71,10 @@ public class Minion extends Card {
                 " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo());
     } //Use for Show Deck in Collection
 
-//    @Override
-    public void sellDetails() {
-        System.out.println("Type : Minion - Name : " + getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " +
-                    ap + " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo() + " - Sell Cost : " + getMoneyCost());
-    } //Use for Show Command in Shop
-
-//    @Override
-    public void buyDetails() {
-        System.out.println("Type : Minion - Name : " + getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " +
-                ap + " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo() +" - Buy Cost : " + getMoneyCost());
+    @Override
+    public String toString() {
+        return "Type : Minion - Name : " + getName() + " - Class : " + troopType.toString().toLowerCase() + " - AP : " +
+                ap + " - HP : " + hp + " - MP : " + getManaCost() + " - Special Power : " + getInfo();
     }
 
     public void attack() {

@@ -1,62 +1,64 @@
 package GamePackage;
 
 public enum ShopFunctions {
-    SHOW{
+    SHOW {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().getLoggedAccount().getShop().show();
         }
     },
-    SHOW_COLLECTION{
+    SHOW_COLLECTION {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().getLoggedAccount().getShop().showCollection();
         }
     },
-    SEARCH{
+    SEARCH {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().getLoggedAccount().getShop().search(input[1]);
         }
     },
-    SEARCH_COLLECTION{
+    SEARCH_COLLECTION {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().getLoggedAccount().getShop().searchCollection(input[2]);
         }
     },
-    BUY{
+    BUY {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().getLoggedAccount().getShop().buyCard(input[1]);
         }
     },
-    SELL{
+    SELL {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            for (int i = 1; i < input.length; i++) {
+                World.getInstance().getLoggedAccount().getShop().sellCard(Integer.parseInt(input[i]));
+            }
         }
     },
-    HELP{
+    HELP {
         @Override
-        public void dosth(String[] input) {
-            showHelp();
+        public void doSomething(String[] input) {
+            ShopFunctions.showHelp();
         }
     },
-    EXIT{
+    EXIT {
         @Override
-        public void dosth(String[] input) {
-
+        public void doSomething(String[] input) {
+            World.getInstance().enterMainMenu();
         }
     },
-    INVALID{
+    INVALID {
         @Override
-        public void dosth(String[] input) {
+        public void doSomething(String[] input) {
             System.out.println("Invalid Input");
         }
     };
 
-    public abstract void dosth(String[] input);
+    public abstract void doSomething(String[] input);
 
     private ShopFunctions state;
 
@@ -64,38 +66,48 @@ public enum ShopFunctions {
         return state;
     }
 
-    public void setState(String[] input){
-        if(input.length == 1){
-            state = ShopFunctions.valueOf(input[0].toUpperCase());
-        }else{
-            switch (input[0].toUpperCase()){
-                case "SELL":{
+    public void setState(String[] input) {
+        try {
+            if (input.length == 1) {
+                state = ShopFunctions.valueOf(input[0].toUpperCase());
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            switch (input[0].toUpperCase()) {
+                case "SELL": {
                     state = ShopFunctions.valueOf(input[0].toUpperCase());
                     break;
                 }
-                case "BUY":{
+                case "BUY": {
                     state = ShopFunctions.valueOf(input[0].toUpperCase());
                     break;
                 }
-                case "SEARCH":{
-                    if(input[1].toUpperCase().equals("COLLECTION")){
-                        state = ShopFunctions.valueOf("SEARCH COLLECTION");
-                    }else{
-                        state = ShopFunctions.valueOf("SEARCH");
-                    }break;
+                case "SEARCH": {
+                    if (input[1].toUpperCase().equals("COLLECTION")) {
+                        state = ShopFunctions.SEARCH_COLLECTION;
+                    } else {
+                        state = ShopFunctions.SEARCH;
+                    }
+                    break;
                 }
-                case "SHOW":{
-                    if (input[1].toUpperCase().equals("COLLECTION")){
-                        state = ShopFunctions.valueOf("SHOW COLLECTION");
-                    }else{
-                        state = ShopFunctions.valueOf("SHOW");
-                    }break;
+                case "SHOW": {
+                    if (input[1].toUpperCase().equals("COLLECTION")) {
+                        state = ShopFunctions.SHOW_COLLECTION;
+                    } else {
+                        state = ShopFunctions.SHOW;
+                    }
+                    break;
+                }case "HELP":{
+                    state = ShopFunctions.HELP;
                 }
+                default:
+                    state = INVALID;
             }
         }
     }
 
-    public void showHelp(){
+    public static void showHelp() {
         System.out.println("1. Show");
         System.out.println("2. Show collection");
         System.out.println("3. Search[item name|card name]");
