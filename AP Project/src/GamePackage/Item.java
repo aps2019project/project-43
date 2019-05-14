@@ -1,3 +1,4 @@
+
 package GamePackage;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,6 +14,10 @@ public class Item {
 
     public String getName() {
         return name;
+    }
+
+    public AtomicInteger getItemID(){
+        return itemID;
     }
 
     public void printStats() {

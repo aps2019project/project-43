@@ -1,5 +1,6 @@
 package GamePackage;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Collection {
@@ -30,6 +31,9 @@ public class Collection {
         }
     }
 
+
+
+    // Show cards and items
     public static void print(ArrayList<Card> heroes, ArrayList<Card> cards, ArrayList<Item> items) {
         print("Heroes", heroes);
         printItems(items);
@@ -52,5 +56,21 @@ public class Collection {
             System.out.printf("%d : ", counter++);
             item.printStats();
         }
+    }
+
+    public static void help() {
+        System.out.println("1. show");
+        System.out.println("2. search [card name | item name]");
+        System.out.println("3. save");
+        System.out.println("4. create deck [deck name]");
+        System.out.println("5. delete deck [deck name]");
+        System.out.println("6. add [card id | item id | hero id] to deck [deck name]");
+        System.out.println("7. remove [card id | item id | hero id] to deck [deck name]");
+        System.out.println("8. validate deck [deck name]");
+        System.out.println("9. select deck [deck name]");
+        System.out.println("10. show all decks");
+        System.out.println("11. show deck [deck name]");
+        System.out.println("12. help");
+        System.out.println("13. exit");
     }
 }

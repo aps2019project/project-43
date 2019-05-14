@@ -98,7 +98,7 @@ public class World {
     public void showDeck(String name) {
     }
 
-    public void showALlDecks() {
+    public void showALlDecks() { loggedAccount.showAllDecks();
     }
 
     public void createDeck(String name) {
@@ -115,5 +115,24 @@ public class World {
 
     public void selectMainDeck(String name) {
         loggedAccount.setMainDeck(name);
+    }
+
+    public void addToDeck(String objectName, String deckName){
+
+        loggedAccount.addObjectToDeck(objectName, deckName);
+
+    }
+
+    public void removeFromDeck (String objectName, String deckName){
+        loggedAccount.removeObjectFromDeck(objectName, deckName);
+    }
+    public void exit (String menuName){
+
+        if(menuName.equals("collection") || menuName.equals("shop") || menuName.equals("battle") || menuName.equals("exit") || menuName.equals("help")){
+            MainMenuFunctions.showMenu();
+        }
+
+
+
     }
 }

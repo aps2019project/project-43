@@ -14,3 +14,4 @@ commit 7#: collection menu completed
 commit 3$: SpellTarget Enum & Spell Jsons added
 commit 4$: CardGenerator added & some Changes in Minion & Spell class
 commit 2*: Hero cards added
+commit 3*: Collection functionality added and required changes made in the following classes: MainMenuFunctions, CollectionMenuFunctions, World, Deck, Collection, Account, Item

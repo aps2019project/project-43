@@ -1,10 +1,16 @@
 package GamePackage;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
+
 public enum CollectionMenuFunctions {
+
     SHOW {
         @Override
         public void doSomething(String[] userInput) {
             World.getInstance().show();
+            //should define a show method in Collection(print)
+
         }
     },
     SEARCH {
@@ -33,11 +39,12 @@ public enum CollectionMenuFunctions {
     ADD {
         @Override
         public void doSomething(String[] userInput) {
+            World.getInstance().addToDeck(userInput[1], userInput[4]);
         }
     },
     REMOVE {
         @Override
-        public void doSomething(String[] userInput) {
+        public void doSomething(String[] userInput) { World.getInstance().removeFromDeck(userInput[1], userInput[4]);
         }
     },
     VALIDATE_DECK {
@@ -54,12 +61,12 @@ public enum CollectionMenuFunctions {
     },
     SHOW_ALL_DECKS {
         @Override
-        public void doSomething(String[] userInput) {
+        public void doSomething(String[] userInput) {World.getInstance().showALlDecks();
         }
     },
     SHOW_DECK {
         @Override
-        public void doSomething(String[] userInput) {
+        public void doSomething(String[] userInput) {World.getInstance().showDeck(userInput[1]);
         }
     },
     HELP {
@@ -69,7 +76,7 @@ public enum CollectionMenuFunctions {
     },
     EXIT {
         @Override
-        public void doSomething(String[] userInput) {
+        public void doSomething(String[] userInput) {World.getInstance().exit("collection");
         }
     },
     INVALID {
