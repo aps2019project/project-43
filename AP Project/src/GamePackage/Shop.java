@@ -10,32 +10,37 @@ public class Shop {
     public ArrayList<Card> getCards() {
         return cards;
     }
+    private AccountMenu accountMenu = (AccountMenu) AccountMenu.getAccountMenu();
 
 
     public void buyCard(String name) {
+        Account loggedAccount = accountMenu.getLoggedAccount();
+        int playersMoney = accountMenu.getLoggedAccount().getMoney();
+        Collection playerCollection = accountMenu.getLoggedAccount().getCollection();
+
         for (int i = 0; i < cards.size() + items.size(); i++) {
             if (i < cards.size() && cards.get(i).getName().equals(name)) {
-                if (cards.get(i).getMoneyCost() > World.getInstance().getLoggedAccount().getMoney()) {
+                if (cards.get(i).getMoneyCost() > playersMoney) {
                     System.out.println("Insufficient Money");
                 } else {
                     if (cards.get(i) instanceof Hero) {
-                        World.getInstance().getLoggedAccount().getCollection().addToCollection(cards.get(i));
-                        World.getInstance().getLoggedAccount().MoneyTransaction(-cards.get(i).getMoneyCost());
+                        playerCollection.addToCollection(cards.get(i));
+                        loggedAccount.MoneyTransaction(-cards.get(i).getMoneyCost());
                         System.out.println("Purchase Successful");
                     } else {
-                        World.getInstance().getLoggedAccount().getCollection().addToCollection(cards.get(i));
-                        World.getInstance().getLoggedAccount().MoneyTransaction(-cards.get(i).getMoneyCost());
+                        playerCollection.addToCollection(cards.get(i));
+                        loggedAccount.MoneyTransaction(-cards.get(i).getMoneyCost());
                         System.out.println("Purchase Successful");
                     }
                 }
             } else if (items.get(i - cards.size()).getName().equals(name)) {
-                if (items.get(i).getMoneyCost() > World.getInstance().getLoggedAccount().getMoney()) {
+                if (items.get(i).getMoneyCost() > playersMoney) {
                     System.out.println("Insufficient Money");
-                } else if (World.getInstance().getLoggedAccount().getCollection().getItems().size() == Item.getMaxNumItems()) {
+                } else if (playerCollection.getItems().size() == Item.getMaxNumItems()) {
                     System.out.println("You Already Have 3 Items");
                 } else {
-                    World.getInstance().getLoggedAccount().getCollection().addToCollection(items.get(i));
-                    World.getInstance().getLoggedAccount().MoneyTransaction(-items.get(i).getMoneyCost());
+                    playerCollection.addToCollection(items.get(i));
+                    loggedAccount.MoneyTransaction(-items.get(i).getMoneyCost());
                     System.out.println("Purchase Successful");
                 }
             } else {
@@ -45,16 +50,25 @@ public class Shop {
     }
 
     public void sellCard(int ID) {
-        Object object = World.getInstance().getLoggedAccount().getCollection().searchCard(ID);
-        if (object != null) {
-            World.getInstance().getLoggedAccount().getCollection().removeFromCollection(object);
-        } else {
+        Account loggedAccount = accountMenu.getLoggedAccount();
+        Collection playerCollection = accountMenu.getLoggedAccount().getCollection();
+
+        Object object = playerCollection.searchCard(ID);
+        if (object == null) {
             System.out.println("Card Doesn't Exist");
+            return;
+        } else if( object instanceof Card){
+            loggedAccount.MoneyTransaction(((Card) object).getMoneyCost());
+        }else{
+            loggedAccount.MoneyTransaction(((Item) object).getMoneyCost());
         }
+        playerCollection.removeFromCollection(object);
     }
 
     public void searchCollection(String name) {
-        List<Object> list = World.getInstance().getLoggedAccount().getCollection().searchCard(name);
+        Collection playerCollection = accountMenu.getLoggedAccount().getCollection();
+
+        List<Object> list = playerCollection.searchCard(name);
         if (list.size() == 0) {
             System.out.println("Nothing Found");
         } else {
@@ -116,19 +130,19 @@ public class Shop {
     }
 
     public void showCollection(){
-        Collection collection = World.getInstance().getLoggedAccount().getCollection();
+        Collection playerCollection = accountMenu.getLoggedAccount().getCollection();
         for (Card card :
-                collection.getHeroes()) {
+                playerCollection.getHeroes()) {
             int counter = 1;
             System.out.println(counter++ + "." + card.toString() + " - Sell Cost : " + card.getMoneyCost());
         }
         for (Item item :
-                collection.getItems()) {
+                playerCollection.getItems()) {
             int counter = 1;
             System.out.println(counter++ + "." + item.toString() + " - Sell Cost : " + item.getMoneyCost());
         }
         for (Card card :
-                collection.getCards()) {
+                playerCollection.getCards()) {
             int counter = 1;
             System.out.println(counter++ + "." + card.toString() + " - Sell Cost : " + card.getMoneyCost());
         }

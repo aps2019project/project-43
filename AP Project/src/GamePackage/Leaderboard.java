@@ -2,11 +2,12 @@ package GamePackage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class Leaderboard {
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private List<Account> accounts = new ArrayList<>();
 
-    public Leaderboard(ArrayList<Account> accounts) {
+    public Leaderboard(List<Account> accounts) {
         this.accounts = accounts;
     }
 

@@ -52,16 +52,15 @@ public class World {
     }
 
     public void MenuController() {
+        AccountFunctions accountFunctions = AccountFunctions.INVALID;
+        MainMenuFunctions mainMenuFunctions = MainMenuFunctions.INVALID;
+        ShopFunctions shopFunctions = ShopFunctions.INVALID;
         while (true) {
-            while (AccountMenu) {
-                AccountMenu();
+            String[] input = Main.scan.nextLine().split(" ");
+            if(AccountMenu){
+                //todo
             }
-            while (MainMenu) {
-                MainMenu();
-            }
-            while (ShopMenu) {
-                ShopMenu();
-            }
+
         }
     }
 

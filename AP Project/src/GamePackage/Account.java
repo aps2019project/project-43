@@ -2,8 +2,19 @@ package GamePackage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Account {
+    private static List<Account> accounts = new ArrayList<>();
+
+    public static List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public static void addAccount(Account account){
+        accounts.add(account);
+    }
+
     private String username;
     private String password;
     private String status;
@@ -109,7 +120,7 @@ public class Account {
     }
 
     public void deleteDeck(String name) {
-        if (getDeck(name) == null) {
+        if (getDeck(name) != null) {
             decks.remove(getDeck(name));
         } else {
             System.out.println("there is no such deck!");
@@ -211,11 +222,11 @@ public class Account {
             } else if (cardInCollection != null) {
 
                 if (deck.getSize() < deck.getMaxSize()) {//todo debug
-//                    if (findCardInDeck(objectName).getName.equals(objectName)) {
-//                        System.out.println("the card exists in the deck!");
-//                    } else {
-//                        deck.setCard(this.findCardInCollection(objectName));
-//                    }
+                    if (findCardInDeck(objectName, deckName).getName().equals(objectName)) {
+                        System.out.println("the card exists in the deck!");
+                    } else {
+                        deck.setCard(this.findCardInCollection(objectName));
+                    }
                 } else {
                     System.out.println("there's no free space!");
                 }
