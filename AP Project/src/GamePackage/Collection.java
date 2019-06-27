@@ -50,12 +50,18 @@ public class Collection {
         print("Cards", cards);
     }
 
+    // Show cards and items
+    public void print() {
+        print("Heroes", heroes);
+        printItems(items);
+        print("Cards", cards);
+    }
+
     private static void print(String string, ArrayList<Card> cards) {
         int counter = 1;
         System.out.println(string + " : ");
         for (Card card : cards) {
-            System.out.printf("%d : ", counter++);
-            card.printStats();
+            System.out.println("\t"+card);
         }
     }
 
@@ -63,8 +69,7 @@ public class Collection {
         int counter = 1;
         System.out.println("Items :");
         for (Item item : items) {
-            System.out.printf("%d : ", counter++);
-            item.printStats();
+            System.out.println("\t"+item);
         }
     }
 
@@ -91,19 +96,19 @@ public class Collection {
         List<Object> list = new ArrayList<>();
         for (Card card :
                 heroes) {
-            if (card.getName().equals(name)){
+            if (card.getName().equalsIgnoreCase(name)){
                 list.add(card);
             }
         }
         for (Card card:
                 cards) {
-            if (card.getName().equals(name)){
+            if (card.getName().equalsIgnoreCase(name)){
                 list.add(card);
             }
         }
         for (Item item :
                 items) {
-            if (item.getName().equals(name)){
+            if (item.getName().equalsIgnoreCase(name)){
                 list.add(item);
             }
         }return list;

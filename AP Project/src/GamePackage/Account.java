@@ -17,14 +17,12 @@ public class Account {
 
     private String username;
     private String password;
-    private String status;
     private int money = 15000;
     private Collection collection = new Collection();
     private ArrayList<Match> matches = new ArrayList<>();
-    private Match currentMatch;
     private ArrayList<Deck> decks = new ArrayList<>();
-    private Deck mainDeck;
     private HashMap<String, Deck> deckHashMap = new HashMap<>();
+    private Deck mainDeck = createDeck("maindeck");
     private int wins = 0;
     private Shop shop = new Shop();
 
@@ -41,12 +39,11 @@ public class Account {
         return password;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public int getMoney() {
         return money;
+    }
+    public void addMoney(int amount) {
+        money+=amount;
     }
 
     public Collection getCollection() {
@@ -59,10 +56,6 @@ public class Account {
 
     public ArrayList<Match> getMatches() {
         return matches;
-    }
-
-    public Match getCurrentMatch() {
-        return currentMatch;
     }
 
     public ArrayList<Deck> getDecks() {
@@ -84,6 +77,9 @@ public class Account {
     public int getWins() {
         return wins;
     }
+    public void addWins() {
+        wins++;
+    }
 
     public void showDeck(String name) {
         if(getDeck(name) != null) {
@@ -98,30 +94,34 @@ public class Account {
         int counter = 0;
         if(this.mainDeck != null){
             counter++;
-            System.out.println(counter + " : " + "deck_" + counter + " :");
+            System.out.println(counter + " : " + mainDeck.getName() + " :");
             this.mainDeck.show();
         }
-        for (Deck deck : this.decks){
-            if(deck.getName() != mainDeck.getName()){
+        for (Deck deck : this.decks) {
+            if (deck.getName() != mainDeck.getName()) {
                 counter++;
-                System.out.println(counter + " : " + "deck_" + counter + " :");
+                System.out.println(counter + " : " + deck.getName() + " :");
                 deck.show();
             }
         }
-
     }
 
-    public void createDeck(String name) {
+    public Deck createDeck(String name) {
+        Deck deck = null;
         if (getDeck(name) == null) {
-            decks.add(new Deck(name));
+            deck = new Deck(name);
+            decks.add(deck);
+            deckHashMap.put(name, decks.get(decks.size()-1));
         } else {
             System.out.println("a deck with this name already exists");
         }
+        return deck;
     }
 
     public void deleteDeck(String name) {
         if (getDeck(name) != null) {
             decks.remove(getDeck(name));
+            deckHashMap.remove(name);
         } else {
             System.out.println("there is no such deck!");
         }
@@ -143,11 +143,34 @@ public class Account {
         Deck deck = this.getDeck(deckName);
 
         for (Card card : deck.getCards()){
-            if(card.getName().equals(cardName)){
+            if(card.getName().equalsIgnoreCase(cardName)){
                 return card;
             }
         }
         return null;
+    }
+
+
+    public boolean findCardInDeck (int cardName, String deckName){
+
+        Deck deck = this.getDeck(deckName);
+
+        for (Card card : deck.getCards()){
+            if(card.getCardID()==(cardName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCardInDeck (int id, Deck deck){
+
+        for (Card card : deck.getCards()){
+            if(card.getCardID()==(id)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -156,7 +179,7 @@ public class Account {
         Collection collection = this.getCollection();
 
         for (Card card : collection.getCards()){
-            if(card.getName().equals(cardName)){
+            if(card.getName().equalsIgnoreCase(cardName)){
                 return card;
             }
         }
@@ -167,7 +190,7 @@ public class Account {
         Collection collection = this.getCollection();
 
         for (Card hero : collection.getHeroes()){
-            if(hero.getName().equals(heroName)){
+            if(hero.getName().equalsIgnoreCase(heroName)){
                 return (Hero) hero;
             }
         }
@@ -180,7 +203,56 @@ public class Account {
         Collection collection = this.getCollection();
 
         for (Item item : collection.getItems()){
-            if(item.getName().equals(itemName)){
+            if(item.getName().equalsIgnoreCase(itemName)){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Card findCardInCollection (String cardName, Deck deck){
+
+        Collection collection = this.getCollection();
+
+        for (Card card : collection.getCards()){
+            if(card.getName().equalsIgnoreCase(cardName) && !isCardInDeck(card.getCardID(), deck) ){
+                return card;
+            }
+        }
+        return null;
+    }
+
+
+    public Card findCardInCollection (int cardName){
+
+        Collection collection = this.getCollection();
+
+        for (Card card : collection.getCards()){
+            if(card.getCardID()==cardName){
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public Hero findHeroInCollection (int heroName){
+        Collection collection = this.getCollection();
+        System.out.println(collection.getHeroes().size());
+        for (Card hero : collection.getHeroes()){
+            if(hero.getCardID()==heroName){
+                return (Hero) hero;
+            }
+        }
+        return null;
+    }
+
+
+    public Item findItemInCollection (int itemName){
+
+        Collection collection = this.getCollection();
+
+        for (Item item : collection.getItems()){
+            if(item.getItemID() ==itemName){
                 return item;
             }
         }
@@ -202,49 +274,48 @@ public class Account {
         }
     }
 
-    public void addObjectToDeck (String objectName, String deckName){
+    public void addObjectToDeck (String objectId, String deckName){
 
+//        int objectName= parseInt(objectId);
+        String objectName=objectId;
         Deck deck = this.getDeck(deckName);
-        Card cardInCollection = this.findCardInCollection(objectName);
+        if(deck==null){
+            System.out.println("there is no such deck!");
+            return;
+        }
+        Card cardInCollection = this.findCardInCollection(objectName,deck);
         Item itemInCollection = this.findItemInCollection(objectName);
         Hero heroInCollection = this.findHeroInCollection(objectName);
 
-        if(deck != null) {
+        if (heroInCollection != null) {
 
-
-            if (heroInCollection != null) {
-
-                if (deck.getHero() != null) {
-                    System.out.println("there's a hero in the deck!");
-                } else {
-                    deck.setHero(this.findHeroInCollection(objectName));
-                }
-            } else if (cardInCollection != null) {
-
-                if (deck.getSize() < deck.getMaxSize()) {//todo debug
-                    if (findCardInDeck(objectName, deckName).getName().equals(objectName)) {
-                        System.out.println("the card exists in the deck!");
-                    } else {
-                        deck.setCard(this.findCardInCollection(objectName));
-                    }
-                } else {
-                    System.out.println("there's no free space!");
-                }
-
-            } else if (itemInCollection != null) {
-
-                if (deck.getItem() != null) {
-                    System.out.println("there's an item in the deck!");
-                } else {
-                    deck.setItem(this.findItemInCollection(objectName));
-                }
-
+            if (deck.getHero() != null) {
+                System.out.println("there's a hero in the deck!");
             } else {
-                System.out.println("there's no such card/item in the collection!");
+                deck.setHero(heroInCollection);
             }
-        }
-        else{
-            System.out.println("there is no such deck!");
+        } else if (cardInCollection != null) {
+
+            if (deck.getSize() < deck.getMaxSize()) {
+                if (findCardInDeck(objectName, deckName)!=null) {
+                    System.out.println("the card exists in the deck!");
+                } else {
+                    deck.addCard(cardInCollection);
+                }
+            } else {
+                System.out.println("there's no free space!");
+            }
+
+        } else if (itemInCollection != null) {
+
+            if (deck.getItem() != null) {
+                System.out.println("there's an item in the deck!");
+            } else {
+                deck.setItem(itemInCollection);
+            }
+
+        } else {
+            System.out.println("there's no such card/item in the collection!");
         }
 
     }
@@ -277,16 +348,16 @@ public class Account {
         return "UserName: " + username + " - Wins: " + wins;
     }
 
-    public boolean equals(Account account) {
-        return this.username.equals(account.getUsername())
-                && this.password.equals(account.getPassword());
-    }
-
     public void MoneyTransaction(int X){
         this.money = money + X;
     }
 
     public void addCard(){
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o != null && o instanceof Account && this.getUsername().equals(((Account) o).getUsername());
     }
 }

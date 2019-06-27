@@ -1,6 +1,36 @@
 package GamePackage;
 
 public enum Buff {
+    PASSIVE {
+        @Override
+        public void affectBuff() {
+        }
+    },
+    ON_DEFEND {
+        @Override
+        public void affectBuff() {
+        }
+    },
+    ON_TURN {
+        @Override
+        public void affectBuff() {
+        }
+    },
+    COMBO {
+        @Override
+        public void affectBuff() {
+        }
+    },
+    ON_DEATH {
+        @Override
+        public void affectBuff() {
+        }
+    },
+    ON_SPAWN {
+        @Override
+        public void affectBuff() {
+        }
+    },
     ON_ATTACK {
         @Override
         public void affectBuff() {

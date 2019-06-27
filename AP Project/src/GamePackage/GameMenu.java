@@ -19,7 +19,7 @@ public class GameMenu extends Group {
     }
 
     public void setState(String input) {
-        System.out.println("you're stucked in gameMenu");
+        System.out.println("You're stuck in gameMenu!");
     }
 
     private void showMenu() {

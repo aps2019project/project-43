@@ -1,1 +1,0 @@
-500$7$12$11$hybrid$3$Deals 2 Damage To Nearby Enemy Minions On Death$ON_DEATH

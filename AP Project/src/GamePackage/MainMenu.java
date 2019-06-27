@@ -15,10 +15,17 @@ public class MainMenu extends GameMenu {
 
     @Override
     public void setState(String input) {
-        input = input.trim();
+        input = input.trim().toLowerCase();
         switch (input) {
             case "battle": {
                 BattleMenu.goToBattleMenu();
+                // $$$$$$$ Change it $$$$$$$$$
+                // Uncomment following if clause in the main launching and delete above line
+
+                /*if (account.getMainDeck().validate()) {
+                    BattleMenu.goToBattleMenu();
+                }*/
+
                 break;
             }
             case "shop": {

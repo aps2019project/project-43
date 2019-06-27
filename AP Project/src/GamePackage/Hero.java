@@ -1,22 +1,15 @@
 package GamePackage;
 
-public class Hero extends Card {
-    private int hp;
-    private int ap;
-    private Spell specialPower;
-    private AttackType troopType;
-    private String specialPowerDescription;
+public class Hero extends Attacker {
 
-    @Override
-    public void printStats() {
-        System.out.printf("Name : %s - AP : %d - HP : %d - " +
-                        "Class : %s - Special Power : %s\n", getName(), ap, hp
-                , troopType.toString().toLowerCase(), specialPowerDescription);
-    }
+    public int coolDown;
+    public Spell specialPower;
 
     @Override
     public String toString() {
-        return null;
+        return String.format("%d: Name : %s - AP : %d - HP : %d - " +
+                        "Class : %s - Special Power : %s\n",getCardID(), getName(), ap, hp
+                , troopType.toString().toLowerCase(), description);
     }
 
     public void castSpell() {

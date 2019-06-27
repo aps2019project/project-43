@@ -1,1 +1,0 @@
-400$2$6$4$melee$1$Stun Enemy Troop For Current Turn$ON_ATTACK

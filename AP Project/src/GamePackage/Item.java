@@ -1,24 +1,40 @@
 package GamePackage;
 
-import java.util.concurrent.atomic.AtomicInteger;
+public class Item implements Generateble{
+    public String name;
+    public String description;
+    public int price;
+    public int changeAP;
+    public int changeHP;
+    public int changeMana;
+    public int cooldown;
+    private int itemID;
+    public SpellTarget target;
+    public boolean unused;
+    public String file;
 
-public class Item {
-    private String name;
-    private String description;
-    private int MoneyCost;
-    private AtomicInteger itemID = new AtomicInteger();
+    public Buff getBuff() {
+        return buff;
+    }
+
+    public void setBuff(Buff buff) {
+        this.buff = buff;
+    }
+
+    private Buff buff;
+
     private static final int MAX_NUM_ITEMS = 3;
 
     public static int getMaxNumItems(){
         return MAX_NUM_ITEMS;
     }
 
-    public int getMoneyCost(){
-        return MoneyCost;
+    public int getPrice(){
+        return price;
     }
 
-    public void setItemID(){
-        this.itemID.incrementAndGet();
+    public void setItemID(int id){
+        this.itemID = id;
     }
 
     public String getName() {
@@ -26,15 +42,16 @@ public class Item {
     }
 
     public int getItemID(){
-        return itemID.get();
-    }
-
-    public void printStats() {
-        System.out.printf("Name : %s - Desc : %s\n", name, description);
+        return itemID;
     }
 
     @Override
     public String toString() {
-        return "Name : " + name + " - Desc : " + description;
+        return itemID+": "+"Name : " + name + " - Desc : " + description;
+    }
+
+    @Override
+    public String getFilePath() {
+        return file;
     }
 }

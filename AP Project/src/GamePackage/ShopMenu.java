@@ -14,14 +14,14 @@ public class ShopMenu extends GameMenu {
 
     @Override
     public void setState(String input) {
-        input = input.trim();
+        input = input.trim().toLowerCase();
         String[] command = input.split(" ");
         AccountMenu accountMenu = (AccountMenu) AccountMenu.getAccountMenu();
-        Shop playersShop = accountMenu.getLoggedAccount().getShop();
+        Shop playersShop = AccountMenu.getLoggedAccount().getShop();
         switch (command[0]) {
             case "show": {
                 if (command.length > 1) {
-                    if (command[1].equals("collection")) {
+                    if (command[1].equalsIgnoreCase("collection")) {
                         playersShop.showCollection();
                     }
                 } else {
@@ -30,7 +30,7 @@ public class ShopMenu extends GameMenu {
                 break;
             }
             case "search": {
-                if (command[1].equals("collection")) {
+                if (command[1].equalsIgnoreCase("collection")) {
                     playersShop.searchCollection(command[2]);
                 } else {
                     playersShop.search(command[1]);

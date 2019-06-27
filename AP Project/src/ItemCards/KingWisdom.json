@@ -1,6 +1,6 @@
 {
   "name" : "KingWisdom",
-  "description" : "Each round mana increase by 1",
+  "description" : "increases mana by 1 each round",
   "buff" : null,
   "changeAP" : 0,
   "changeHP" : 0,

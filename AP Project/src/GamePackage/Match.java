@@ -9,15 +9,14 @@ public class Match {
         return time;
     }
 
-    public Match(Account[] players) {
+    public Match(Account[] players, boolean winner, int time) {
         this.players = players;
+        this.winner=winner;
+        this.time=time;
     }
 
     public Account getWinner() {
         return winner ? players[0] : players[1];
     }
 
-    public void endTurn() {
-        time++;
-    }
 }

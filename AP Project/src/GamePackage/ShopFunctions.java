@@ -4,38 +4,38 @@ public enum ShopFunctions {
     SHOW {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().getLoggedAccount().getShop().show();
+            AccountMenu.getLoggedAccount().getShop().show();
         }
     },
     SHOW_COLLECTION {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().getLoggedAccount().getShop().showCollection();
+            AccountMenu.getLoggedAccount().getShop().showCollection();
         }
     },
     SEARCH {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().getLoggedAccount().getShop().search(input[1]);
+            AccountMenu.getLoggedAccount().getShop().search(input[1]);
         }
     },
     SEARCH_COLLECTION {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().getLoggedAccount().getShop().searchCollection(input[2]);
+            AccountMenu.getLoggedAccount().getShop().searchCollection(input[2]);
         }
     },
     BUY {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().getLoggedAccount().getShop().buyCard(input[1]);
+            AccountMenu.getLoggedAccount().getShop().buyCard(input[1]);
         }
     },
     SELL {
         @Override
         public void doSomething(String[] input) {
             for (int i = 1; i < input.length; i++) {
-                World.getInstance().getLoggedAccount().getShop().sellCard(Integer.parseInt(input[i]));
+                AccountMenu.getLoggedAccount().getShop().sellCard(Integer.parseInt(input[i]));
             }
         }
     },
@@ -48,7 +48,7 @@ public enum ShopFunctions {
     EXIT {
         @Override
         public void doSomething(String[] input) {
-            World.getInstance().enterMainMenu();
+            MainMenu.goToMainMenu();
         }
     },
     INVALID {
@@ -84,7 +84,7 @@ public enum ShopFunctions {
                     break;
                 }
                 case "SEARCH": {
-                    if (input[1].toUpperCase().equals("COLLECTION")) {
+                    if (input[1].equalsIgnoreCase("COLLECTION")) {
                         state = ShopFunctions.SEARCH_COLLECTION;
                     } else {
                         state = ShopFunctions.SEARCH;
@@ -92,7 +92,7 @@ public enum ShopFunctions {
                     break;
                 }
                 case "SHOW": {
-                    if (input[1].toUpperCase().equals("COLLECTION")) {
+                    if (input[1].equalsIgnoreCase("COLLECTION")) {
                         state = ShopFunctions.SHOW_COLLECTION;
                     } else {
                         state = ShopFunctions.SHOW;

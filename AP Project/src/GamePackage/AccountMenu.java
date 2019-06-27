@@ -4,24 +4,40 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class AccountMenu extends GameMenu {
+
+    private static Account loggedAccount;
+    private static HashMap<String, Account> userMap = new HashMap<>();
     private static GameMenu accountMenu = new AccountMenu();
 
-    private Account loggedAccount;
-    private HashMap<String, Account> userMap = new HashMap<>();
-
-    private AccountMenu() {
-
-        createAccountMenu();
+    private AccountMenu(){
+        makeFakeAccounts();
     }
 
     public static GameMenu getAccountMenu() {
         return accountMenu;
     }
 
+    public static Account getSingleUser(String name) {
+        return userMap.get(name);
+    }
+
+    public static void printUsers() {
+        int count = 0;
+        System.out.println("*****Users List*****");
+        for (String key: userMap.keySet()) {
+            System.out.println(count + ". " + key);
+            count++;
+        }
+    }
+
+    static Account getLoggedAccount(){
+        return loggedAccount;
+    }
+
     @Override
     public void setState(String input) {
-        input = input.trim();
-        if (loggedAccount == null) {
+        input = input.trim().toLowerCase();
+        if (getLoggedAccount() == null) {
             switch (input) {
                 case "create account": {
                     createAccount();
@@ -68,8 +84,8 @@ public class AccountMenu extends GameMenu {
         }
     }
 
-    private void showMenu() {
-        if (loggedAccount == null) {
+    static void showMenu() {
+        if (getLoggedAccount() == null) {
             System.out.print("1. Create account\n" +
                              "2. Login\n" +
                              "3. Help\n");
@@ -82,7 +98,7 @@ public class AccountMenu extends GameMenu {
         }
     }
 
-    private void createAccount() {
+    static void createAccount() {
         Scanner in = new Scanner(System.in);
         String userName = "";
         String password;
@@ -101,12 +117,13 @@ public class AccountMenu extends GameMenu {
         Account newAccount = new Account(userName, password);
         Account.addAccount(newAccount);
         userMap.put(userName, newAccount);
+        Battle.setFirstPlayer(newAccount);
         loggedAccount = newAccount;
         System.out.println("Your account created successfully ");
         showMenu();
     }
 
-    private void login() {
+    static void login() {
         Scanner in = new Scanner(System.in);
         System.out.println("please enter Your Username");
         String username = in.nextLine();
@@ -115,6 +132,7 @@ public class AccountMenu extends GameMenu {
             String password = in.nextLine();
             if (userMap.get(username).getPassword().equals(password)) {
                 loggedAccount = userMap.get(username);
+                Battle.setFirstPlayer(userMap.get(username));
                 System.out.println("You're logged in");
             } else {
                 System.out.println("Incorrect Password");
@@ -124,11 +142,29 @@ public class AccountMenu extends GameMenu {
         }
     }
 
+    public void makeFakeAccounts(){
+        createAccount("ali");
+        createAccount("shahab");
+        createAccount("mammad");
+        login("ali");
+    }
+    private void createAccount(String userName) {
+        Account newAccount = new Account(userName, "");
+        Account.addAccount(newAccount);
+        userMap.put(userName, newAccount);
+        System.out.println("Your account created successfully " + userName);
+    }
+    private void login(String username) {
+        loggedAccount = userMap.get(username);
+        Battle.setFirstPlayer(userMap.get(username));
+        System.out.println("You're logged in " + username);
+    }
+
     private void showLeaderboard() {
         System.out.println(new Leaderboard(Account.getAccounts()).sortByWins());
     }
 
-    private void logout() {
+    static void logout() {
         if (loggedAccount != null) {
             loggedAccount = null;
             System.out.println("You're successfully logged out");
@@ -136,18 +172,10 @@ public class AccountMenu extends GameMenu {
             System.out.println("You're not even logged in");
     }
 
-    public Account getLoggedAccount(){
-        return loggedAccount;
-    }
-
     public static void goToAccountMenu(){
         GameMenu.setCurrentMenu(AccountMenu.getAccountMenu());
-        ((AccountMenu)accountMenu).showMenu();
+        showMenu();
     }
 
-    private void createAccountMenu(){
-
-
-    }
 
 }

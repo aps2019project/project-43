@@ -1,19 +1,29 @@
 package GamePackage;
 
-import java.util.ArrayList;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class Card {
+import java.util.ArrayList;
+
+@JsonIgnoreProperties({ "whichTurn" })
+public class Card implements Generateble{
     private String name;
     private int moneyCost;
     private int manaCost;
     private ArrayList<Buff> effects = new ArrayList<>();
-    private AtomicInteger cardID = new AtomicInteger();
+    private int cardID;
     private String info;
     private Account owner;
+    public String file;
+    public String description;
 
-    public void printStats(){
+    private Cell cardLocation;
+
+    public Cell getCardLocation() {
+        return cardLocation;
+    }
+
+    public void setCardLocation(Cell cardLocation) {
+        this.cardLocation = cardLocation;
     }
 
     @Override
@@ -38,19 +48,7 @@ public class Card {
     }
 
     public int getCardID() {
-        return cardID.get();
-    }
-
-    public Card() {
-    }
-
-    public Card(String name, int moneyCost, int manaCost, Buff buff, String info) {
-        this.name = name;
-//        this.cardID = cardID;
-        this.moneyCost = moneyCost;
-        this.manaCost = manaCost;
-        this.effects.add(buff);
-        this.info = info;
+        return cardID;
     }
 
     public void setName(String name) {
@@ -65,8 +63,8 @@ public class Card {
         this.manaCost = manaCost;
     }
 
-    public void setCardID() {
-        this.cardID.incrementAndGet();
+    public void setCardID(int id) {
+        this.cardID = id;
     }
 
     public Account getOwner() {
@@ -79,5 +77,14 @@ public class Card {
 
     public void addBuff(Buff buff){
         this.effects.add(buff);
+    }
+
+    public void setOwner(Account owner){
+        this.owner = owner;
+    }
+
+    @Override
+    public String getFilePath() {
+        return file;
     }
 }
