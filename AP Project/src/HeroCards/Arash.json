@@ -1,28 +1,19 @@
 {
   "name" : "Arash",
-  "moneyCost" : 10000,
+  "price" : 10000,
   "manaCost" : 2,
-  "effects" : [ "POWER" ],
-  "cardID" : null,
   "info" : "All forces in hero's row hit with four",
-  "owner" : null,
   "hp" : 30,
   "ap" : 2,
   "attackRange" : 6,
   "coolDown" : 2,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "POWER" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
+  "specialPower" : [{
+    "buff" : "ATTACK",
     "coolDown" : 100,
-    "target" : "ENEMY_FORCE",
+    "target" : "FORCE_ROW",
     "changeHP" : 0,
     "changeAP" : 4,
     "targetArea" : 2
-  },
+  }],
   "troopType" : "RANGED"
 }

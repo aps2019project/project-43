@@ -1,0 +1,12 @@
+{
+  "name" : "Dragon",
+  "price" : 250,
+  "manaCost" : 5,
+  "info" : null,
+  "hp" : 9,
+  "ap" : 5,
+  "attackRange" : 4,
+  "troopType" : "RANGED",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

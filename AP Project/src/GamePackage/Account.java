@@ -3,30 +3,44 @@ package GamePackage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Account {
     private static List<Account> accounts = new ArrayList<>();
+    private static Account loggedAccount;
+    private static HashMap<String, Account> userMap = new HashMap<>();
 
-    public static List<Account> getAccounts() {
-        return accounts;
+    static void showLeaderboard() {
+        System.out.println(new Leaderboard(accounts).sortByWins());
     }
 
-    public static void addAccount(Account account){
-        accounts.add(account);
+    public static Account getUser(String name) {
+        return userMap.get(name);
+    }
+
+    public static void printUsers() {
+        int count = 1;
+        System.out.println("*****Users List*****");
+        for (String key: userMap.keySet()) {
+            System.out.println(count++ + ". " + key);
+        }
+    }
+
+    static Account getLoggedAccount(){
+        return loggedAccount;
     }
 
     private String username;
     private String password;
     private int money = 15000;
     private Collection collection = new Collection();
-    private ArrayList<Match> matches = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private HashMap<String, Deck> deckHashMap = new HashMap<>();
-    private Deck mainDeck = createDeck("maindeck");
+    private Deck mainDeck;
     private int wins = 0;
     private Shop shop = new Shop();
 
-    public Account(String username, String password) {
+    Account(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -35,14 +49,20 @@ public class Account {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public int getMoney() {
         return money;
     }
-    public void addMoney(int amount) {
+
+    public void win(int amount) {
+        money+=amount;
+        wins++;
+    }
+
+    public void pay(int amount){
+        money-=amount;
+    }
+
+    public void getPaid(int amount){
         money+=amount;
     }
 
@@ -54,16 +74,17 @@ public class Account {
         return shop;
     }
 
-    public ArrayList<Match> getMatches() {
-        return matches;
-    }
-
-    public ArrayList<Deck> getDecks() {
-        return decks;
-    }
-
-    public Deck getDeck(String name) {
+    private Deck getDeck(String name) {
         return deckHashMap.get(name);
+    }
+
+    public void validateDeck(String deckName){
+        Deck deck = getDeck(deckName);
+        if(deck==null){
+            System.out.println("there's no such deck!");
+            return;
+        }
+        deck.validate();
     }
 
     public Deck getMainDeck() {
@@ -71,43 +92,43 @@ public class Account {
     }
 
     public void setMainDeck(String name) {
-        this.mainDeck = getDeck(name);
+        Deck deck = getDeck(name);
+        if(deck==null){
+            System.out.println("there's no such deck!");
+            return;
+        }
+        this.mainDeck = deck;
     }
 
     public int getWins() {
         return wins;
     }
-    public void addWins() {
-        wins++;
-    }
 
     public void showDeck(String name) {
-        if(getDeck(name) != null) {
-            getDeck(name).show();
+        Deck deck = getDeck(name);
+        if(deck==null){
+            System.out.println("there's no such deck!");
+            return;
         }
-        else{
-            System.out.println("there is no such deck!");
-        }
+        deck.showDeck();
     }
 
     public void showAllDecks(){
-        int counter = 0;
+        int counter = 1;
         if(this.mainDeck != null){
-            counter++;
-            System.out.println(counter + " : " + mainDeck.getName() + " :");
-            this.mainDeck.show();
+            System.out.println(counter++ + " : " + mainDeck.getName() + " :");
+            this.mainDeck.showDeck();
         }
         for (Deck deck : this.decks) {
-            if (deck.getName() != mainDeck.getName()) {
-                counter++;
-                System.out.println(counter + " : " + deck.getName() + " :");
-                deck.show();
+            if (deck != mainDeck) {
+                System.out.println(counter++ + " : " + deck.getName() + " :");
+                deck.showDeck();
             }
         }
     }
 
-    public Deck createDeck(String name) {
-        Deck deck = null;
+    public void createDeck(String name) {
+        Deck deck;
         if (getDeck(name) == null) {
             deck = new Deck(name);
             decks.add(deck);
@@ -115,7 +136,6 @@ public class Account {
         } else {
             System.out.println("a deck with this name already exists");
         }
-        return deck;
     }
 
     public void deleteDeck(String name) {
@@ -127,233 +147,140 @@ public class Account {
         }
     }
 
-    public void selectDeck (String name){
-        if (getDeck(name) != null){
-            this.mainDeck = getDeck(name);
-        }
-        else{
-            System.out.println("there's no such deck!");
-        }
-    }
-
-
-
-    public Card findCardInDeck (String cardName, String deckName){
-
-        Deck deck = this.getDeck(deckName);
-
-        for (Card card : deck.getCards()){
-            if(card.getName().equalsIgnoreCase(cardName)){
-                return card;
-            }
-        }
-        return null;
-    }
-
-
-    public boolean findCardInDeck (int cardName, String deckName){
-
-        Deck deck = this.getDeck(deckName);
-
-        for (Card card : deck.getCards()){
-            if(card.getCardID()==(cardName)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isCardInDeck (int id, Deck deck){
-
-        for (Card card : deck.getCards()){
-            if(card.getCardID()==(id)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public Card findCardInCollection (String cardName){
-
-        Collection collection = this.getCollection();
-
-        for (Card card : collection.getCards()){
-            if(card.getName().equalsIgnoreCase(cardName)){
-                return card;
-            }
-        }
-        return null;
-    }
-
-    public Hero findHeroInCollection (String heroName){
-        Collection collection = this.getCollection();
-
-        for (Card hero : collection.getHeroes()){
-            if(hero.getName().equalsIgnoreCase(heroName)){
-                return (Hero) hero;
-            }
-        }
-        return null;
-    }
-
-
-    public Item findItemInCollection (String itemName){
-
-        Collection collection = this.getCollection();
-
-        for (Item item : collection.getItems()){
-            if(item.getName().equalsIgnoreCase(itemName)){
-                return item;
-            }
-        }
-        return null;
-    }
-
-    public Card findCardInCollection (String cardName, Deck deck){
-
-        Collection collection = this.getCollection();
-
-        for (Card card : collection.getCards()){
-            if(card.getName().equalsIgnoreCase(cardName) && !isCardInDeck(card.getCardID(), deck) ){
-                return card;
-            }
-        }
-        return null;
-    }
-
-
-    public Card findCardInCollection (int cardName){
-
-        Collection collection = this.getCollection();
-
-        for (Card card : collection.getCards()){
-            if(card.getCardID()==cardName){
-                return card;
-            }
-        }
-        return null;
-    }
-
-    public Hero findHeroInCollection (int heroName){
-        Collection collection = this.getCollection();
-        System.out.println(collection.getHeroes().size());
-        for (Card hero : collection.getHeroes()){
-            if(hero.getCardID()==heroName){
-                return (Hero) hero;
-            }
-        }
-        return null;
-    }
-
-
-    public Item findItemInCollection (int itemName){
-
-        Collection collection = this.getCollection();
-
-        for (Item item : collection.getItems()){
-            if(item.getItemID() ==itemName){
-                return item;
-            }
-        }
-        return null;
-    }
-
-    public void search(String name) {
-        if (this.findItemInCollection(name) != null){
-            System.out.println("the item exists in the collection:" + this.findItemInCollection(name).getItemID());
-        }
-        else if (this.findCardInCollection(name) != null){
-            System.out.println("the card exists in the collection:" + this.findCardInCollection(name).getCardID());
-        }
-        else if (this.findHeroInCollection(name) != null){
-            System.out.println("the card exists in the collection:" + this.findHeroInCollection(name).getCardID());
-        }
-        else{
-            System.out.println("the card/item doesn't exist in the collection!");
-        }
-    }
-
-    public void addObjectToDeck (String objectId, String deckName){
-
-//        int objectName= parseInt(objectId);
-        String objectName=objectId;
+    public void addObjectToDeck (String objectName, String deckName){
         Deck deck = this.getDeck(deckName);
         if(deck==null){
             System.out.println("there is no such deck!");
             return;
         }
-        Card cardInCollection = this.findCardInCollection(objectName,deck);
-        Item itemInCollection = this.findItemInCollection(objectName);
-        Hero heroInCollection = this.findHeroInCollection(objectName);
+        List<GameObject> objects = collection.getCards(objectName);
+        if(objects.size() == 0){
+            System.out.println("there's no such card/item in the collection!");
+            return;
+        }
+        GameObject object = null;
+        for(GameObject obj: objects){
+            if(!deck.hasCard(obj.getId()))object = obj;
+        }
+        if(object==null){
+            System.out.println("Object exists in the deck");
+        }
 
-        if (heroInCollection != null) {
-
+        if (object instanceof Hero) {
             if (deck.getHero() != null) {
                 System.out.println("there's a hero in the deck!");
             } else {
-                deck.setHero(heroInCollection);
+                deck.setHero((Hero) object);
             }
-        } else if (cardInCollection != null) {
-
-            if (deck.getSize() < deck.getMaxSize()) {
-                if (findCardInDeck(objectName, deckName)!=null) {
-                    System.out.println("the card exists in the deck!");
-                } else {
-                    deck.addCard(cardInCollection);
-                }
-            } else {
-                System.out.println("there's no free space!");
-            }
-
-        } else if (itemInCollection != null) {
-
+        } else if (object instanceof Item) {
             if (deck.getItem() != null) {
                 System.out.println("there's an item in the deck!");
             } else {
-                deck.setItem(itemInCollection);
+                deck.setItem((Item) object);
             }
 
         } else {
-            System.out.println("there's no such card/item in the collection!");
+            if (object==null) {
+                System.out.println("the card exists in the deck!");
+            } else {
+                deck.addCard((Card) object);
+            }
         }
 
     }
 
     public void removeObjectFromDeck (String objectName, String deckName){
-
         Deck deck = this.getDeck(deckName);
+        if(deck==null){
+            System.out.println("there is no such deck!");
+            return;
+        }
+
         Card hero = deck.getHero();
-        Card card = this.findCardInDeck(objectName, deckName);
+        Card card = deck.getCard(objectName);
         Item item = deck.getItem();
 
-        if( deck != null) {
+        if (item != null) {
+            this.getDeck(deckName).removeItem();
+        } else if (hero != null) {
+            this.getDeck(deckName).removeHero();
+        } else if (card != null) {
+            deck.removeCard(card);
+        } else {
+            System.out.println("there is no such card!");
+        }
+    }
 
-            if (item != null) {
-                this.getDeck(deckName).removeItem();
-            } else if (hero != null) {
-                this.getDeck(deckName).removeHero();
-            } else if (card != null) {
-                this.getDeck(deckName).removeCard(this.findCardInDeck(objectName, deckName));
+    static void createAccount() {
+        Scanner in = new Scanner(System.in);
+        String userName = "";
+        String password;
+        boolean usernamePicked = false;
+        while (!usernamePicked) {
+            System.out.println("Please Enter UserName");
+            userName = in.nextLine();
+            if (userMap.containsKey(userName)) {
+                System.out.println("This Username Already Exists");
+            } else {
+                usernamePicked = true;
             }
         }
-        else{
-            System.out.println("there is no such deck!");
-        }
+        System.out.println("And Your Password");
+        password = in.nextLine();
+        Account newAccount = new Account(userName, password);
+        accounts.add(newAccount);
+        userMap.put(userName, newAccount);
+        loggedAccount = newAccount;
+        System.out.println("Your account created successfully ");
+        AccountMenu.goToAccountMenu();
+    }
 
+    static void login() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("please enter Your Username");
+        String username = in.nextLine();
+        if (userMap.containsKey(username)) {
+            System.out.println("Please enter Your password");
+            String password = in.nextLine();
+            if (userMap.get(username).password.equals(password)) {
+                loggedAccount = userMap.get(username);
+                System.out.println("You're logged in");
+            } else {
+                System.out.println("Incorrect Password");
+            }
+        } else {
+            System.out.println("this username doesn't exist");
+        }
+        AccountMenu.goToAccountMenu();
+    }
+
+    public static void makeFakeAccounts(){
+        createAccount("ali");
+        createAccount("shahab");
+        createAccount("mammad");
+        loggedAccount = userMap.get("ali");
+        System.out.println("You're logged in ali");
+    }
+
+    private static void createAccount(String userName) {
+        Account newAccount = new Account(userName, "");
+        accounts.add(newAccount);
+        userMap.put(userName, newAccount);
+        System.out.println("Your account created successfully " + userName);
+    }
+
+
+    static void logout() {
+        if (loggedAccount != null) {
+            loggedAccount = null;
+            System.out.println("You're successfully logged out");
+        } else
+            System.out.println("You're not even logged in");
     }
 
     @Override
     public String toString() {
         return "UserName: " + username + " - Wins: " + wins;
-    }
-
-    public void MoneyTransaction(int X){
-        this.money = money + X;
-    }
-
-    public void addCard(){
-
     }
 
     @Override

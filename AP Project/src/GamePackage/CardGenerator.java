@@ -1,6 +1,5 @@
 package GamePackage;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -8,37 +7,45 @@ import java.io.IOException;
 
 public class CardGenerator {
 
-    public static int staticId = 1;
+    private static int staticId = 1;
 
-    public static Card cardGenerator(String cardPath){
+    public static Minion minionGenerator(String cardPath){
         ObjectMapper objectMapper = new ObjectMapper();
-        Card card;
+        Minion card;
         try{
-            card = objectMapper.readValue(new File(cardPath), Spell.class);
-        }catch(IOException ignore){
-//            System.out.println(cardPath+ignore);
-            try{
-                card = objectMapper.readValue(new File(cardPath), Minion.class);
-            }catch(IOException e){
-                System.out.println("File doesn't exist or the card name is wrong: "+cardPath + e);
-                return null;
-            }
+            card = objectMapper.readValue(new File(cardPath), Minion.class);
+        }catch(IOException e){
+            System.out.println("File doesn't exist or the card name is wrong: "+cardPath + e);
+            return null;
         }
-        card.file= cardPath;
-        card.setCardID(staticId++);
+        card.setFilePath(cardPath);
+        card.setId(staticId++);
         return card;
     }
-    public static Card heroGenerator(String heroPath){
+    public static Spell spellGenerator(String cardPath){
         ObjectMapper objectMapper = new ObjectMapper();
-        Card card;
+        Spell card;
+        try{
+            card = objectMapper.readValue(new File(cardPath), Spell.class);
+        }catch(IOException e){
+            System.out.println("File doesn't exist or the card name is wrong: "+cardPath + e);
+            return null;
+        }
+        card.setFilePath(cardPath);
+        card.setId(staticId++);
+        return card;
+    }
+    public static Hero heroGenerator(String heroPath){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Hero card;
         try{
             card = objectMapper.readValue(new File(heroPath), Hero.class);
         }catch(IOException e){
             System.out.println("File doesn't exist or the card name is wrong"+heroPath + e);
             return null;
         }
-        card.file=heroPath;
-        card.setCardID(staticId++);
+        card.setFilePath(heroPath);
+        card.setId(staticId++);
         return card;
     }
 
@@ -51,14 +58,16 @@ public class CardGenerator {
             System.out.println("File doesn't exist or the item name is wrong"+itemPath + e);
             return null;
         }
-        item.file=itemPath;
-        item.setItemID(staticId++);
+        item.setFilePath(itemPath);
+        item.setId(staticId++);
         return item;
     }
 
     public static  <T extends Generateble> T getClone(T obj){
         if(obj instanceof Item) return (T) itemGenerator(obj.getFilePath());
         else if(obj instanceof Hero) return (T) heroGenerator(obj.getFilePath());
-        else return (T) cardGenerator(obj.getFilePath());
+        else if(obj instanceof Spell) return (T) spellGenerator(obj.getFilePath());
+        else if(obj instanceof Minion) return (T) minionGenerator(obj.getFilePath());
+        return null;
     }
 }

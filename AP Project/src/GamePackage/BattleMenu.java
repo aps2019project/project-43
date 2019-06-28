@@ -6,61 +6,61 @@ public class BattleMenu extends GameMenu {
 
     private static GameMenu battleMenu = new BattleMenu();
 
-    private BattleMenu(){
-
-    }
-
-    public static GameMenu getBattleMenu(){
-        return battleMenu;
-    }
-
     @Override
-    public void setState(String input) {
-        boolean valid = false;
+    public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
-        while (!valid) {
             switch (input){
                 case "single player":
-                    //To_Do
-                    valid = true;
+                    //todo
                     break;
                 case "multi player":
-                    Battle.setMultiPlayer(true);
-                    valid = true;
                     showUsers();
                     break;
+                case "help":
+                    showMenu();
+                    break;
                 case "exit":
-                    valid = true;
                     MainMenu.goToMainMenu();
                     break;
+                default:
+                    System.out.println("Invalid Command");
             }
-        }
+        return true;
     }
 
     private void showUsers() {
-        boolean valid = false;
-        AccountMenu.printUsers();
+        Account.printUsers();
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
-        Account rival = AccountMenu.getSingleUser(username);
-        while (rival==null || rival.getUsername().equals(AccountMenu.getLoggedAccount().getUsername())){
-            System.out.println("please choose a valid username!");
-            AccountMenu.printUsers();
+        Account rival = Account.getUser(username);
+        while (rival==null || rival.getUsername().equals(Account.getLoggedAccount().getUsername())){
+            System.out.println("please choose a valid username! (exit to go back)");
+            Account.printUsers();
+            if(username.equalsIgnoreCase("exit")){
+                showMenu();
+                return;
+            }
             username = scanner.nextLine();
-            rival = AccountMenu.getSingleUser(username);
+            rival = Account.getUser(username);
         }
-        Battle.setSecondPlayer(rival);
+        showMenuBattleMode(rival);
+    }
 
+    private void showMenuBattleMode(Account opponent) {
+        boolean valid = false;
+        Scanner scanner = new Scanner(System.in);
         while (!valid) {
-            showMenuBattleMode();
-            String modeSelection = scanner.nextLine();
-            modeSelection = modeSelection.trim();
-            modeSelection = modeSelection.toLowerCase();
+            System.out.println("*****Select Battle Mode*****");
+            System.out.println("1. Hero mode");
+            System.out.println("2. Flag6");
+            System.out.println("3. Flag1/2");
+            System.out.println("4. Back");
+            String modeSelection = scanner.nextLine().trim().toLowerCase();
             switch (modeSelection) {
                 case "hero mode":
-                    System.out.println("hero mode has selected");
-                    Battle.setMode("hero");
-                    Battle.startBattle();
+                    System.out.println("hero mode has been selected");
+                    if(opponent != null) Main.setCurrentMenu(new PlayMenu(new Battle("hero", Account.getLoggedAccount(), opponent)));
+                    else Main.setCurrentMenu(new PlayMenu(new Battle("hero")));
                     valid = true;
                     break;
                 case "flag6":
@@ -71,34 +71,24 @@ public class BattleMenu extends GameMenu {
 
                     valid = true;
                     break;
-                case "back":
-                    valid = true;
-                    goToBattleMenu();
-                    break;
                 case "exit":
                     valid = true;
-                    MainMenu.goToMainMenu();
                     break;
+                default:
+                    System.out.println("Invalid Command");
             }
         }
     }
 
-    private void showMenuBattleMode() {
-        System.out.println("*****Select Battle Mode*****\n" +
-                "1. Hero mode\n" +
-                "2. Flag6\n" +
-                "3. Flag1/2\n" +
-                "4. Back\n");
-    }
-
-    private void showMenu() {
-        System.out.print("*****Battle Menu*****\n" +
-                "1. Single player\n" +
-                "2. Multi player\n");
+    void showMenu() {
+        System.out.println("*****Battle Menu*****");
+        System.out.println("1. Single player");
+        System.out.println("2. Multi player");
+        System.out.println("3. Help (show menu)");
+        System.out.println("2. Exit");
     }
 
     public static void goToBattleMenu(){
-        GameMenu.setCurrentMenu(BattleMenu.getBattleMenu());
-        ((BattleMenu) battleMenu).showMenu();
+        Main.setCurrentMenu(battleMenu);
     }
 }

@@ -1,0 +1,12 @@
+{
+  "name" : "TotalDisarm",
+  "price" : 1000,
+  "manaCost" : 0,
+  "buff" : "DISARM",
+  "info" : "Disarm the EnemyForce until The Game Ends",
+  "coolDown" : 100,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

@@ -4,64 +4,42 @@ public class MainMenu extends GameMenu {
 
     private static GameMenu mainMenu = new MainMenu();
 
-
-    private MainMenu() {
-
-    }
-
-    public static GameMenu getMainMenu() {
-        return mainMenu;
-    }
-
     @Override
-    public void setState(String input) {
+    public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
         switch (input) {
-            case "battle": {
-                BattleMenu.goToBattleMenu();
-                // $$$$$$$ Change it $$$$$$$$$
-                // Uncomment following if clause in the main launching and delete above line
-
-                /*if (account.getMainDeck().validate()) {
-                    BattleMenu.goToBattleMenu();
-                }*/
-
+            case "battle":
+                if (Account.getLoggedAccount().getMainDeck()!= null && Account.getLoggedAccount().getMainDeck().validate()) BattleMenu.goToBattleMenu();
+                else System.out.println("selected deck is invalid");
                 break;
-            }
-            case "shop": {
+            case "shop":
                 ShopMenu.goToShopMenu();
                 break;
-            }
-            case "collection": {
+            case "collection":
                 CollectionMenu.goToCollectionMenu();
                 break;
-            }
-            case "exit": {
-                AccountMenu.goToAccountMenu();
-                break;
-            }
-            case "help": {
+            case "help":
                 showMenu();
                 break;
-            }
-            default: {
-
-            }
+            case "exit":
+                AccountMenu.goToAccountMenu();
+                break;
+            default:
+                System.out.println("Invalid Command");
         }
+        return true;
     }
 
-    private void showMenu() {
-        System.out.print("*****Main Menu*****\n" +
-                "1. Battle\n" +
-                "2. Collection\n" +
-                "3. Shop\n" +
-                "4. Help\n" +
-                "5. Exit\n");
-
+    void showMenu() {
+        System.out.println("*****Main Menu*****");
+        System.out.println("1. Battle");
+        System.out.println("2. Collection");
+        System.out.println("3. Shop");
+        System.out.println("4. Help (show menu)");
+        System.out.println("5. Exit");
     }
 
     public static void goToMainMenu() {
-        GameMenu.setCurrentMenu(MainMenu.getMainMenu());
-        ((MainMenu) mainMenu).showMenu();
+        Main.setCurrentMenu(mainMenu);
     }
 }

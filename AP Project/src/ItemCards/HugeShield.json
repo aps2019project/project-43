@@ -1,6 +1,6 @@
 {
   "name" : "HugeShield",
-  "description" : "Activate 12 Holy buff in ally Hero",
+  "info" : "Activate 12 Holy buff in ally Hero",
   "buff" : "HOLY",
   "changeAP" : 0,
   "changeHP" : 6,

@@ -1,0 +1,12 @@
+{
+  "name" : "Shock",
+  "price" : 1200,
+  "manaCost" : 1,
+  "buff" : "STUN",
+  "info" : "Stun The Enemy Force For Two Turns",
+  "coolDown" : 2,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

@@ -1,11 +1,11 @@
 {
   "name" : "BladesOfAgility",
-  "description" : "Increase random force's AP by 6",
+  "info" : "Increase random force's AP by 6",
   "buff" : null,
   "changeAP" : 6,
   "changeHP" : 0,
   "changeMana" : 0,
   "cooldown" : 100,
-  "target" : "ANYTHING",
+  "target" : "FORCE",
   "unused" : true
 }

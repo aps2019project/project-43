@@ -8,5 +8,8 @@ public enum SpellTarget {
     ALLY_HERO,
     ALLY_FORCE,
     CELL,
-    ANYTHING;
+    FORCE,
+    ENEMY_FORCES_COL,
+    RANDOM_ENEMY_MINION,
+    FORCE_ROW
 }

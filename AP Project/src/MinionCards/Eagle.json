@@ -1,0 +1,21 @@
+{
+  "name" : "Eagle",
+  "price" : 200,
+  "manaCost" : 2,
+  "info" : "Has 10 PowerBuff with Additional HP",
+  "hp" : 0,
+  "ap" : 2,
+  "attackRange" : 3,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "POWER",
+    "info" : null,
+    "coolDown" : 100,
+    "target" : null,
+    "changeHP" : 10,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "PASSIVE"
+}

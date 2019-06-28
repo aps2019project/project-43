@@ -1,0 +1,12 @@
+{
+  "name" : "TuranianArcher",
+  "price" : 500,
+  "manaCost" : 1,
+  "info" : null,
+  "hp" : 3,
+  "ap" : 4,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

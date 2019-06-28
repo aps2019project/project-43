@@ -1,17 +1,12 @@
 package GamePackage;
 
-public class Item implements Generateble{
-    public String name;
-    public String description;
-    public int price;
+public class Item extends GameObject{
     public int changeAP;
     public int changeHP;
     public int changeMana;
     public int cooldown;
-    private int itemID;
     public SpellTarget target;
     public boolean unused;
-    public String file;
 
     public Buff getBuff() {
         return buff;
@@ -29,29 +24,9 @@ public class Item implements Generateble{
         return MAX_NUM_ITEMS;
     }
 
-    public int getPrice(){
-        return price;
-    }
-
-    public void setItemID(int id){
-        this.itemID = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getItemID(){
-        return itemID;
-    }
-
     @Override
     public String toString() {
-        return itemID+": "+"Name : " + name + " - Desc : " + description;
+        return getId()+": "+"Name : " + getName() + " - Desc : " + getInfo();
     }
 
-    @Override
-    public String getFilePath() {
-        return file;
-    }
 }

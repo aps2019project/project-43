@@ -3,39 +3,39 @@ package GamePackage;
 public enum AttackType {
     HYBRID {
         @Override
-        public boolean isInRangeForDefend(Attacker attacker, Attacker defender){
-            return true;
+        public boolean isInRangeForDefend(Force force, Force defender){
+            return getDistance(force.getLocation(), defender.getLocation()) <= force.getAttackRange();
         }
 
         @Override
-        public boolean isInRangeForAttack(Attacker attacker, Attacker defender){
-            return true;
+        public boolean isInRangeForAttack(Force force, Force defender){
+            return getDistance(force.getLocation(), defender.getLocation()) <= force.getAttackRange();
         }
     },
     MELEE {
         @Override
-        public boolean isInRangeForDefend(Attacker attacker, Attacker defender){
-            return isAdjacent(attacker.getCardLocation(), defender.getCardLocation());
+        public boolean isInRangeForDefend(Force force, Force defender){
+            return isAdjacent(force.getLocation(), defender.getLocation());
         }
         @Override
-        public boolean isInRangeForAttack(Attacker attacker, Attacker defender){
-            return isAdjacent(attacker.getCardLocation(), defender.getCardLocation());
+        public boolean isInRangeForAttack(Force force, Force defender){
+            return isAdjacent(force.getLocation(), defender.getLocation());
         }
 
     },
     RANGED {
         @Override
-        public boolean isInRangeForDefend(Attacker attacker, Attacker defender){
-            return !isAdjacent(attacker.getCardLocation(), defender.getCardLocation());
+        public boolean isInRangeForDefend(Force force, Force defender){
+            return !isAdjacent(force.getLocation(), defender.getLocation()) && getDistance(force.getLocation(), defender.getLocation()) <= force.getAttackRange();
         }
         @Override
-        public boolean isInRangeForAttack(Attacker attacker, Attacker defender){
-            return !isAdjacent(attacker.getCardLocation(), defender.getCardLocation()) && getDistance(attacker.getCardLocation(), defender.getCardLocation()) <= attacker.attackRange;
+        public boolean isInRangeForAttack(Force force, Force defender){
+            return !isAdjacent(force.getLocation(), defender.getLocation()) && getDistance(force.getLocation(), defender.getLocation()) <= force.getAttackRange();
         }
     };
 
-    public abstract boolean isInRangeForDefend(Attacker attacker, Attacker defender);
-    public abstract boolean isInRangeForAttack(Attacker attacker, Attacker defender);
+    public abstract boolean isInRangeForDefend(Force force, Force defender);
+    public abstract boolean isInRangeForAttack(Force force, Force defender);
 
     boolean isAdjacent(Cell cell, Cell other){
         int x=cell.getX(), x2=other.getX(), y=cell.getY(), y2=other.getY();

@@ -1,6 +1,6 @@
 {
   "name" : "PoisonousDagger",
-  "description" : "Apply poison buff on random enemy force when ally forces hit something for one round",
+  "info" : "Apply poison buff on random enemy force when ally forces hit something for one round",
   "buff" : "POISON",
   "changeAP" : 0,
   "changeHP" : 0,

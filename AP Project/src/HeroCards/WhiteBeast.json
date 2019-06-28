@@ -1,28 +1,19 @@
 {
   "name" : "WhiteBeast",
-  "moneyCost" : 8000,
-  "manaCost" : 1,
-  "effects" : [ "POWER" ],
-  "cardID" : null,
-  "info" : "Power buff with 4 increment in ap permanently",
-  "owner" : null,
+  "price" : 8000,
   "hp" : 50,
   "ap" : 4,
+  "troopType" : "MELEE",
   "attackRange" : 0,
   "coolDown" : 2,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "POWER" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
-    "coolDown" : 100,
+  "manaCost" : 1,
+  "specialPower" : [{
+    "buff" : "POWER",
+    "coolDown" : 1,
     "target" : "ALLY_FORCE",
     "changeHP" : 0,
     "changeAP" : 4,
     "targetArea" : 13
-  },
-  "troopType" : "MELEE"
+  }],
+  "info" : "Power buff with 4 increment in ap permanently"
 }

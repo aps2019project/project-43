@@ -1,0 +1,12 @@
+{
+  "name" : "GreatGiant",
+  "price" : 600,
+  "manaCost" : 9,
+  "info" : null,
+  "hp" : 30,
+  "ap" : 8,
+  "attackRange" : 2,
+  "troopType" : "HYBRID",
+  "specialPower" : [ ],
+  "activateTime": null
+}

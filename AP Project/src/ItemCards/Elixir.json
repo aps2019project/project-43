@@ -1,6 +1,6 @@
 {
   "name" : "Elixir",
-  "description" : "Increase HP by 3 and a power buff with 3 increment in AP for a minion",
+  "info" : "Increase HP by 3 and a power buff with 3 increment in AP for a minion",
   "buff" : "POWER",
   "changeAP" : 0,
   "changeHP" : 3,

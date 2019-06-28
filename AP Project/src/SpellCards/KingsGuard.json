@@ -1,0 +1,12 @@
+{
+  "name" : "KingsGuard",
+  "price" : 1750,
+  "manaCost" : 9,
+  "buff" : "KILL",
+  "info" : "Kills The Enemy Minion Nearby The Ally Hero",
+  "coolDown" : 1,
+  "target" : "RANDOM_ENEMY_MINION",
+  "changeHP" : -100,
+  "changeAP" : 0,
+  "targetArea" : 3
+}

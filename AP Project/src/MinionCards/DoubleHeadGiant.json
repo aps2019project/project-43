@@ -1,0 +1,20 @@
+{
+  "name" : "DoubleHeadGiant",
+  "price" : 550,
+  "manaCost" : 4,
+  "info" : "Eliminate all Positive buff from the force that attack to",
+  "hp" : 10,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "REMOVE",
+    "coolDown" : 1,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "ON_ATTACK"
+}

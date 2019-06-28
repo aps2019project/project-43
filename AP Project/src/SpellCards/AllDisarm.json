@@ -1,0 +1,12 @@
+{
+  "name" : "AllDisarm",
+  "price" : 2000,
+  "manaCost" : 9,
+  "buff" : "DISARM",
+  "info" : "Disarm All Enemy Forces for One Turn",
+  "coolDown" : 1,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 9
+}

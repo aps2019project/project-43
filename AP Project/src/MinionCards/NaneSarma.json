@@ -1,0 +1,20 @@
+{
+  "name" : "NaneSarma",
+  "price" : 500,
+  "manaCost" : 3,
+  "info" : "Stun nearby enemy minions for one turn",
+  "hp" : 3,
+  "ap" : 4,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "STUN",
+    "coolDown" : 1,
+    "target" : "ENEMY_MINION",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "ON_SPAWN"
+}

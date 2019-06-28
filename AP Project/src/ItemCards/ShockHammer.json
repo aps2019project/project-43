@@ -1,6 +1,6 @@
 {
   "name" : "ShockHammer",
-  "description" : "Ally hero when attack, disarm enemy's force for one round",
+  "info" : "Ally hero when attack, disarm enemy's force for one round",
   "buff" : "DISARM",
   "changeAP" : 0,
   "changeHP" : 0,

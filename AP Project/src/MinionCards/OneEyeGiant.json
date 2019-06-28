@@ -1,0 +1,20 @@
+{
+  "name" : "OneEyeGiant",
+  "price" : 500,
+  "manaCost" : 7,
+  "info" : "Deals 2 Damage to Nearby Minions On Death",
+  "hp" : 12,
+  "ap" : 11,
+  "attackRange" : 3,
+  "troopType" : "HYBRID",
+  "specialPower" : [ {
+    "buff" : "ATTACK",
+    "coolDown" : 0,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -2,
+    "changeAP" : 0,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "ON_DEATH"
+}

@@ -1,28 +1,19 @@
 {
   "name" : "Esfandyar",
-  "moneyCost" : 12000,
+  "price" : 12000,
   "manaCost" : 0,
-  "effects" : [ "HOLY" ],
-  "cardID" : null,
   "info" : "It has three holy buff continuously",
-  "owner" : null,
   "hp" : 35,
   "ap" : 3,
   "attackRange" : 3,
   "coolDown" : 0,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "HOLY" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
-    "coolDown" : 3,
+  "specialPower" : [{
+    "buff" : "HOLY",
+    "coolDown" : 100,
     "target" : "ALLY_HERO",
     "changeHP" : 0,
     "changeAP" : 4,
     "targetArea" : 0
-  },
+  }],
   "troopType" : "HYBRID"
 }

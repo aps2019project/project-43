@@ -1,0 +1,28 @@
+{
+  "name" : "Wizard",
+  "price" : 550,
+  "manaCost" : 4,
+  "info" : "Adds to itself and nearby ally minions a power buff with AP increased by 2 and a weakness buff with HP decreased by 1 for one turn",
+  "hp" : 5,
+  "ap" : 4,
+  "attackRange" : 3,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "POWER",
+    "coolDown" : 1,
+    "target" : "ALLY_MINION",
+    "changeHP" : 0,
+    "changeAP" : 2,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  },{
+    "buff" : "WEAKNESS",
+    "coolDown" : 1,
+    "target" : "ALLY_MINION",
+    "changeHP" : -1,
+    "changeAP" : 0,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "PASSIVE"
+}

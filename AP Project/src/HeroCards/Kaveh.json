@@ -1,28 +1,19 @@
 {
   "name" : "Kaveh",
-  "moneyCost" : 8000,
+  "price" : 8000,
   "manaCost" : 1,
-  "effects" : [ "HOLY" ],
-  "cardID" : null,
   "info" : "Holy a cell for three rounds",
-  "owner" : null,
   "hp" : 50,
   "ap" : 4,
   "attackRange" : 0,
   "coolDown" : 3,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "HOLY" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
+  "specialPower" : [{
+    "buff" : "HOLY",
     "coolDown" : 3,
     "target" : "CELL",
     "changeHP" : 0,
     "changeAP" : 0,
     "targetArea" : 13
-  },
+  }],
   "troopType" : "MELEE"
 }

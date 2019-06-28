@@ -1,0 +1,12 @@
+{
+  "name" : "GodStrength",
+  "price" : 450,
+  "manaCost" : 2,
+  "buff" : "POWER",
+  "info" : "Adds 4 AttackPoints to Ally Hero",
+  "coolDown" : 1,
+  "target" : "ALLY_HERO",
+  "changeHP" : 0,
+  "changeAP" : 4,
+  "targetArea" : 1
+}

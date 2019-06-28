@@ -1,6 +1,6 @@
 {
   "name" : "AssassinationDagger",
-  "description" : "Decrease enemy's hero hp by 1 whenever adding new ally troop",
+  "info" : "Decrease enemy's hero hp by 1 whenever adding new ally troop",
   "buff" : null,
   "changeAP" : 0,
   "changeHP" : 1,

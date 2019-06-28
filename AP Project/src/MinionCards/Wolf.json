@@ -1,0 +1,20 @@
+{
+  "name" : "Wolf",
+  "price" : 400,
+  "manaCost" : 3,
+  "info" : "Decrease the Enemy minion's HP by 6 in the next turn",
+  "hp" : 6,
+  "ap" : 1,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "POISON",
+    "coolDown" : 0,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -6,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 1
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

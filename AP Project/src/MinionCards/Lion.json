@@ -1,0 +1,14 @@
+{
+  "name" : "Lion",
+  "price" : 600,
+  "manaCost" : 2,
+  "info" : "Holy Buff doesn't Affect on its attack",
+  "hp" : 1,
+  "ap" : 8,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+
+  } ],
+  "activateTime" : null
+}

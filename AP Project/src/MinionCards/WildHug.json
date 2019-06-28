@@ -1,0 +1,12 @@
+{
+  "name" : "WildHug",
+  "price" : 500,
+  "manaCost" : 6,
+  "info" : "Won't Disarm",
+  "hp" : 10,
+  "ap" : 14,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime": "ON_DEFEND"
+}

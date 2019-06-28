@@ -1,6 +1,6 @@
 {
   "name" : "SoulEater",
-  "description" : "When an ally force killed, random ally force's ap increase by 1 with power buff",
+  "info" : "When an ally force killed, random ally force's ap increase by 1 with power buff",
   "buff" : "POWER",
   "changeAP" : 1,
   "changeHP" : 0,

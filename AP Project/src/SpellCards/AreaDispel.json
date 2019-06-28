@@ -1,0 +1,12 @@
+{
+  "name" : "AreaDispel",
+  "price" : 1500,
+  "manaCost" : 2,
+  "buff" : "REMOVE",
+  "info" : "Removes Allies negative buffs & Enemies positive buffs",
+  "coolDown" : 1,
+  "target" : "FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 2
+}

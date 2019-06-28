@@ -1,28 +1,19 @@
 {
   "name" : "Phoenix",
-  "moneyCost" : 9000,
+  "price" : 9000,
   "manaCost" : 5,
-  "effects" : [ "STUN" ],
-  "cardID" : null,
   "info" : "Stun all enemies forces for one round",
-  "owner" : null,
   "hp" : 50,
   "ap" : 4,
-  "attackRange" : 0,
+  "attackRange" : 1,
   "coolDown" : 8,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "STUN" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
+  "specialPower" : [{
+    "buff" : "STUN",
     "coolDown" : 1,
     "target" : "ENEMY_FORCE",
     "changeHP" : 0,
     "changeAP" : 0,
-    "targetArea" : 13
-  },
+    "targetArea" : 9
+  }],
   "troopType" : "MELEE"
 }

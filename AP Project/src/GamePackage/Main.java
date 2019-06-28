@@ -3,10 +3,18 @@ package GamePackage;
 import java.util.Scanner;
 
 public class Main {
-    public static Scanner scan = new Scanner(System.in);
+
+    private static GameMenu currentMenu;
+    private static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        while(true){
-            GameMenu.getCurrentMenu().setState(scan.nextLine());
-        }
+//        Account.makeFakeAccounts();
+        AccountMenu.goToAccountMenu();
+        while(currentMenu.execCommand(scan.nextLine()));
+    }
+
+    public static void setCurrentMenu(GameMenu currentMenu) {
+        Main.currentMenu = currentMenu;
+        currentMenu.showMenu();
     }
 }

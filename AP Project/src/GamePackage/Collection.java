@@ -4,131 +4,130 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Collection {
-    private ArrayList<Card> heroes = new ArrayList<>();
     private ArrayList<Card> cards = new ArrayList<>();
     private ArrayList<Item> items = new ArrayList<>();
-    private final int maxItems = 3;
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    ArrayList<Hero> getHeroes(){
+        ArrayList<Hero> heroes = new ArrayList<>();
+        for(Card card: cards){
+            if(card instanceof Hero){
+                heroes.add((Hero) card);
+            }
+        }
+        return heroes;
     }
-
-    public ArrayList<Item> getItems() {
+    private ArrayList<Minion> getMinions(){
+        ArrayList<Minion> minions = new ArrayList<>();
+        for(Card card: cards){
+            if(card instanceof Minion){
+                minions.add((Minion) card);
+            }
+        }
+        return minions;
+    }
+    private ArrayList<Spell> getSpells(){
+        ArrayList<Spell> spells = new ArrayList<>();
+        for(Card card: cards){
+            if(card instanceof Spell){
+                spells.add((Spell) card);
+            }
+        }
+        return spells;
+    }
+    ArrayList<Item> getItems(){
         return items;
     }
 
-    public ArrayList<Card> getHeroes() {
-        return heroes;
-    }
-
-    public void addToCollection(Object object) {
-        if (object instanceof Hero) {
-            heroes.add((Card) object);
-        } else if (object instanceof Item) {
+    public void addToCollection(GameObject object) {
+        if (object instanceof Item) {
+            if(items.size()>=3){
+                System.out.println("Collection is full of items");
+                return;
+            }
             items.add((Item) object);
-        } else {
+        } else if (object instanceof Card) {
             cards.add((Card) object);
         }
     }
 
-    public void removeFromCollection(Object object) {
-        if (object instanceof Hero) {
-            heroes.remove(object);
-        } else if (object instanceof Item) {
+    public void removeFromCollection(GameObject object) {
+        if (object instanceof Item) {
             items.remove(object);
-        } else {
-            cards.remove((Card) object);
         }
-    }
-
-
-
-    // Show cards and items
-    public static void print(ArrayList<Card> heroes, ArrayList<Card> cards, ArrayList<Item> items) {
-        print("Heroes", heroes);
-        printItems(items);
-        print("Cards", cards);
+        else if (object instanceof Card) {
+            cards.remove(object);
+        }
     }
 
     // Show cards and items
     public void print() {
-        print("Heroes", heroes);
-        printItems(items);
-        print("Cards", cards);
-    }
-
-    private static void print(String string, ArrayList<Card> cards) {
-        int counter = 1;
-        System.out.println(string + " : ");
-        for (Card card : cards) {
-            System.out.println("\t"+card);
+        System.out.println("Heroes : ");
+        for (Card card : getHeroes()) {
+            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
         }
-    }
-
-    private static void printItems(ArrayList<Item> items) {
-        int counter = 1;
         System.out.println("Items :");
         for (Item item : items) {
-            System.out.println("\t"+item);
+            System.out.println("\t"+item+ " - Sell Cost : " + item.getPrice());
+        }
+        System.out.println("Cards : ");
+        for (Card card : getMinions()) {
+            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
+        }
+        for (Card card : getSpells()) {
+            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
         }
     }
 
-    public Object searchCard(int ID) {
-        for (int i = 0; i < heroes.size(); i++) {
-            if (heroes.get(i).getCardID() == ID) {
-                return heroes.get(i);
+    public GameObject getCard(int ID) {
+        for (Card card: cards) {
+            if (card.getId() == ID) {
+                return card;
             }
         }
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getCardID() == ID) {
-                return cards.get(i);
-            }
-        }
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getItemID() == ID) {
-                return items.get(i);
+        for (Item item: items) {
+            if (item.getId() == ID) {
+                return item;
             }
         }
         return null;
     }
 
-    public List<Object> searchCard(String name){
-        List<Object> list = new ArrayList<>();
-        for (Card card :
-                heroes) {
+    public List<GameObject> getCards(String name) {
+        List<GameObject> list = new ArrayList<>();
+        for (Card card: cards) {
             if (card.getName().equalsIgnoreCase(name)){
                 list.add(card);
             }
         }
-        for (Card card:
-                cards) {
-            if (card.getName().equalsIgnoreCase(name)){
-                list.add(card);
-            }
-        }
-        for (Item item :
-                items) {
+        for (Item item: items) {
             if (item.getName().equalsIgnoreCase(name)){
                 list.add(item);
             }
-        }return list;
+        }
+        return list;
     }
 
 
-
-    public static void help() {
-        System.out.println("1. show");
-        System.out.println("2. search [card name | item name]");
-        System.out.println("3. save");
-        System.out.println("4. create deck [deck name]");
-        System.out.println("5. delete deck [deck name]");
-        System.out.println("6. add [card id | item id | hero id] to deck [deck name]");
-        System.out.println("7. remove [card id | item id | hero id] to deck [deck name]");
-        System.out.println("8. validate deck [deck name]");
-        System.out.println("9. select deck [deck name]");
-        System.out.println("10. show all decks");
-        System.out.println("11. show deck [deck name]");
-        System.out.println("12. help");
-        System.out.println("13. exit");
+    public void search(String name) {
+        ArrayList<GameObject> objs = new ArrayList<>();
+        for(Card card: cards){
+            if(card.getName().equalsIgnoreCase(name)){
+                objs.add(card);
+            }
+        }
+        for(Item item: items){
+            if(item.getName().equalsIgnoreCase(name)){
+                objs.add(item);
+            }
+        }
+        if(objs.size()>0){
+            System.out.println("these are found objects:");
+            for(GameObject gameObject: objs){
+                System.out.println("\tID: "+gameObject.getId());
+            }
+        } else{
+            System.out.println("the card/item doesn't exist in the collection!");
+        }
     }
+
 }

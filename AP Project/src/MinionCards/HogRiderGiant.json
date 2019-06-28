@@ -1,0 +1,12 @@
+{
+  "name" : "HogRiderGiant",
+  "price" : 300,
+  "manaCost" : 6,
+  "info" : null,
+  "hp" : 16,
+  "ap" : 8,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

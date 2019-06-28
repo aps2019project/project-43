@@ -1,6 +1,6 @@
 {
   "name" : "TerrorHood",
-  "description" : "decrease random enemy force's ap by 2 with weakness buff for one round",
+  "info" : "decrease random enemy force's ap by 2 with weakness buff for one round",
   "buff" : "WEAKNESS",
   "changeAP" : 2,
   "changeHP" : 0,

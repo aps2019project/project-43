@@ -11,27 +11,33 @@ import java.util.stream.Stream;
 public class Shop {
     private ArrayList<Card> cards = new ArrayList<>();
     private ArrayList<Item> items = new ArrayList<>();
-    private AccountMenu accountMenu = (AccountMenu) AccountMenu.getAccountMenu();
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    private void addToMinions(Path path){
+        cards.add(CardGenerator.minionGenerator(path.toString()));
     }
-
-    void addToCards(Path path){
-        cards.add(CardGenerator.cardGenerator(path.toString()));
+    private void addToSpells(Path path){
+        cards.add(CardGenerator.spellGenerator(path.toString()));
     }
-    void addToHeros(Path path){
+    private void addToHeros(Path path){
         cards.add(CardGenerator.heroGenerator(path.toString()));
     }
-    void addToItems(Path path){
+    private void addToItems(Path path){
         items.add(CardGenerator.itemGenerator(path.toString()));
     }
 
+
     Shop(){
-        try (Stream<Path> paths = Files.walk(Paths.get("src/CardSamples/"))) {
+        try (Stream<Path> paths = Files.walk(Paths.get("src/MinionCards/"))) {
             paths
                     .filter(Files::isRegularFile)
-                    .forEach(this::addToCards);
+                    .forEach(this::addToMinions);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try (Stream<Path> paths = Files.walk(Paths.get("src/SpellCards/"))) {
+            paths
+                    .filter(Files::isRegularFile)
+                    .forEach(this::addToSpells);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,22 +58,21 @@ public class Shop {
     }
 
     public void buyCard(String name) {
-        accountMenu = (AccountMenu) AccountMenu.getAccountMenu();
-        Account loggedAccount = AccountMenu.getLoggedAccount();
-        int playersMoney = AccountMenu.getLoggedAccount().getMoney();
-        Collection playerCollection = AccountMenu.getLoggedAccount().getCollection();
+        Account loggedAccount = Account.getLoggedAccount();
+        int playersMoney = loggedAccount.getMoney();
+        Collection playerCollection = loggedAccount.getCollection();
         boolean found = false;
         for (int i = 0; i < cards.size() + items.size(); i++) {
             if (i < cards.size()) {
                 if(cards.get(i).getName().equalsIgnoreCase(name)) {
                     found = true;
-                    if (cards.get(i).getMoneyCost() > playersMoney) {
+                    if (cards.get(i).getPrice() > playersMoney) {
                         System.out.println("Insufficient Money");
                     } else {
                             Card card = CardGenerator.getClone(cards.get(i));
                             playerCollection.addToCollection(card);
-                            loggedAccount.MoneyTransaction(-card.getMoneyCost());
-                            card.setOwner(AccountMenu.getLoggedAccount());
+                            loggedAccount.pay(card.getPrice());
+                            card.setOwner(Account.getLoggedAccount());
                             System.out.println("Purchase Successful");
                     }
                 }
@@ -75,12 +80,13 @@ public class Shop {
                 found = true;
                 if (items.get(i).getPrice() > playersMoney) {
                     System.out.println("Insufficient Money");
-                } else if (playerCollection.getItems().size() == Item.getMaxNumItems()) {
+                } else if (playerCollection.getItems().size() >= 3) {
                     System.out.println("You Already Have 3 Items");
                 } else {
                     Item item = CardGenerator.getClone(items.get(i-cards.size()));
                     playerCollection.addToCollection(item);
-                    loggedAccount.MoneyTransaction(-item.getPrice());
+                    loggedAccount.pay(item.getPrice());
+                    item.setOwner(Account.getLoggedAccount());
                     System.out.println("Purchase Successful");
                 }
             }
@@ -91,104 +97,60 @@ public class Shop {
     }
 
     public void sellCard(int ID) {
-        Account loggedAccount = AccountMenu.getLoggedAccount();
-        Collection playerCollection = AccountMenu.getLoggedAccount().getCollection();
+        Account loggedAccount = Account.getLoggedAccount();
+        Collection playerCollection = Account.getLoggedAccount().getCollection();
 
-        Object object = playerCollection.searchCard(ID);
+        GameObject object = playerCollection.getCard(ID);
         if (object == null) {
             System.out.println("Card Doesn't Exist");
             return;
         } else if( object instanceof Card){
-            loggedAccount.MoneyTransaction(((Card) object).getMoneyCost());
-            ((Card) object).setOwner(null);
+            loggedAccount.getPaid(object.getPrice());
+            object.setOwner(null);
         }else{
-            loggedAccount.MoneyTransaction(((Item) object).getPrice());
+            loggedAccount.getPaid(object.getPrice());
+            object.setOwner(null);
         }
         playerCollection.removeFromCollection(object);
     }
 
-    public void searchCollection(String name) {
-        Collection playerCollection = AccountMenu.getLoggedAccount().getCollection();
-
-        List<Object> list = playerCollection.searchCard(name);
-        if (list.size() == 0) {
-            System.out.println("Nothing Found");
-        } else {
-            for (Object object :
-                    list) {
-                if (object instanceof Card) {
-                    System.out.println(((Card) object).getCardID());
-                }
-                if (object instanceof Item) {
-                    System.out.println(((Item) object).getItemID());
-                }
-            }
-        }
-    }
-
     public void search(String name) {
-        for (Card card :
-                cards) {
+        for (Card card : cards) {
             if (card.getName().equalsIgnoreCase(name)) {
-                System.out.println(card.getCardID());
+                System.out.println(card.getId());
             }
         }
-        for (Item item :
-                items) {
+        for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
-                System.out.println(item.getItemID());
+                System.out.println(item.getId());
             }
         }
     }
 
     public void show() {
-        int counter = 1;
-        for (Card card :
-                cards) {
+        System.out.println("Heroes :");
+        for (Card card : cards) {
             if (card instanceof Hero) {
-                System.out.println(counter++ +"."+ card.toString() + " - Buy Cost : " + card.getMoneyCost());
+                System.out.println("\t"+card + " - Buy Cost : " + card.getPrice());
             }
         }
-        counter = 1;
-        for (Card card :
-                cards) {
+        System.out.println("Items :");
+        for (Item item : items) {
+            System.out.println("\t"+ item + " - Buy Cost = " + item.getPrice());
+        }
+        System.out.println("Cards :");
+        for (Card card : cards) {
             if (card instanceof Minion) {
-                System.out.println(counter++ +"."+ card.toString() + " - Buy Cost : " + card.getMoneyCost());
+                System.out.println("\t"+card+ " - Buy Cost : " + card.getPrice());
             }
         }
-        counter = 1;
-        for (Card card :
-                cards) {
+        for (Card card : cards) {
             if (card instanceof Spell) {
-                System.out.println(counter++ +"."+ card.toString() + " - Buy Cost : " + card.getMoneyCost());
+                System.out.println("\t"+ card + " - Buy Cost : " + card.getPrice());
             }
         }
-        counter = 1;
-        for (Item item :
-                items) {
-            System.out.println(counter++ +"."+ item.toString() + " - Buy Cost = " + item.getPrice());
-        }
-
     }
 
-    public void showCollection(){
-        Collection playerCollection = AccountMenu.getLoggedAccount().getCollection();
-        int counter = 1;
-        for (Card card :
-                playerCollection.getHeroes()) {
-            System.out.println(counter++ + "." + card.toString() + " - Sell Cost : " + card.getMoneyCost());
-        }
-        counter = 1;
-        for (Item item :
-                playerCollection.getItems()) {
-            System.out.println(counter++ + "." + item.toString() + " - Sell Cost : " + item.getPrice());
-        }
-        counter = 1;
-        for (Card card :
-                playerCollection.getCards()) {
-            System.out.println(counter++ + "." + card.toString() + " - Sell Cost : " + card.getMoneyCost());
-        }
-    }
 
 }
 

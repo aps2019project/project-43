@@ -1,6 +1,6 @@
 {
   "name" : "Baptism",
-  "description" : "Each minion get Holy buff for 2 rounds when spawning",
+  "info" : "Each minion get Holy buff for 2 rounds when spawning",
   "buff" : "HOLY",
   "changeAP" : 0,
   "changeHP" : 0,

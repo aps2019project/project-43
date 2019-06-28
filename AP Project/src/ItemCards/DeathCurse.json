@@ -1,6 +1,6 @@
 {
   "name" : "DeathCurse",
-  "description" : "Give 8 AP to a random minion which can use it before death randomly on its nearest force",
+  "info" : "Give 8 AP to a random minion which can use it before death randomly on its nearest force",
   "buff" : null,
   "changeAP" : 8,
   "changeHP" : 0,

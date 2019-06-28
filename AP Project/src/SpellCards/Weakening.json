@@ -1,0 +1,12 @@
+{
+  "name" : "Weakening",
+  "price" : 1000,
+  "manaCost" : 1,
+  "buff" : "WEAKNESS",
+  "info" : "Give an Enemy Minion a Weakness Buff & Decrease Its AP By 4",
+  "coolDown" : 1,
+  "target" : "ENEMY_MINION",
+  "changeHP" : 0,
+  "changeAP" : -4,
+  "targetArea" : 1
+}

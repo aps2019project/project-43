@@ -1,11 +1,11 @@
 {
   "name" : "ManaElixir",
-  "description" : "Increase Mana by 3 for the next round",
+  "info" : "Increase Mana by 3 for the next round",
   "buff" : null,
   "changeAP" : 2,
   "changeHP" : 0,
   "changeMana" : 3,
   "cooldown" : 0,
-  "target" : "ANYTHING",
+  "target" : "FORCE",
   "unused" : true
 }

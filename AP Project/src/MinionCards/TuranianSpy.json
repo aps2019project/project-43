@@ -1,0 +1,28 @@
+{
+  "name" : "TuranianSpy",
+  "price" : 700,
+  "manaCost" : 4,
+  "info" : "Disarm the Enemy Force For 1 Turn & Poison it For 4 Turns",
+  "hp" : 6,
+  "ap" : 6,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "DISARM",
+    "coolDown" : 1,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  }, {
+    "buff" : "POISON",
+    "coolDown" : 4,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

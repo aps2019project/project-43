@@ -1,28 +1,19 @@
 {
   "name" : "Zahhak",
-  "moneyCost" : 10000,
+  "price" : 10000,
   "manaCost" : 0,
-  "effects" : [ "POISON" ],
-  "cardID" : null,
   "info" : "Poison the target for three rounds",
-  "owner" : null,
   "hp" : 50,
   "ap" : 2,
   "attackRange" : 0,
   "coolDown" : 0,
-  "specialPower" : {
-    "name" : null,
-    "moneyCost" : 0,
-    "manaCost" : 0,
-    "effects" : [ "POISON" ],
-    "cardID" : null,
-    "info" : null,
-    "owner" : null,
+  "specialPower" : [{
+    "buff" : "POISON",
     "coolDown" : 3,
     "target" : "ALLY_FORCE",
     "changeHP" : 0,
     "changeAP" : 0,
-    "targetArea" : 13
-  },
+    "targetArea" : 1
+  }],
   "troopType" : "MELEE"
 }

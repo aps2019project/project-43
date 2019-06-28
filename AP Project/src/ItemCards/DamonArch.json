@@ -1,6 +1,6 @@
 {
   "name" : "DamonArch",
-  "description" : "Disarm enemy force for one round, only for ranged and hybrid",
+  "info" : "Disarm enemy force for one round, only for ranged and hybrid",
   "buff" : "DISARM",
   "changeAP" : 0,
   "changeHP" : 0,

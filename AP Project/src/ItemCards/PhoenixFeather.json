@@ -1,6 +1,6 @@
 {
   "name" : "PhoenixFeather",
-  "description" : "Decrease enemy's ap by 2, only for ranged and hybrid",
+  "info" : "Decrease enemy's ap by 2, only for ranged and hybrid",
   "buff" : null,
   "changeAP" : 2,
   "changeHP" : 0,

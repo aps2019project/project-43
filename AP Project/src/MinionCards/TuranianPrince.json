@@ -1,0 +1,12 @@
+{
+  "name" : "TuranianPrince",
+  "price" : 800,
+  "manaCost" : 6,
+  "info" : null,
+  "hp" : 6,
+  "ap" : 10,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime" : "COMBO"
+}

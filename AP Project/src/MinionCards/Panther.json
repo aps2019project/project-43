@@ -1,0 +1,20 @@
+{
+  "name" : "Panther",
+  "price" : 400,
+  "manaCost" : 4,
+  "info" : "Decrease the enemy minion's hp by 8 in the next turn if attacked",
+  "hp" : 6,
+  "ap" : 2,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "POISON",
+    "coolDown" : 1,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -8,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 1
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

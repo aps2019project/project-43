@@ -1,0 +1,12 @@
+{
+  "name" : "Arzhang",
+  "price" : 600,
+  "manaCost" : 3,
+  "info" : null,
+  "hp" : 6,
+  "ap" : 6,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime": "COMBO"
+}

@@ -1,0 +1,12 @@
+{
+  "name" : "PersianPikesman",
+  "price" : 500,
+  "manaCost" : 1,
+  "info" : null,
+  "hp" : 5,
+  "ap" : 3,
+  "attackRange" : 3,
+  "troopType" : "HYBRID",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

@@ -1,0 +1,14 @@
+{
+  "name" : "GiantSnake",
+  "price" : 500,
+  "manaCost" : 8,
+  "info" : "Minion Up to 2 Cells away takes one more damage",
+  "hp" : 14,
+  "ap" : 7,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+
+  } ],
+  "activateTime" : "ON_SPAWN"
+}

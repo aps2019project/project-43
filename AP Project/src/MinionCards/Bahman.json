@@ -1,0 +1,20 @@
+{
+  "name" : "Bahman",
+  "price" : 450,
+  "manaCost" : 8,
+  "info" : "Decrease 16 unit of Randomly Enemy minion's HP",
+  "hp" : 16,
+  "ap" : 9,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "POISON",
+    "coolDown" : 1,
+    "target" : "ENEMY_MINION",
+    "changeHP" : -16,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "ON_SPAWN"
+}

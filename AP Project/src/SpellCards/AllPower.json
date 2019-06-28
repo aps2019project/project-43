@@ -1,0 +1,12 @@
+{
+  "name" : "AllPower",
+  "price" : 2000,
+  "manaCost" : 4,
+  "buff" : "POWER",
+  "info" : "Give All Friendly Forces a Power Buff & Increase Theirs AP By 2",
+  "coolDown" : 100,
+  "target" : "ALLY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 2,
+  "targetArea" : 9
+}
