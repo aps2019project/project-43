@@ -14,6 +14,7 @@ public class Battle {
     private Force selectedCard;
     private ArrayList<Card> graveyard1 =new ArrayList<>();
     private ArrayList<Card> graveyard2 =new ArrayList<>();
+    private int numberOfFlags;
 
     public void showBoard(){
         System.out.println();
@@ -43,11 +44,23 @@ public class Battle {
                 System.out.println("player1 hero health: " + players[1].getMainDeck().getHero().getHealth());
                 break;
             case "flag6":
-                //todo
+                printFlags();
                 break;
             case "flag1/2":
-                //todo
+                printFlags();
                 break;
+        }
+    }
+
+    private void printFlags() {
+        for(int i=0;i<5;i++){
+            for(int j=0;j<9;j++){
+                if(getCell(i,j).getFlag()!=null){
+                    System.out.println("flag in position: "+(i)+", "+(j));
+                }else if(getCell(i,j).isBusy()&&getCell(i,j).getForce().getFlag()!=null){
+                    System.out.println("flag is in "+getCell(i,j).getForce().getOwner().getUsername()+"'s hand");
+                }
+            }
         }
     }
 
@@ -98,27 +111,93 @@ public class Battle {
                 MainMenu.goToMainMenu() ;
             }
         }
-        if(mode.equals("flag7")){
-            //todo
+        if(mode.equals("flag6")){
+            for(int i=0;i<5;i++){
+                for(int j=0;j<9;j++){
+                    if(getCell(i,j).isBusy()&&getCell(i,j).getForce().getHadFlag()>=6){
+                        if(getCell(i,j).getForce().getOwner()==players[0]){
+                            System.out.println("player " + players[0].getUsername() + " won!");
+                            players[0].win(1000);
+                            players[0].addMatch(new Match(players[1],true, turn));
+                            players[1].addMatch(new Match(players[0],false, turn));
+                            MainMenu.goToMainMenu();
+                        }
+                        else{
+                            System.out.println("player " + players[1].getUsername() + " won!");
+                            players[1].win(1000);
+                            players[1].addMatch(new Match(players[0],true, turn));
+                            players[0].addMatch(new Match(players[1],false, turn));
+                            MainMenu.goToMainMenu() ;
+                        }
+                    }
+                }
+            }
         }
         if(mode.equals("flag1/2")){
-            //todo
+            int flags1=0;
+            int flags2=0;
+            int half=numberOfFlags/2;
+            for(int i=0;i<5;i++){
+                for(int j=0;j<9;j++){
+                    if(getCell(i,j).isBusy()){
+                        if(getCell(i,j).getForce().getOwner()==players[0]){
+                            flags1++;
+                        }else{
+                            flags2++;
+                        }
+                    }
+                }
+            }
+            if(flags1>half){
+                System.out.println("player " + players[0].getUsername() + " won!");
+                players[0].win(1000);
+                players[0].addMatch(new Match(players[1],true, turn));
+                players[1].addMatch(new Match(players[0],false, turn));
+                MainMenu.goToMainMenu();
+            }
+            else if(flags2>half){
+                System.out.println("player " + players[1].getUsername() + " won!");
+                players[1].win(1000);
+                players[1].addMatch(new Match(players[0],true, turn));
+                players[0].addMatch(new Match(players[1],false, turn));
+                MainMenu.goToMainMenu() ;
+            }
         }
     }
 
-    Battle(String mode, Account player1, Account player2){
+    Battle(String mode, int numberOfFlags, Account player1, Account player2){
         multiPlayer = true;
         this.mode = mode;
         players[0]=player1;
         players[1]=player2;
+        this.numberOfFlags=numberOfFlags;
         initialize();
+
+        switch (mode){
+            case "flag6":
+                getCell(2,4).putFlag(new Flag());
+                break;
+            case "flag1/2":
+                int num=0;
+                int k=0;
+                for(int i=0;i<5;i++){
+                    for(int j=0;j<9;j++){
+                        if(k%(9/(numberOfFlags/5.0))==0&&num<numberOfFlags){
+                        getCell(i,j).putFlag(new Flag());
+                        num++;}
+                        k++;
+                    }
+                }
+                break;
+        }
     }
 
-    Battle(String mode){
-        multiPlayer = false;
-        this.mode = mode;
-        players[0] = Account.getLoggedAccount();
-    }
+//    Battle(String mode, int numberOfFlags){
+//        multiPlayer = false;
+//        this.mode = mode;
+//        this.numberOfFlags=numberOfFlags;
+//        players[0] = Account.getLoggedAccount();
+//    }
 
     private void initialize() {
         for(int i=0;i<5;i++){
@@ -332,6 +411,10 @@ public class Battle {
                     }
                 }
             }
+            if(force.getFlag()!=null){
+                force.getLocation().putFlag(force.getFlag());
+                force.loseFlag();
+            }
             force.die();
             addToGraveyard(force);
             if(selectedCard == force){
@@ -348,7 +431,7 @@ public class Battle {
         }
         Force force = selectedCard;
         if(force instanceof Minion){
-            if(((Minion) force).getActivateTime()==ActivateTime.ON_ATTACK || ((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
+            if(((Minion) force).getActivateTime()==ActivateTime.ON_ATTACK){
                 for(Spell spell: force.getSpecialPower()){
                     useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
                 }
@@ -387,6 +470,12 @@ public class Battle {
         useMana(card.getManaCost());
         if(card instanceof Minion){
             card.setLocation(cell);
+            Force force= (Force) card;
+                if(((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
+                    for(Spell spell: force.getSpecialPower()){
+                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    }
+                }
         }else{
             useSpell((Spell) card, x, y);
         }
@@ -399,14 +488,6 @@ public class Battle {
             return;
         }
         selectedCard.move(getCell(x, y), turn);
-        Force force = selectedCard;
-        if(force instanceof Minion){
-            if(((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
-                for(Spell spell: force.getSpecialPower()){
-                    useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
-                }
-            }
-        }
     }
 
     public void setSelectedCard(int id) {

@@ -7,6 +7,7 @@ public class Cell {
     private int y;
     private ArrayList<Effect> effects;
     private Force force;
+    private Flag flag;
 
     Cell(int x, int y){
         this.x = x;
@@ -50,6 +51,18 @@ public class Cell {
 
     public Force getForce() {
         return force;
+    }
+
+    void putFlag(Flag flag){
+        this.flag = flag;
+    }
+
+    void loseFlag(){
+        flag=null;
+    }
+
+    Flag getFlag(){
+        return flag;
     }
 }
 

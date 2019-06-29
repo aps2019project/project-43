@@ -53,22 +53,36 @@ public class BattleMenu extends GameMenu {
             System.out.println("*****Select Battle Mode*****");
             System.out.println("1. Hero mode");
             System.out.println("2. Flag6");
-            System.out.println("3. Flag1/2");
+            System.out.println("3. Flag1/2 [number of flags]");
             System.out.println("4. Back");
             String modeSelection = scanner.nextLine().trim().toLowerCase();
-            switch (modeSelection) {
-                case "hero mode":
+            String[] inputArray = modeSelection.split(" ");
+            switch (inputArray[0]) {
+                case "hero":
                     System.out.println("hero mode has been selected");
-                    if(opponent != null) Main.setCurrentMenu(new PlayMenu(new Battle("hero", Account.getLoggedAccount(), opponent)));
-                    else Main.setCurrentMenu(new PlayMenu(new Battle("hero")));
+                    if(opponent != null){
+                        if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate())Main.setCurrentMenu(new PlayMenu(new Battle("hero", 0,Account.getLoggedAccount(), opponent)));
+                        else System.out.println("selected deck for second player is invalid");
+                    }
+//                    else Main.setCurrentMenu(new PlayMenu(new Battle("hero",0)));
                     valid = true;
                     break;
                 case "flag6":
-
+                    System.out.println("hero mode has been selected");
+                    if(opponent != null){
+                        if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate())Main.setCurrentMenu(new PlayMenu(new Battle("hero",0, Account.getLoggedAccount(), opponent)));
+                        else System.out.println("selected deck for second player is invalid");
+                    }
+//                    else Main.setCurrentMenu(new PlayMenu(new Battle("flag6",0)));
                     valid = true;
                     break;
                 case "flag1/2":
-
+                    System.out.println("hero mode has been selected");
+                    if(opponent != null){
+                        if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate())Main.setCurrentMenu(new PlayMenu(new Battle("hero", Integer.parseInt(inputArray[1]),Account.getLoggedAccount(), opponent)));
+                        else System.out.println("selected deck for second player is invalid");
+                    }
+//                    else Main.setCurrentMenu(new PlayMenu(new Battle("flag1/2",Integer.parseInt(inputArray[1]))));
                     valid = true;
                     break;
                 case "exit":

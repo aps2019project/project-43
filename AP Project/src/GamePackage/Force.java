@@ -15,6 +15,12 @@ public abstract class Force extends Card {
     private ArrayList<Spell> specialPower = new ArrayList<>();
     private int damage = 0;
     private int wasInPoisonousCell = 3;
+    private Flag flag = null;
+    private int hadFlag=0;
+
+    public int getHadFlag() {
+        return hadFlag;
+    }
 
     void addEffect(Spell spell){
 
@@ -76,6 +82,9 @@ public abstract class Force extends Card {
             }
             if(effects.get(i).endTurn()) effects.remove(i--);
         }
+        if(flag!=null){
+            hadFlag++;
+        }
     }
 
     public void startGame(){
@@ -84,6 +93,7 @@ public abstract class Force extends Card {
         damage=0;
         effects.clear();
         continuousEffects.clear();
+        flag=null;
         setLocation(null);
     }
 
@@ -158,6 +168,10 @@ public abstract class Force extends Card {
         if(getLocation()!=null) getLocation().setForce(null);
         if(cell!=null) cell.setForce(this);
         super.setLocation(cell);
+        if(cell!=null && cell.getFlag()!=null){
+            liftFlag(cell.getFlag());
+            cell.loseFlag();
+        }
     }
 
     public int getHealth() {
@@ -219,6 +233,19 @@ public abstract class Force extends Card {
                 target.addEffect(spell);
             }
         }
+    }
+
+    void liftFlag(Flag flag){
+        hadFlag=0;
+        this.flag=flag;
+    }
+
+    void loseFlag(){
+        flag=null;
+    }
+
+    Flag getFlag(){
+        return flag;
     }
 
     public static void printForces(ArrayList<Force> forces) {
