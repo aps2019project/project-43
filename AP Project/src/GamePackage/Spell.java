@@ -1,10 +1,9 @@
 package GamePackage;
 
-import java.util.ArrayList;
+import static GamePackage.Buff.*;
 
 public class Spell extends Card {
     private int coolDown;
-//    private Buff effect;
     private SpellTarget target;
     private int changeHP;
     private int changeAP;

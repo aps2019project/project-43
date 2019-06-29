@@ -42,6 +42,11 @@ public class Deck {
     }
 
     public void startGame(){
+        for(Card card: cards){
+            if(card instanceof Hero || card instanceof Minion){
+                ((Force)card).startGame();
+            }
+        }
         cardsNotInHand.clear();
         cardsNotInHand.addAll(cards);
         Collections.shuffle(cardsNotInHand);

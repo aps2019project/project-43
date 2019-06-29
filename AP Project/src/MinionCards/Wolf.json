@@ -11,7 +11,7 @@
     "buff" : "POISON",
     "coolDown" : 0,
     "target" : "ENEMY_MINION",
-    "changeHP" : -6,
+    "changeHP" : 6,
     "changeAP" : 0,
     "targetArea" : 1,
     "whichTurn" : 1

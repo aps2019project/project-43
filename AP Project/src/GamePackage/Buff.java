@@ -9,8 +9,12 @@ public enum Buff {
     DISARM,
     CELL_ON_FIRE,
     POISONOUS_CELL,
-    HOLLY_CELL,
+    HOLY_CELL,
     REMOVE,
     ATTACK,
-    KILL
+    KILL,
+    MADDNESS,
+    POISON_ON_ATTACK,
+    HOLY_CONT,
+    POWER_CONT
 }

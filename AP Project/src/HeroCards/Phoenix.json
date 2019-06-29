@@ -2,7 +2,7 @@
   "name" : "Phoenix",
   "price" : 9000,
   "manaCost" : 5,
-  "info" : "Stun all enemies forces for one round",
+  "info" : "Stun all enemies forces for one round (8 turns to cool down)",
   "hp" : 50,
   "ap" : 4,
   "attackRange" : 1,

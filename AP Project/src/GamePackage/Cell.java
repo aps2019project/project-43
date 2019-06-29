@@ -5,12 +5,26 @@ import java.util.ArrayList;
 public class Cell {
     private int x;
     private int y;
-    ArrayList<Buff> effected;
+    private ArrayList<Effect> effects;
     private Force force;
 
     Cell(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public ArrayList<Effect> getEffects() {
+        return effects;
+    }
+
+    public void addEffect(Spell spell) {
+        effects.add(new Effect(spell));
+    }
+
+    public void endTurn() {
+        for(int i=0;i<effects.size();i++){
+            if(effects.get(i).endTurn()) effects.remove(i--);
+        }
     }
 
     public boolean isBusy() {
@@ -38,3 +52,4 @@ public class Cell {
         return force;
     }
 }
+

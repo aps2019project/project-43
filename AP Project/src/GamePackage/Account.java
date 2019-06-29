@@ -9,6 +9,11 @@ public class Account {
     private static List<Account> accounts = new ArrayList<>();
     private static Account loggedAccount;
     private static HashMap<String, Account> userMap = new HashMap<>();
+    private ArrayList<Match> matches = new ArrayList<>();
+
+    public void addMatch(Match match){
+        matches.add(match);
+    }
 
     static void showLeaderboard() {
         System.out.println(new Leaderboard(accounts).sortByWins());

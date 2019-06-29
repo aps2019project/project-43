@@ -6,7 +6,7 @@
   "info" : "Poison All Enemy Forces for 4 Truns",
   "coolDown" : 4,
   "target" : "ENEMY_FORCE",
-  "changeHP" : 0,
+  "changeHP" : 1,
   "changeAP" : 0,
   "targetArea" : 9
 }

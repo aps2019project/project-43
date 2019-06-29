@@ -2,18 +2,18 @@
   "name" : "Arash",
   "price" : 10000,
   "manaCost" : 2,
-  "info" : "All forces in hero's row hit with four",
+  "info" : "All forces in hero's row hit with four (2 turns to cool down)",
   "hp" : 30,
   "ap" : 2,
   "attackRange" : 6,
   "coolDown" : 2,
   "specialPower" : [{
     "buff" : "ATTACK",
-    "coolDown" : 100,
+    "coolDown" : 0,
     "target" : "FORCE_ROW",
-    "changeHP" : 0,
-    "changeAP" : 4,
-    "targetArea" : 2
+    "changeHP" : 4,
+    "changeAP" : 0,
+    "targetArea" : 1
   }],
   "troopType" : "RANGED"
 }

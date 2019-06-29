@@ -9,11 +9,11 @@
   "manaCost" : 1,
   "specialPower" : [{
     "buff" : "POWER",
-    "coolDown" : 1,
+    "coolDown" : 100,
     "target" : "ALLY_FORCE",
     "changeHP" : 0,
     "changeAP" : 4,
     "targetArea" : 13
   }],
-  "info" : "Power buff with 4 increment in ap permanently"
+  "info" : "Power buff with 4 increment in ap permanently (2 turns to cool down)"
 }

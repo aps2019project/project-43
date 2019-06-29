@@ -6,7 +6,7 @@
   "info" : "Convert the Selected Cells to Poisonous Cells for One Turn",
   "coolDown" : 1,
   "target" : "CELL",
-  "changeHP" : 0,
+  "changeHP" : 1,
   "changeAP" : 0,
   "targetArea" : 3
 }

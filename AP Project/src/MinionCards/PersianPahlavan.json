@@ -11,7 +11,7 @@
     "buff" : "ATTACK",
     "coolDown" : 0,
     "target" : "ENEMY_FORCE",
-    "changeHP" : -5,
+    "changeHP" : 5,
     "changeAP" : 0,
     "targetArea" : 1,
     "whichTurn" : 0

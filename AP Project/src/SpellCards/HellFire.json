@@ -6,7 +6,7 @@
   "info" : "Convert the Selected Cells to Firing Cells for @ Turns",
   "coolDown" : 2,
   "target" : "CELL",
-  "changeHP" : 0,
+  "changeHP" : 2,
   "changeAP" : 0,
   "targetArea" : 2
 }

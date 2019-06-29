@@ -4,9 +4,9 @@
   "manaCost" : 1,
   "buff" : "ATTACK",
   "info" : "Deals 4 Damage to an EnemyForce",
-  "coolDown" : 1,
+  "coolDown" : 0,
   "target" : "ENEMY_FORCE",
-  "changeHP" : -4,
+  "changeHP" : 4,
   "changeAP" : 0,
   "targetArea" : 1
 }

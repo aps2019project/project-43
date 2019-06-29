@@ -4,7 +4,7 @@
   "manaCost" : 2,
   "buff" : "REMOVE",
   "info" : "Removes Allies negative buffs & Enemies positive buffs",
-  "coolDown" : 1,
+  "coolDown" : 0,
   "target" : "FORCE",
   "changeHP" : 0,
   "changeAP" : 0,

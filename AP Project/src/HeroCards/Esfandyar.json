@@ -8,11 +8,11 @@
   "attackRange" : 3,
   "coolDown" : 0,
   "specialPower" : [{
-    "buff" : "HOLY",
+    "buff" : "HOLY_CONT",
     "coolDown" : 100,
     "target" : "ALLY_HERO",
-    "changeHP" : 0,
-    "changeAP" : 4,
+    "changeHP" : 3,
+    "changeAP" : 3,
     "targetArea" : 0
   }],
   "troopType" : "HYBRID"

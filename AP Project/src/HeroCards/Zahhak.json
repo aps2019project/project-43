@@ -8,10 +8,10 @@
   "attackRange" : 0,
   "coolDown" : 0,
   "specialPower" : [{
-    "buff" : "POISON",
+    "buff" : "POISON_ON_ATTACK",
     "coolDown" : 3,
     "target" : "ALLY_FORCE",
-    "changeHP" : 0,
+    "changeHP" : 1,
     "changeAP" : 0,
     "targetArea" : 1
   }],

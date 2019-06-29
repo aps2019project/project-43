@@ -10,24 +10,80 @@ public abstract class Force extends Card {
     private int attackRange;
     private int turnMoved=-1;
     private int turnAttacked=-1;
-    private boolean isStunned = false;
-    private boolean isDisarmed = false;
-    private ArrayList<Spell> effected = new ArrayList<>();
+    private ArrayList<Effect> effects = new ArrayList<>();
+    private ArrayList<Effect> continuousEffects = new ArrayList<>();
     private ArrayList<Spell> specialPower = new ArrayList<>();
-    private ActivateTime activateTime;
     private int damage = 0;
+    private int wasInPoisonousCell = 3;
 
-    public ActivateTime getActivateTime() {
-        return activateTime;
+    void addEffect(Spell spell){
+
+        if(spell.getBuff()==Buff.KILL){
+            die();
+        }else if(spell.getBuff()==Buff.ATTACK){
+            getHit(spell.getChangeAP());
+        }else if(spell.getBuff()==Buff.REMOVE){
+            for(int i=0;i<effects.size();i++){
+                Effect effect=effects.get(i);
+                if(getOwner()==spell.getOwner()){
+                    switch (effect.getBuff()){
+                        case WEAKNESS:
+                        case POISON:
+                        case STUN:
+                        case DISARM:
+                        case POISON_ON_ATTACK:
+                            effects.remove(effect);
+                            i--;
+                    }
+                }else{
+                    switch (effect.getBuff()){
+                        case HOLY:
+                        case POWER:
+                        case POWER_CONT:
+                        case HOLY_CONT:
+                            effects.remove(effect);
+                            i--;
+                    }
+                }
+            }
+        }
+        else effects.add(new Effect(spell));
+    }
+
+
+    public void endTurn() {
+        if(wasInPoisonousCell>0){
+            damage+=1;
+            wasInPoisonousCell--;
+        }
+        for(int i=0;i<effects.size();i++){
+            for(Effect effect: getLocation().getEffects()){
+                if(effect.getBuff()==Buff.CELL_ON_FIRE){
+                    damage+=effect.getSpell().getChangeHP();
+                }
+                if(effect.getBuff()==Buff.POISONOUS_CELL){
+                    wasInPoisonousCell=2;
+                    damage+=1;
+                }
+            }
+            for(Effect effect: effects){
+                if(effect.getBuff()==Buff.POISON || effect.getBuff()==Buff.POISON_ON_ATTACK){
+                    damage+=effect.getSpell().getChangeHP();
+                }
+            }
+            for(Effect effect: continuousEffects){
+                if(!effects.contains(effect)) effects.add(effect);
+            }
+            if(effects.get(i).endTurn()) effects.remove(i--);
+        }
     }
 
     public void startGame(){
         turnMoved=-1;
         turnAttacked=-1;
         damage=0;
-        effected.clear();
-        isStunned=false;
-        isDisarmed=false;
+        effects.clear();
+        continuousEffects.clear();
         setLocation(null);
     }
 
@@ -43,15 +99,17 @@ public abstract class Force extends Card {
         return specialPower;
     }
 
-    public void setStunned(boolean stunned) {
-        isStunned = stunned;
-    }
-
-    public void setDisarmed(boolean disarmed) {
-        isDisarmed = disarmed;
-    }
-
     public void getHit(int ap){
+        for(Effect effect: effects){
+            if(effect.getBuff()==Buff.HOLY || effect.getBuff()==Buff.HOLY_CONT){
+                if(ap>=effect.getSpell().getChangeHP()) ap-=effect.getSpell().getChangeHP();
+            }
+        }
+        for(Effect effect: getLocation().getEffects()){
+            if(effect.getBuff()==Buff.HOLY_CELL){
+                if(ap>=effect.getSpell().getChangeHP()) ap-=effect.getSpell().getChangeHP();
+            }
+        }
         damage+=ap;
     }
 
@@ -59,21 +117,39 @@ public abstract class Force extends Card {
         return hp;
     }
 
-    public void attack(int turn) {
-        turnAttacked=turn;
+    private boolean isStunned(){
+        for(Effect effect: effects){
+            if(effect.getBuff()==Buff.STUN){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean canMove(int turn){
-        return turnAttacked!=turn && turnMoved!=turn && !isStunned;
+    private boolean isDisarmed(){
+        for(Effect effect: effects){
+            if(effect.getBuff()==Buff.DISARM || effect.getBuff()==Buff.MADDNESS){
+                return true;
+            }
+        }
+        return false;
     }
-    public boolean canAttack(int turn){
-        return turnAttacked!=turn && !isStunned;
+
+    private boolean canMove(int turn){
+        return turnAttacked!=turn && turnMoved!=turn && !isStunned();
     }
-    public boolean canDefend(){
-        return !isDisarmed;
+
+    private boolean canAttack(int turn){
+        return turnAttacked!=turn && !isStunned();
+    }
+
+    boolean canDefend(){
+        return !isDisarmed();
     }
 
     public void die() {
+        damage=hp;
+        effects.clear();
         getLocation().setForce(null);
         setLocation(null);
     }
@@ -85,13 +161,32 @@ public abstract class Force extends Card {
     }
 
     public int getHealth() {
-        return hp-damage;
+        int extra=0;
+        for(Effect effect: effects){
+            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT){
+                extra+=effect.getSpell().getChangeHP();
+            }
+            if(effect.getBuff()==Buff.WEAKNESS){
+                extra-=effect.getSpell().getChangeHP();
+            }
+        }
+        if(hp-damage+extra<0)return 0;
+        return hp-damage+extra;
     }
 
     public int getAp() {
-        return ap;
+        int extra=0;
+        for(Effect effect: effects){
+            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT){
+                extra+=effect.getSpell().getChangeAP();
+            }
+            if(effect.getBuff()==Buff.WEAKNESS){
+                extra-=effect.getSpell().getChangeAP();
+            }
+        }
+        if(ap+extra<0)return 0;
+        return ap+extra;
     }
-
 
     public void move(Cell cell, int turn) {
         // todo if a card can move more than two cells
@@ -102,6 +197,28 @@ public abstract class Force extends Card {
         }
         setLocation(cell);
         turnMoved=turn;
+    }
+
+
+    void attack(Force target, int turn, boolean defend){
+        if(!canAttack(turn)){
+            System.out.println("Card with id "+ getId() +" can't attack");
+            return;
+        }
+        if(getTroopType().isInRangeForAttack(this, target)){
+            System.out.println("opponent minion is unavailable for attack");
+            return;
+        }
+        turnAttacked=turn;
+        target.getHit(getAp());
+        if(defend && target.canDefend() && target.getTroopType().isInRangeForDefend(target, this)){
+            getHit(target.getAp());
+        }
+        for(Spell spell: specialPower){
+            if(spell.getBuff()==Buff.POISON_ON_ATTACK){
+                target.addEffect(spell);
+            }
+        }
     }
 
     public static void printForces(ArrayList<Force> forces) {

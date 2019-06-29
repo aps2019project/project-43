@@ -2,7 +2,7 @@
   "name" : "Madness",
   "price" : 650,
   "manaCost" : 0,
-  "buff" : "POWER",
+  "buff" : "MADDNESS",
   "info" : "Increase AttackPoint of the Ally Force by 4 but Disarm",
   "coolDown" : 3,
   "target" : "ALLY_FORCE",

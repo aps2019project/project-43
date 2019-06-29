@@ -2,8 +2,7 @@ package GamePackage;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
+import java.util.Random;
 
 public class Battle {
 
@@ -44,30 +43,66 @@ public class Battle {
                 System.out.println("player1 hero health: " + players[1].getMainDeck().getHero().getHealth());
                 break;
             case "flag6":
-                //To-Do
+                //todo
                 break;
             case "flag1/2":
-                //To-Do
+                //todo
                 break;
         }
     }
 
     void endTurn(){
-        //todo
         getTurnAccount().getMainDeck().addNextCard();
+        for(int i=0;i<5;i++){
+            for(int j=0;j<9;j++){
+                cells[i][j].endTurn();
+            }
+        }
+        for(Force force:getMyCardsInGame()){
+            force.endTurn();
+            checkIfDead(force);
+        }
+        for(Force force:getOpponentCardsInGame()){
+            force.endTurn();
+            checkIfDead(force);
+        }
         turn++;
         mana[0] = mana[1] = turn / 2 + 2;
         if (turn > 14) mana[0] = mana[1] = 9;
 
-        if(players[0].getMainDeck().getHero().getAp()<=0){
-            System.out.println("player " + players[0].getUsername() + " won!");
-            players[0].win(1000);
-            MainMenu.goToMainMenu();
+
+        for(Force force: getMyCardsInGame()) {
+            if (force instanceof Minion) {
+                if (((Minion) force).getActivateTime() == ActivateTime.ON_TURN ||((Minion) force).getActivateTime() == ActivateTime.PASSIVE) {
+                    for (Spell spell : force.getSpecialPower()) {
+                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    }
+                }
+            }
         }
-        if(players[1].getMainDeck().getHero().getAp()<=0){
-            System.out.println("player " + players[1].getUsername() + " won!");
-            players[1].win(1000);
-            MainMenu.goToMainMenu() ;
+
+
+        if(mode.equals("hero")){
+            if(players[0].getMainDeck().getHero().getAp()<=0){
+                System.out.println("player " + players[0].getUsername() + " won!");
+                players[0].win(1000);
+                players[0].addMatch(new Match(players[1],true, turn));
+                players[1].addMatch(new Match(players[0],false, turn));
+                MainMenu.goToMainMenu();
+            }
+            if(players[1].getMainDeck().getHero().getAp()<=0){
+                System.out.println("player " + players[1].getUsername() + " won!");
+                players[1].win(1000);
+                players[1].addMatch(new Match(players[0],true, turn));
+                players[0].addMatch(new Match(players[1],false, turn));
+                MainMenu.goToMainMenu() ;
+            }
+        }
+        if(mode.equals("flag7")){
+            //todo
+        }
+        if(mode.equals("flag1/2")){
+            //todo
         }
     }
 
@@ -85,7 +120,7 @@ public class Battle {
         players[0] = Account.getLoggedAccount();
     }
 
-    private void initialize(){
+    private void initialize() {
         for(int i=0;i<5;i++){
             for(int j=0;j<9;j++){
                 cells[i][j]=new Cell(i,j);
@@ -152,7 +187,7 @@ public class Battle {
     void attackCombo(int opponentId, List<Integer> forcesId){
         Force card = selectedCard;
         for (int id: forcesId){
-            Force force = (Force) getCardById(getMyCardsInGame(), id);
+            Minion force = (Minion) getCardById(getMyCardsInGame(), id);
             if(force == null){
                 System.out.println("invalid card id");
                 return;
@@ -162,51 +197,176 @@ public class Battle {
                 return;
             }
         }
+        boolean first=true;
         for (int id: forcesId){
             setSelectedCard(id);
-            attack(opponentId);
+            attack(opponentId, first);
+            first=false;
         }
         setSelectedCard(card.getId());
     }
 
-    void useSpecialPower(int x, int y){
-        //todo
+    private ArrayList<Cell> getCells(int x,int y,int area){
+        ArrayList<Cell> res=new ArrayList<>();
+        for(int i=x;i<x+area&&i<5;i++){
+            for(int j=y;j<y+area&&y<9;y++){
+                res.add(cells[i][j]);
+            }
+        }
+        return res;
     }
 
-    void attack(int id){
+    private boolean useSpell(Spell spell, int x, int y){
+        ArrayList<Force> forces = new ArrayList<>();
+        switch (spell.getTarget()){
+            case CELL:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    cell.addEffect(spell);
+                }
+                return true;
+            case FORCE:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()) forces.add(cell.getForce());
+                }
+                break;
+            case ALLY_HERO:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce()instanceof Hero&&cell.getForce().getOwner()==getTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case FORCE_ROW:
+                for(Cell cell: cells[getTurnAccount().getMainDeck().getHero().getLocation().getX()]){
+                    if(cell.isBusy()&&cell.getForce()instanceof Hero&&cell.getForce().getOwner()==getTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ALLY_FORCE:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ENEMY_HERO:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce()instanceof Hero&&cell.getForce().getOwner()==getNotTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ALLY_MINION:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce()instanceof Minion&&cell.getForce().getOwner()==getTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ENEMY_FORCE:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getNotTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ENEMY_MINION:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce()instanceof Minion&&cell.getForce().getOwner()==getNotTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ENEMY_FORCES_COL:
+                for(int i=0; i<5;i++){
+                    Cell cell = cells[i][y];
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getNotTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case RANDOM_ENEMY_MINION:
+                if(getTurnAccount().getMainDeck().getHero().getLocation()!=null){
+                    Random rand = new Random();
+                    ArrayList<Minion> minions=new ArrayList<>();
+                    for(Cell cell: getAdjacentCells(getTurnAccount().getMainDeck().getHero().getLocation())){
+                        if(cell.isBusy()&&cell.getForce() instanceof Minion&&cell.getForce().getOwner()==getNotTurnAccount()){
+                            minions.add((Minion) cell.getForce());
+                        }
+                    }
+                    if(minions.size()>0){
+                        forces.add(minions.get(rand.nextInt(minions.size())));
+                    }
+                }
+                break;
+        }
+        for(Force force: forces){
+            force.addEffect(spell);
+            checkIfDead(force);
+        }
+        return forces.size()>0;
+    }
+
+    void useSpecialPower(int x, int y){
+        if(getTurnAccount().getMainDeck().getHero().getManaCost()>getMana()){
+            System.out.println("You don't have enough mana");
+            return;
+        }
+        if(getTurnAccount().getMainDeck().getHero().getLocation()==null){
+            System.out.println("your hero is dead");
+            return;
+        }
+        if(getTurnAccount().getMainDeck().getHero().isCooling()){
+            System.out.println("your hero is cooling down");
+            return;
+        }
+        if(getTurnAccount().getMainDeck().getHero().getSpecialPower().size()==0){
+            System.out.println("you don't have any special powers");
+            return;
+        }
+        boolean used=false;
+        for(Spell spell: getTurnAccount().getMainDeck().getHero().getSpecialPower()) {
+            if(useSpell(spell, x,y)){
+                used = true;
+            }
+        }
+        if(used){
+            useMana(getTurnAccount().getMainDeck().getHero().getManaCost());
+            getTurnAccount().getMainDeck().getHero().useSpecialPower();
+        }else{
+            System.out.println("Invalid target");
+        }
+    }
+
+    private void checkIfDead(Force force){
+        if(force.getHealth() <= 0){
+            if(force instanceof Minion){
+                if(((Minion) force).getActivateTime()==ActivateTime.ON_DEATH){
+                    for(Spell spell: force.getSpecialPower()){
+                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    }
+                }
+            }
+            force.die();
+            addToGraveyard(force);
+            if(selectedCard == force){
+                selectedCard = null;
+            }
+        }
+    }
+
+    void attack(int id, boolean defend){
         Force target = (Force) getCardById(getOpponentCardsInGame(), id);
         if(target==null){
             System.out.println("Invalid card id");
             return;
         }
-        attack(target);
+        Force force = selectedCard;
+        if(force instanceof Minion){
+            if(((Minion) force).getActivateTime()==ActivateTime.ON_ATTACK || ((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
+                for(Spell spell: force.getSpecialPower()){
+                    useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                }
+            }
+        }
+        selectedCard.attack(target, turn, defend);
+        if(defend && target.canDefend() && target.getTroopType().isInRangeForDefend(target, selectedCard)){
+            if(target instanceof Minion){
+                if(((Minion) target).getActivateTime()==ActivateTime.ON_DEFEND){
+                    for(Spell spell: target.getSpecialPower()){
+                        useSpell(spell, target.getLocation().getX(), target.getLocation().getY());
+                    }
+                }
+            }
+        }
+        checkIfDead(selectedCard);
+        checkIfDead(target);
     }
-
-    private void attack(Force target){
-        if(!selectedCard.canAttack(turn)){
-            System.out.println("Card with id "+ selectedCard.getId() +" can't attack");
-            return;
-        }
-        if(selectedCard.getTroopType().isInRangeForAttack(selectedCard, target)){
-            System.out.println("opponent minion is unavailable for attack");
-            return;
-        }
-        selectedCard.attack(turn);
-        target.getHit(selectedCard.getAp());
-        if(target.canDefend() && target.getTroopType().isInRangeForDefend(target, selectedCard)){
-            selectedCard.getHit(target.getAp());
-        }
-        if(selectedCard.getAp() <=0) {
-            selectedCard.die();
-            addToGraveyard(selectedCard);
-        }
-        if(target.getAp() <= 0){
-            target.die();
-            addToGraveyard(target);
-        }
-    }
-
-
 
     public void insert(String cardName, int x, int y){
         Card card = getTurnAccount().getMainDeck().getCardFromHand(cardName, false);
@@ -215,7 +375,6 @@ public class Battle {
             return;
         }
         Cell cell = getCell(x, y);
-        //todo put some of them in anywhere && check target for spell
         if(cell == null || card instanceof Minion && !isAdjacentToFriendCell(cell)){
             System.out.println("Invalid target");
             return;
@@ -228,6 +387,8 @@ public class Battle {
         useMana(card.getManaCost());
         if(card instanceof Minion){
             card.setLocation(cell);
+        }else{
+            useSpell((Spell) card, x, y);
         }
     }
 
@@ -238,6 +399,14 @@ public class Battle {
             return;
         }
         selectedCard.move(getCell(x, y), turn);
+        Force force = selectedCard;
+        if(force instanceof Minion){
+            if(((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
+                for(Spell spell: force.getSpecialPower()){
+                    useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                }
+            }
+        }
     }
 
     public void setSelectedCard(int id) {
@@ -352,6 +521,23 @@ public class Battle {
                 return getCell(x + 1, y + 1).isBusy() && getCell(x + 1, y + 1).getForce().getOwner() == getTurnAccount();
         }
         return false;
+    }
+    private ArrayList<Cell> getAdjacentCells(Cell cell) {
+        ArrayList<Cell> res=new ArrayList<>();
+        int x=cell.getX(), y=cell.getY();
+        if(x>0){
+            if(y>0) res.add(getCell(x-1,y-1));
+            res.add(getCell(x-1,y));
+            if(y<8) res.add(getCell(x-1,y+1));
+        }
+        if(y>0) res.add(getCell(x,y-1));
+        if(y<8) res.add(getCell(x,y+1));
+        if(x<5){
+            if(y>0) res.add(getCell(x+1,y-1));
+            res.add(getCell(x+1,y));
+            if(y<8) res.add(getCell(x + 1, y + 1));
+        }
+        return res;
     }
 
     public ArrayList<Force> getMyCardsInGame(){

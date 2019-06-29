@@ -3,9 +3,24 @@ package GamePackage;
 public class Hero extends Force {
 
     private int coolDown;
+    private int cooling=0;
 
     public int getCoolDown() {
         return coolDown;
+    }
+
+    @Override
+    public void endTurn() {
+        super.endTurn();
+        if(cooling>0)cooling--;
+    }
+
+    public boolean isCooling(){
+        return cooling>0;
+    }
+
+    public void useSpecialPower(){
+        cooling=coolDown;
     }
 
     @Override

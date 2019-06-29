@@ -11,7 +11,7 @@
     "buff" : "POWER",
     "info" : null,
     "coolDown" : 100,
-    "target" : null,
+    "target" : "ALLY_MINION",
     "changeHP" : 10,
     "changeAP" : 0,
     "targetArea" : 1,

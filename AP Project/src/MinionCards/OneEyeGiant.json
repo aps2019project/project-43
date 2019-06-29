@@ -10,8 +10,8 @@
   "specialPower" : [ {
     "buff" : "ATTACK",
     "coolDown" : 0,
-    "target" : "ENEMY_MINION",
-    "changeHP" : -2,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 2,
     "changeAP" : 0,
     "targetArea" : 3,
     "whichTurn" : 0

@@ -2,7 +2,7 @@
   "name" : "Rostam",
   "price" : 8000,
   "manaCost" : 0,
-  "info" : null,
+  "info" : "strongest hero",
   "hp" : 55,
   "ap" : 7,
   "attackRange" : 4,

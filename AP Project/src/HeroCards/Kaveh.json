@@ -2,18 +2,18 @@
   "name" : "Kaveh",
   "price" : 8000,
   "manaCost" : 1,
-  "info" : "Holy a cell for three rounds",
+  "info" : "Holy a cell for three rounds (3 turns to cool down)",
   "hp" : 50,
   "ap" : 4,
   "attackRange" : 0,
   "coolDown" : 3,
   "specialPower" : [{
-    "buff" : "HOLY",
+    "buff" : "HOLY_CELL",
     "coolDown" : 3,
     "target" : "CELL",
-    "changeHP" : 0,
-    "changeAP" : 0,
-    "targetArea" : 13
+    "changeHP" : 1,
+    "changeAP" : 1,
+    "targetArea" : 1
   }],
   "troopType" : "MELEE"
 }

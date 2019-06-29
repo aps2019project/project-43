@@ -75,7 +75,7 @@ class PlayMenu extends GameMenu {
                                 battle.attackCombo(parseInt(inputArray[2]), ids);
                                 break;
                             default:
-                                battle.attack(parseInt(inputArray[1]));
+                                battle.attack(parseInt(inputArray[1]), true);
                         }
                         break;
                     default: {

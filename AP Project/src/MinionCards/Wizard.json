@@ -19,7 +19,7 @@
     "buff" : "WEAKNESS",
     "coolDown" : 1,
     "target" : "ALLY_MINION",
-    "changeHP" : -1,
+    "changeHP" : 1,
     "changeAP" : 0,
     "targetArea" : 3,
     "whichTurn" : 0

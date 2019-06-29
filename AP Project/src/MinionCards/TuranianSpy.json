@@ -19,8 +19,8 @@
     "buff" : "POISON",
     "coolDown" : 4,
     "target" : "ENEMY_FORCE",
-    "changeHP" : 0,
-    "changeAP" : 0,
+    "changeHP" : 1,
+    "changeAP" : 1,
     "targetArea" : 1,
     "whichTurn" : 0
   } ],

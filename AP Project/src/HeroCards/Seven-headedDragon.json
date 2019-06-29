@@ -2,7 +2,7 @@
   "name" : "Seven-headedDragon",
   "price" : 8000,
   "manaCost" : 0,
-  "info" : "Disarm one player",
+  "info" : "Disarm one player (1 turn to cool down)",
   "hp" : 50,
   "ap" : 4,
   "attackRange" : 1,

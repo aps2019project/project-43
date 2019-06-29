@@ -1,7 +1,5 @@
 package GamePackage;
 
-import java.util.ArrayList;
-
 public abstract class Card extends GameObject{
     private int manaCost;
 

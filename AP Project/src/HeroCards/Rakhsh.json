@@ -2,7 +2,7 @@
   "name" : "Rakhsh",
   "price" : 8000,
   "manaCost" : 1,
-  "info" : "Stun one enemy force for one round",
+  "info" : "Stun one enemy force for one round (2 turns to cool down)",
   "hp" : 50,
   "ap" : 4,
   "attackRange" : 0,

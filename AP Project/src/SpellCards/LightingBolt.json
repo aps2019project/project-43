@@ -4,9 +4,9 @@
   "manaCost" : 2,
   "buff" : "ATTACK",
   "info" : "Deals 8 Damage to Enemy Hero",
-  "coolDown" : 1,
+  "coolDown" : 0,
   "target" : "ENEMY_HERO",
-  "changeHP" : -8,
+  "changeHP" : 8,
   "changeAP" : 0,
   "targetArea" : 1
 }
