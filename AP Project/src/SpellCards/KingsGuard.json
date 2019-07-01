@@ -5,7 +5,7 @@
   "buff" : "KILL",
   "info" : "Kills The Enemy Minion Nearby The Ally Hero",
   "coolDown" : 0,
-  "target" : "RANDOM_ENEMY_MINION",
+  "target" : "RANDOM_ENEMY_MINION_8",
   "changeHP" : 0,
   "changeAP" : 0,
   "targetArea" : 3

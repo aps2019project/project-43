@@ -8,10 +8,15 @@ public class Cell {
     private ArrayList<Effect> effects;
     private Force force;
     private Flag flag;
+    private Collectible item=null;
 
     Cell(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public void setItem(Collectible item) {
+        this.item = item;
     }
 
     public ArrayList<Effect> getEffects() {

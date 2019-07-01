@@ -49,11 +49,24 @@ public class CardGenerator {
         return card;
     }
 
-    public static Item itemGenerator(String itemPath){
+    public static Usable usableItemGenerator(String itemPath){
         ObjectMapper objectMapper = new ObjectMapper();
-        Item item;
+        Usable item;
         try{
-            item = objectMapper.readValue(new File(itemPath), Item.class);
+            item = objectMapper.readValue(new File(itemPath), Usable.class);
+        }catch(IOException e){
+            System.out.println("File doesn't exist or the item name is wrong"+itemPath + e);
+            return null;
+        }
+        item.setFilePath(itemPath);
+        item.setId(staticId++);
+        return item;
+    }
+    public static Collectible collectibleItemGenerator(String itemPath){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collectible item;
+        try{
+            item = objectMapper.readValue(new File(itemPath), Collectible.class);
         }catch(IOException e){
             System.out.println("File doesn't exist or the item name is wrong"+itemPath + e);
             return null;
@@ -64,7 +77,7 @@ public class CardGenerator {
     }
 
     public static  <T extends Generateble> T getClone(T obj){
-        if(obj instanceof Item) return (T) itemGenerator(obj.getFilePath());
+        if(obj instanceof Item) return (T) usableItemGenerator(obj.getFilePath());
         else if(obj instanceof Hero) return (T) heroGenerator(obj.getFilePath());
         else if(obj instanceof Spell) return (T) spellGenerator(obj.getFilePath());
         else if(obj instanceof Minion) return (T) minionGenerator(obj.getFilePath());

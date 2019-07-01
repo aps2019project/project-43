@@ -2,11 +2,11 @@
   "name" : "Sacrifice",
   "price" : 1600,
   "manaCost" : 2,
-  "buff" : "POWER",
+  "buff" : "WEAKH_POWERA",
   "info" : "Give a Friendly Minion a Weakness Buff & Decrease Its HP By 6 & A Power Buff & Increase Its AP By 8",
   "coolDown" : 1,
   "target" : "ALLY_MINION",
-  "changeHP" : -6,
+  "changeHP" : 6,
   "changeAP" : 8,
   "targetArea" : 1
 }

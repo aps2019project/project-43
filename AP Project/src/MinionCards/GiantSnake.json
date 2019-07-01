@@ -8,12 +8,12 @@
   "attackRange" : 5,
   "troopType" : "RANGED",
   "specialPower" : [{
-    "buff" : "HOLY",
+    "buff" : "DISHOLY",
     "coolDown" : 100,
     "target" : "ALLY_FORCE",
-    "changeHP" : -1,
-    "changeAP" : -1,
-    "targetArea" : 4,
+    "changeHP" : 1,
+    "changeAP" : 1,
+    "targetArea" : 5,
     "whichTurn" : 0
   }],
   "activateTime" : "ON_SPAWN"

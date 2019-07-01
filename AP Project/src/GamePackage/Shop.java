@@ -5,12 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class Shop {
     private ArrayList<Card> cards = new ArrayList<>();
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Usable> usableItems = new ArrayList<>();
+    private static ArrayList<Collectible> collectibleItems = new ArrayList<>();
 
     private void addToMinions(Path path){
         cards.add(CardGenerator.minionGenerator(path.toString()));
@@ -21,10 +22,16 @@ public class Shop {
     private void addToHeros(Path path){
         cards.add(CardGenerator.heroGenerator(path.toString()));
     }
-    private void addToItems(Path path){
-        items.add(CardGenerator.itemGenerator(path.toString()));
+    private void addToUsables(Path path){
+        usableItems.add(CardGenerator.usableItemGenerator(path.toString()));
+    }
+    private void addToCollectibles(Path path){
+        collectibleItems.add(CardGenerator.collectibleItemGenerator(path.toString()));
     }
 
+    public static Collectible getItem(){
+        return CardGenerator.getClone(collectibleItems.get(new Random().nextInt(collectibleItems.size())));
+    }
 
     Shop(){
         try (Stream<Path> paths = Files.walk(Paths.get("src/MinionCards/"))) {
@@ -48,10 +55,17 @@ public class Shop {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (Stream<Path> paths = Files.walk(Paths.get("src/ItemCards/"))) {
+        try (Stream<Path> paths = Files.walk(Paths.get("src/UsableItemCards/"))) {
             paths
                     .filter(Files::isRegularFile)
-                    .forEach(this::addToItems);
+                    .forEach(this::addToUsables);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try (Stream<Path> paths = Files.walk(Paths.get("src/CollectibleItemCards/"))) {
+            paths
+                    .filter(Files::isRegularFile)
+                    .forEach(this::addToCollectibles);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,7 +76,7 @@ public class Shop {
         int playersMoney = loggedAccount.getMoney();
         Collection playerCollection = loggedAccount.getCollection();
         boolean found = false;
-        for (int i = 0; i < cards.size() + items.size(); i++) {
+        for (int i = 0; i < cards.size() + usableItems.size(); i++) {
             if (i < cards.size()) {
                 if(cards.get(i).getName().equalsIgnoreCase(name)) {
                     found = true;
@@ -76,14 +90,14 @@ public class Shop {
                             System.out.println("Purchase Successful");
                     }
                 }
-            } else if (items.get(i - cards.size()).getName().equalsIgnoreCase(name)) {
+            } else if (usableItems.get(i - cards.size()).getName().equalsIgnoreCase(name)) {
                 found = true;
-                if (items.get(i).getPrice() > playersMoney) {
+                if (usableItems.get(i).getPrice() > playersMoney) {
                     System.out.println("Insufficient Money");
                 } else if (playerCollection.getItems().size() >= 3) {
                     System.out.println("You Already Have 3 Items");
                 } else {
-                    Item item = CardGenerator.getClone(items.get(i-cards.size()));
+                    Item item = CardGenerator.getClone(usableItems.get(i-cards.size()));
                     playerCollection.addToCollection(item);
                     loggedAccount.pay(item.getPrice());
                     item.setOwner(Account.getLoggedAccount());
@@ -120,7 +134,7 @@ public class Shop {
                 System.out.println(card.getId());
             }
         }
-        for (Item item : items) {
+        for (Item item : usableItems) {
             if (item.getName().equalsIgnoreCase(name)) {
                 System.out.println(item.getId());
             }
@@ -135,7 +149,7 @@ public class Shop {
             }
         }
         System.out.println("Items :");
-        for (Item item : items) {
+        for (Item item : usableItems) {
             System.out.println("\t"+ item + " - Buy Cost = " + item.getPrice());
         }
         System.out.println("Cards :");

@@ -8,11 +8,11 @@
   "attackRange" : 5,
   "troopType" : "RANGED",
   "specialPower" : [ {
-    "buff" : "HOLY",
+    "buff" : "HOLY_CONT",
     "coolDown" : 100,
     "target" : "ALLY_MINION",
-    "changeHP" : 0,
-    "changeAP" : 0,
+    "changeHP" : 1,
+    "changeAP" : 1,
     "targetArea" : 3,
     "whichTurn" : 0
   }, {

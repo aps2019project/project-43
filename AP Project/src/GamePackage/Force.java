@@ -26,7 +26,7 @@ public abstract class Force extends Card {
 
         if(spell.getBuff()==Buff.KILL){
             die();
-        }else if(spell.getBuff()==Buff.ATTACK){
+        }else if(spell.getBuff()==Buff.ATTACK || spell.getBuff()==Buff.ATTACK_ON_INSERT){
             getHit(spell.getChangeAP());
         }else if(spell.getBuff()==Buff.REMOVE){
             for(int i=0;i<effects.size();i++){
@@ -38,17 +38,43 @@ public abstract class Force extends Card {
                         case STUN:
                         case DISARM:
                         case POISON_ON_ATTACK:
+                        case WEAKNESS_ON_ATTACK:
                             effects.remove(effect);
                             i--;
+                            break;
+                        case WEAKH_HOLYA:
+                            spell.setBuff(Buff.HOLY, spell.getChangeAP(), spell.getChangeAP());
+                            break;
+                        case WEAKH_POWERA:
+                            spell.setBuff(Buff.POWER, 0,spell.getChangeAP());
+                            break;
+                        case MADDNESS:
+                            spell.setBuff(Buff.POWER, 0, spell.getChangeAP());
+                            break;
                     }
                 }else{
                     switch (effect.getBuff()){
                         case HOLY:
                         case POWER:
                         case POWER_CONT:
+                        case POWER_ON_DEATH:
                         case HOLY_CONT:
+                        case HOLY_ON_SPAWN:
                             effects.remove(effect);
                             i--;
+                            break;
+                        case WEAKH_HOLYA:
+                            spell.setBuff(Buff.WEAKNESS, spell.getChangeHP(), spell.getChangeHP());
+                            break;
+                        case WEAKH_POWERA:
+                            spell.setBuff(Buff.WEAKH_POWERA, spell.getChangeHP(), 0);
+                            break;
+                        case MADDNESS:
+                            spell.setBuff(Buff.DISARM, 0, 0);
+                            break;
+                        case POWERA_HEALTH:
+                            spell.setBuff(Buff.HEALTH, spell.getChangeHP(), 0);
+                            break;
                     }
                 }
             }
@@ -109,18 +135,28 @@ public abstract class Force extends Card {
         return specialPower;
     }
 
-    public void getHit(int ap){
+    private void getHit(int ap, boolean useHoly){
         for(Effect effect: effects){
-            if(effect.getBuff()==Buff.HOLY || effect.getBuff()==Buff.HOLY_CONT){
-                if(ap>=effect.getSpell().getChangeHP()) ap-=effect.getSpell().getChangeHP();
+            if(effect.getBuff()==Buff.DISHOLY){
+                if(ap>=effect.getSpell().getChangeAP()) ap+=effect.getSpell().getChangeAP();
             }
         }
-        for(Effect effect: getLocation().getEffects()){
-            if(effect.getBuff()==Buff.HOLY_CELL){
-                if(ap>=effect.getSpell().getChangeHP()) ap-=effect.getSpell().getChangeHP();
+        if(useHoly){
+            for(Effect effect: effects){
+                if(effect.getBuff()==Buff.HOLY || effect.getBuff()==Buff.HOLY_CONT || effect.getBuff()==Buff.WEAKH_HOLYA || effect.getBuff()==Buff.HOLY_ON_SPAWN){
+                    if(ap>=effect.getSpell().getChangeAP()) ap-=effect.getSpell().getChangeAP();
+                }
+            }
+            for(Effect effect: getLocation().getEffects()){
+                if(effect.getBuff()==Buff.HOLY_CELL){
+                    if(ap>=effect.getSpell().getChangeHP()) ap-=effect.getSpell().getChangeHP();
+                }
             }
         }
         damage+=ap;
+    }
+    private void getHit(int ap){
+        getHit(ap, true);
     }
 
     public int getHp() {
@@ -138,7 +174,7 @@ public abstract class Force extends Card {
 
     private boolean isDisarmed(){
         for(Effect effect: effects){
-            if(effect.getBuff()==Buff.DISARM || effect.getBuff()==Buff.MADDNESS){
+            if(effect.getBuff()==Buff.DISARM || effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.DISARM_RH_ON_ATTACK || effect.getBuff()==Buff.DISARM_ON_ATTACK){
                 return true;
             }
         }
@@ -177,10 +213,10 @@ public abstract class Force extends Card {
     public int getHealth() {
         int extra=0;
         for(Effect effect: effects){
-            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT){
+            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.POWER_NOTDISPEL ||effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT || effect.getBuff()==Buff.POWER_ON_DEATH || effect.getBuff()==Buff.POWERA_HEALTH || effect.getBuff()==Buff.HEALTH){
                 extra+=effect.getSpell().getChangeHP();
             }
-            if(effect.getBuff()==Buff.WEAKNESS){
+            if(effect.getBuff()==Buff.WEAKNESS ||effect.getBuff()==Buff.WEAKH_HOLYA || effect.getBuff()==Buff.WEAKH_POWERA||effect.getBuff()==Buff.WEAKNESS_NOTDISPEL || effect.getBuff()==Buff.WEAKNESS_ON_ATTACK){
                 extra-=effect.getSpell().getChangeHP();
             }
         }
@@ -191,10 +227,10 @@ public abstract class Force extends Card {
     public int getAp() {
         int extra=0;
         for(Effect effect: effects){
-            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT){
+            if(effect.getBuff()==Buff.POWER || effect.getBuff()==Buff.POWER_NOTDISPEL|| effect.getBuff()==Buff.MADDNESS || effect.getBuff()==Buff.POWER_CONT || effect.getBuff()==Buff.WEAKH_POWERA || effect.getBuff()==Buff.POWER_ON_DEATH || effect.getBuff()==Buff.POWERA_HEALTH){
                 extra+=effect.getSpell().getChangeAP();
             }
-            if(effect.getBuff()==Buff.WEAKNESS){
+            if(effect.getBuff()==Buff.WEAKNESS || effect.getBuff()==Buff.WEAKNESS_NOTDISPEL || effect.getBuff()==Buff.WEAKNESS_ON_ATTACK){
                 extra-=effect.getSpell().getChangeAP();
             }
         }
@@ -203,7 +239,6 @@ public abstract class Force extends Card {
     }
 
     public void move(Cell cell, int turn) {
-        // todo if a card can move more than two cells
         if(getLocation().getDistance(cell) > 2
                 ||!canMove(turn)){
             System.out.println("Invalid target");
@@ -213,6 +248,12 @@ public abstract class Force extends Card {
         turnMoved=turn;
     }
 
+    private boolean hasEffect(Buff buff){
+        for(Spell spell: specialPower){
+            if(spell.getBuff()==buff)return true;
+        }
+        return false;
+    }
 
     void attack(Force target, int turn, boolean defend){
         if(!canAttack(turn)){
@@ -224,7 +265,7 @@ public abstract class Force extends Card {
             return;
         }
         turnAttacked=turn;
-        target.getHit(getAp());
+        target.getHit(getAp(), !hasEffect(Buff.UNHOLY));
         if(defend && target.canDefend() && target.getTroopType().isInRangeForDefend(target, this)){
             getHit(target.getAp());
         }
@@ -235,7 +276,7 @@ public abstract class Force extends Card {
         }
     }
 
-    void liftFlag(Flag flag){
+    private void liftFlag(Flag flag){
         hadFlag=0;
         this.flag=flag;
     }

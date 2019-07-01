@@ -1,12 +1,12 @@
 {
   "name" : "PhoenixFeather",
   "info" : "Decrease enemy's ap by 2, only for ranged and hybrid",
-  "buff" : null,
+  "buff" : "WEAKNESS_NOTDISPEL",
   "changeAP" : 2,
   "changeHP" : 0,
   "changeMana" : 0,
-  "cooldown" : 100,
+  "coolDown" : 100,
   "price" : 3500,
   "target" : "ENEMY_HERO",
-  "unused" : true
+  "targetArea" : 9
 }

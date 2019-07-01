@@ -10,7 +10,7 @@
   "specialPower" : [ {
     "buff" : "POISON",
     "coolDown" : 1,
-    "target" : "ENEMY_MINION",
+    "target" : "ENEMY_MINION_RANDOM",
     "changeHP" : 16,
     "changeAP" : 0,
     "targetArea" : 1,

@@ -1,11 +1,11 @@
 {
   "name" : "ChineseSword",
   "info" : "Give 5 AP to melee troops",
-  "buff" : null,
+  "buff" : "POWER_NOTDISPEL",
   "changeAP" : 5,
   "changeHP" : 0,
   "changeMana" : 0,
-  "cooldown" : 100,
-  "target" : "FORCE",
-  "unused" : true
+  "coolDown" : 100,
+  "target" : "ALLY_FORCE_MELEE",
+  "targetArea":9
 }

@@ -5,7 +5,7 @@
   "changeAP" : 8,
   "changeHP" : 0,
   "changeMana" : 0,
-  "cooldown" : 100,
-  "target" : "ALLY_MINION",
-  "unused" : true
+  "coolDown" : 100,
+  "target" : "ALLY_MINION_RANDOM",
+  "targetArea":1
 }

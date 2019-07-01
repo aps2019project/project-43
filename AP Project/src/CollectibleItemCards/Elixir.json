@@ -1,11 +1,11 @@
 {
   "name" : "Elixir",
   "info" : "Increase HP by 3 and a power buff with 3 increment in AP for a minion",
-  "buff" : "POWER",
-  "changeAP" : 0,
+  "buff" : "POWERA_HEALTH",
+  "changeAP" : 3,
   "changeHP" : 3,
   "changeMana" : 0,
-  "cooldown" : 100,
-  "target" : "ALLY_MINION",
-  "unused" : true
+  "coolDown" : 100,
+  "target" : "ALLY_MINION_RANDOM",
+  "targetArea" : 9
 }

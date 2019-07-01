@@ -1,12 +1,11 @@
 package GamePackage;
 
-import static GamePackage.Buff.*;
-
 public class Spell extends Card {
     private int coolDown;
     private SpellTarget target;
     private int changeHP;
     private int changeAP;
+    private int changeMana=0;
     private int targetArea;
     private int whichTurn;
     private Buff buff;
@@ -39,6 +38,10 @@ public class Spell extends Card {
         return whichTurn;
     }
 
+    public int getChangeMana() {
+        return changeMana;
+    }
+
     @Override
     public String toString() {
         return getId() +": Type : Spell - Name : " + getName() + "- MP : " + getManaCost() + "- Desc : " + getInfo();
@@ -51,5 +54,9 @@ public class Spell extends Card {
         System.out.println("MP: "+getManaCost());
         System.out.println("Cost: "+getPrice());
         System.out.println("Desc: "+getInfo());
+    }
+
+    public void setBuff(Buff buff, int changeHP, int changeAP) {
+        this.buff=buff;
     }
 }

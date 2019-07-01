@@ -15,6 +15,7 @@ public class Battle {
     private ArrayList<Card> graveyard1 =new ArrayList<>();
     private ArrayList<Card> graveyard2 =new ArrayList<>();
     private int numberOfFlags;
+    private Random random = new Random();
 
     public void showBoard(){
         System.out.println();
@@ -79,19 +80,23 @@ public class Battle {
             force.endTurn();
             checkIfDead(force);
         }
+        selectedCard = null;
         turn++;
         mana[0] = mana[1] = turn / 2 + 2;
         if (turn > 14) mana[0] = mana[1] = 9;
-
-
-        for(Force force: getMyCardsInGame()) {
-            if (force instanceof Minion) {
-                if (((Minion) force).getActivateTime() == ActivateTime.ON_TURN ||((Minion) force).getActivateTime() == ActivateTime.PASSIVE) {
-                    for (Spell spell : force.getSpecialPower()) {
-                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
-                    }
-                }
+        if(players[0].getMainDeck().getItem()!=null){
+            if(turn<=2*players[0].getMainDeck().getItem().getCoolDown()){
+                mana[0]+=players[0].getMainDeck().getItem().getChangeMana();
             }
+        }
+        if(players[1].getMainDeck().getItem()!=null){
+            if(turn<=2*players[1].getMainDeck().getItem().getCoolDown()){
+                mana[1]+=players[1].getMainDeck().getItem().getChangeMana();
+            }
+        }
+
+        if(random.nextInt(100)>70){
+            getCell(random.nextInt(5),random.nextInt(9)).setItem(Shop.getItem());
         }
 
 
@@ -209,6 +214,43 @@ public class Battle {
         players[1].getMainDeck().getHero().setLocation(cells[2][8]);
         players[0].getMainDeck().startGame();
         players[1].getMainDeck().startGame();
+
+        if(getTurnAccount().getMainDeck().getItem()!=null){
+            switch (getTurnAccount().getMainDeck().getItem().getBuff()){
+                case HOLY:
+                case WEAKNESS_NOTDISPEL:
+                    useSpell(getTurnAccount().getMainDeck().getItem(),0,0);
+                    break;
+            }
+        }
+        if(getNotTurnAccount().getMainDeck().getItem()!=null){
+            switch (getNotTurnAccount().getMainDeck().getItem().getBuff()){
+                case HOLY:
+                case WEAKNESS_NOTDISPEL:
+                    useSpell(getNotTurnAccount().getMainDeck().getItem(),0,0);
+                    break;
+            }
+        }
+
+        for(Force force: getMyCardsInGame()) {
+            if (force instanceof Minion) {
+                if (((Minion) force).getActivateTime() == ActivateTime.ON_TURN ||((Minion) force).getActivateTime() == ActivateTime.PASSIVE) {
+                    for (Spell spell : force.getSpecialPower()) {
+                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    }
+                }
+            }
+        }
+        for(Force force: getOpponentCardsInGame()) {
+            if (force instanceof Minion) {
+                if (((Minion) force).getActivateTime() == ActivateTime.ON_TURN ||((Minion) force).getActivateTime() == ActivateTime.PASSIVE) {
+                    for (Spell spell : force.getSpecialPower()) {
+                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    }
+                }
+            }
+        }
+
     }
 
     private Cell[][] cells = new Cell[5][9];
@@ -288,7 +330,9 @@ public class Battle {
     private ArrayList<Cell> getCells(int x,int y,int area){
         ArrayList<Cell> res=new ArrayList<>();
         for(int i=x;i<x+area&&i<5;i++){
+            if(i<0) i=0;
             for(int j=y;j<y+area&&y<9;y++){
+                if(j<0) j=0;
                 res.add(cells[i][j]);
             }
         }
@@ -297,6 +341,9 @@ public class Battle {
 
     private boolean useSpell(Spell spell, int x, int y){
         ArrayList<Force> forces = new ArrayList<>();
+        Random rand = new Random();
+        ArrayList<Minion> minions=new ArrayList<>();
+        ArrayList<Force> forcestmp=new ArrayList<>();
         switch (spell.getTarget()){
             case CELL:
                 for(Cell cell:getCells(x,y,spell.getTargetArea())){
@@ -321,6 +368,11 @@ public class Battle {
             case ALLY_FORCE:
                 for(Cell cell:getCells(x,y,spell.getTargetArea())){
                     if(cell.isBusy()&&cell.getForce().getOwner()==getTurnAccount()) forces.add(cell.getForce());
+                }
+                break;
+            case ALLY_FORCE_MELEE:
+                for(Cell cell:getCells(x,y,spell.getTargetArea())){
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getTurnAccount()&&cell.getForce().getTroopType()==AttackType.MELEE) forces.add(cell.getForce());
                 }
                 break;
             case ENEMY_HERO:
@@ -349,10 +401,8 @@ public class Battle {
                     if(cell.isBusy()&&cell.getForce().getOwner()==getNotTurnAccount()) forces.add(cell.getForce());
                 }
                 break;
-            case RANDOM_ENEMY_MINION:
+            case RANDOM_ENEMY_MINION_8:
                 if(getTurnAccount().getMainDeck().getHero().getLocation()!=null){
-                    Random rand = new Random();
-                    ArrayList<Minion> minions=new ArrayList<>();
                     for(Cell cell: getAdjacentCells(getTurnAccount().getMainDeck().getHero().getLocation())){
                         if(cell.isBusy()&&cell.getForce() instanceof Minion&&cell.getForce().getOwner()==getNotTurnAccount()){
                             minions.add((Minion) cell.getForce());
@@ -361,6 +411,46 @@ public class Battle {
                     if(minions.size()>0){
                         forces.add(minions.get(rand.nextInt(minions.size())));
                     }
+                }
+                break;
+            case ENEMY_MINION_RANDOM:
+                for(Cell cell: getCells(0,0,9)){
+                    if(cell.isBusy()&&cell.getForce() instanceof Minion&&cell.getForce().getOwner()==getNotTurnAccount()){
+                        minions.add((Minion) cell.getForce());
+                    }
+                }
+                if(minions.size()>0){
+                    forces.add(minions.get(rand.nextInt(minions.size())));
+                }
+                break;
+            case ALLY_MINION_RANDOM:
+                for(Cell cell: getCells(0,0,9)){
+                    if(cell.isBusy()&&cell.getForce() instanceof Minion&&cell.getForce().getOwner()==getTurnAccount()){
+                        minions.add((Minion) cell.getForce());
+                    }
+                }
+                if(minions.size()>0){
+                    forces.add(minions.get(rand.nextInt(minions.size())));
+                }
+                break;
+            case ALLY_FORCE_RANDOM:
+                for(Cell cell: getCells(0,0,9)){
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getTurnAccount()){
+                        forcestmp.add(cell.getForce());
+                    }
+                }
+                if(forcestmp.size()>0){
+                    forces.add(forcestmp.get(rand.nextInt(forcestmp.size())));
+                }
+                break;
+            case ALLY_FORCE_RH_RANDOM:
+                for(Cell cell: getCells(0,0,9)){
+                    if(cell.isBusy()&&cell.getForce().getOwner()==getTurnAccount()&&cell.getForce().getTroopType()!=AttackType.MELEE){
+                        forcestmp.add(cell.getForce());
+                    }
+                }
+                if(forcestmp.size()>0){
+                    forces.add(forcestmp.get(rand.nextInt(forcestmp.size())));
                 }
                 break;
         }
@@ -407,9 +497,12 @@ public class Battle {
             if(force instanceof Minion){
                 if(((Minion) force).getActivateTime()==ActivateTime.ON_DEATH){
                     for(Spell spell: force.getSpecialPower()){
-                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                        useSpell(spell, force.getLocation().getX()-spell.getTargetArea()/2, force.getLocation().getY()-spell.getTargetArea()/2);
                     }
                 }
+            }
+            if(getTurnAccount().getMainDeck().getItem()!=null && getTurnAccount().getMainDeck().getItem().getBuff()==Buff.POWER_ON_DEATH){
+                useSpell(getTurnAccount().getMainDeck().getItem(), 0, 0);
             }
             if(force.getFlag()!=null){
                 force.getLocation().putFlag(force.getFlag());
@@ -433,9 +526,20 @@ public class Battle {
         if(force instanceof Minion){
             if(((Minion) force).getActivateTime()==ActivateTime.ON_ATTACK){
                 for(Spell spell: force.getSpecialPower()){
-                    useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
+                    useSpell(spell, target.getLocation().getX(), target.getLocation().getY());
                 }
             }
+        }
+        if(selectedCard instanceof Hero
+                && getTurnAccount().getMainDeck().getItem()!=null
+                && (getTurnAccount().getMainDeck().getItem().getBuff()==Buff.DISARM_RH_ON_ATTACK
+                && (target.getTroopType()==AttackType.HYBRID||target.getTroopType()==AttackType.RANGED) || getTurnAccount().getMainDeck().getItem().getBuff()==Buff.DISARM_ON_ATTACK)
+                ){
+            target.addEffect(getTurnAccount().getMainDeck().getItem());
+        }
+        if(getTurnAccount().getMainDeck().getItem()!=null
+                && getTurnAccount().getMainDeck().getItem().getBuff()==Buff.WEAKNESS_ON_ATTACK){
+            target.addEffect(getTurnAccount().getMainDeck().getItem());
         }
         selectedCard.attack(target, turn, defend);
         if(defend && target.canDefend() && target.getTroopType().isInRangeForDefend(target, selectedCard)){
@@ -471,11 +575,19 @@ public class Battle {
         if(card instanceof Minion){
             card.setLocation(cell);
             Force force= (Force) card;
-                if(((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
-                    for(Spell spell: force.getSpecialPower()){
-                        useSpell(spell, force.getLocation().getX(), force.getLocation().getY());
-                    }
+            if(((Minion) force).getActivateTime()==ActivateTime.ON_SPAWN){
+                for(Spell spell: force.getSpecialPower()){
+                    useSpell(spell, force.getLocation().getX()-spell.getTargetArea()/2, force.getLocation().getY()-spell.getTargetArea()/2);
                 }
+            }
+            if(getTurnAccount().getMainDeck().getItem()!=null
+                    && getTurnAccount().getMainDeck().getItem().getBuff()==Buff.ATTACK_ON_INSERT){
+                useSpell(getTurnAccount().getMainDeck().getItem(), 0,0);
+            }
+            if(getTurnAccount().getMainDeck().getItem()!=null
+                    && getTurnAccount().getMainDeck().getItem().getBuff()==Buff.HOLY_ON_SPAWN){
+                useSpell(getTurnAccount().getMainDeck().getItem(), 0,0);
+            }
         }else{
             useSpell((Spell) card, x, y);
         }

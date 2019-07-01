@@ -1,11 +1,11 @@
 {
   "name" : "Two-headedArrow",
   "info" : "Increase AP by 6 for random ranged or hybrid force",
-  "buff" : null,
+  "buff" : "POWER_NOTDISPEL",
   "changeAP" : 2,
   "changeHP" : 0,
   "changeMana" : 0,
-  "cooldown" : 100,
-  "target" : "FORCE",
-  "unused" : true
+  "coolDown" : 100,
+  "target" : "ALLY_FORCE_RH_RANDOM",
+  "targetArea" : 9
 }
