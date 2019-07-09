@@ -3,21 +3,28 @@ package GamePackage;
 public class Effect{
     private Spell spell;
     private int turnRemained;
+    private int toBegin;
 
     Effect(Spell spell){
         this.spell = spell;
         this.turnRemained = spell.getCoolDown();
+        this.toBegin=spell.getWhichTurn();
     }
 
     public boolean endTurn(){
-        return --turnRemained == 0;
+        if(toBegin>0){
+            toBegin--;
+        }else if(turnRemained>0){
+            turnRemained--;
+        }
+        return turnRemained == 0;
     }
 
     public Spell getSpell() {
-        return spell;
+        return toBegin==0?spell:null;
     }
 
     public Buff getBuff(){
-        return spell.getBuff();
+        return toBegin==0?spell.getBuff():null;
     }
 }

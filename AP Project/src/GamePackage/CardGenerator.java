@@ -77,7 +77,8 @@ public class CardGenerator {
     }
 
     public static  <T extends Generateble> T getClone(T obj){
-        if(obj instanceof Item) return (T) usableItemGenerator(obj.getFilePath());
+        if(obj instanceof Usable) return (T) usableItemGenerator(obj.getFilePath());
+        else if(obj instanceof Collectible) return (T) collectibleItemGenerator(obj.getFilePath());
         else if(obj instanceof Hero) return (T) heroGenerator(obj.getFilePath());
         else if(obj instanceof Spell) return (T) spellGenerator(obj.getFilePath());
         else if(obj instanceof Minion) return (T) minionGenerator(obj.getFilePath());

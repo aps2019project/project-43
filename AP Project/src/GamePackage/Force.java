@@ -181,7 +181,7 @@ public abstract class Force extends Card {
         return false;
     }
 
-    private boolean canMove(int turn){
+    public boolean canMove(int turn){
         return turnAttacked!=turn && turnMoved!=turn && !isStunned();
     }
 
@@ -207,6 +207,10 @@ public abstract class Force extends Card {
         if(cell!=null && cell.getFlag()!=null){
             liftFlag(cell.getFlag());
             cell.loseFlag();
+        }
+        if(cell!=null && cell.getItem()!=null){
+            getOwner().getMainDeck().addItem(cell.getItem());
+            cell.setItem(null);
         }
     }
 
@@ -292,7 +296,7 @@ public abstract class Force extends Card {
     public static void printForces(ArrayList<Force> forces) {
         for (Force force: forces) {
             System.out.println(force.getId() + " : " + force.getName() +
-                    "health : " + force.getHealth() + ", location : (" + force.getLocation().getX() +
+                    ", health : " + force.getHealth() + ", location : (" + force.getLocation().getX() +
                     ", " + force.getLocation().getY() + "), power : " + force.getAp());
         }
     }

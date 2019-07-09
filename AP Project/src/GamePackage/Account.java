@@ -3,7 +3,6 @@ package GamePackage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 public class Account {
     private static List<Account> accounts = new ArrayList<>();
@@ -155,12 +154,12 @@ public class Account {
     public void addObjectToDeck (String objectName, String deckName){
         Deck deck = this.getDeck(deckName);
         if(deck==null){
-            System.out.println("there is no such deck!");
+            System.out.println("there is no such deck! "+deckName);
             return;
         }
         List<GameObject> objects = collection.getCards(objectName);
         if(objects.size() == 0){
-            System.out.println("there's no such card/item in the collection!");
+            System.out.println("there's no such card/item in the collection! "+objectName);
             return;
         }
         GameObject object = null;
@@ -168,7 +167,7 @@ public class Account {
             if(!deck.hasCard(obj.getId()))object = obj;
         }
         if(object==null){
-            System.out.println("Object exists in the deck");
+            System.out.println("Object exists in the deck " + objectName);
         }
 
         if (object instanceof Hero) {
@@ -216,64 +215,30 @@ public class Account {
         }
     }
 
-    static void createAccount() {
-        Scanner in = new Scanner(System.in);
-        String userName = "";
-        String password;
-        boolean usernamePicked = false;
-        while (!usernamePicked) {
-            System.out.println("Please Enter UserName");
-            userName = in.nextLine();
-            if (userMap.containsKey(userName)) {
-                System.out.println("This Username Already Exists");
-            } else {
-                usernamePicked = true;
-            }
+    static void createAccount(String userName, String password) {
+        if (userMap.containsKey(userName)) {
+            System.out.println("This Username Already Exists");
+            return;
         }
-        System.out.println("And Your Password");
-        password = in.nextLine();
         Account newAccount = new Account(userName, password);
         accounts.add(newAccount);
         userMap.put(userName, newAccount);
         loggedAccount = newAccount;
         System.out.println("Your account created successfully ");
-        AccountMenu.goToAccountMenu();
     }
 
-    static void login() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("please enter Your Username");
-        String username = in.nextLine();
-        if (userMap.containsKey(username)) {
-            System.out.println("Please enter Your password");
-            String password = in.nextLine();
-            if (userMap.get(username).password.equals(password)) {
-                loggedAccount = userMap.get(username);
-                System.out.println("You're logged in");
-            } else {
-                System.out.println("Incorrect Password");
-            }
-        } else {
+    static void login(String username, String password) {
+        if (!userMap.containsKey(username)) {
             System.out.println("this username doesn't exist");
+            return;
         }
-        AccountMenu.goToAccountMenu();
+        if (!userMap.get(username).password.equals(password)) {
+            System.out.println("Incorrect Password");
+            return;
+        }
+        loggedAccount = userMap.get(username);
+        System.out.println("You're logged in");
     }
-
-    public static void makeFakeAccounts(){
-        createAccount("ali");
-        createAccount("shahab");
-        createAccount("mammad");
-        loggedAccount = userMap.get("ali");
-        System.out.println("You're logged in ali");
-    }
-
-    private static void createAccount(String userName) {
-        Account newAccount = new Account(userName, "");
-        accounts.add(newAccount);
-        userMap.put(userName, newAccount);
-        System.out.println("Your account created successfully " + userName);
-    }
-
 
     static void logout() {
         if (loggedAccount != null) {
@@ -292,4 +257,8 @@ public class Account {
     public boolean equals(Object o) {
         return o != null && o instanceof Account && this.getUsername().equals(((Account) o).getUsername());
     }
+
+    public void doYourTurn(Battle battle) {
+    }
+
 }

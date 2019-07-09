@@ -71,8 +71,8 @@ public class Shop {
         }
     }
 
-    public void buyCard(String name) {
-        Account loggedAccount = Account.getLoggedAccount();
+    public void buyCard(Account acc, String name) {
+        Account loggedAccount = acc;
         int playersMoney = loggedAccount.getMoney();
         Collection playerCollection = loggedAccount.getCollection();
         boolean found = false;
@@ -81,27 +81,27 @@ public class Shop {
                 if(cards.get(i).getName().equalsIgnoreCase(name)) {
                     found = true;
                     if (cards.get(i).getPrice() > playersMoney) {
-                        System.out.println("Insufficient Money");
+                        System.out.println("Insufficient Money "+name);
                     } else {
                             Card card = CardGenerator.getClone(cards.get(i));
                             playerCollection.addToCollection(card);
                             loggedAccount.pay(card.getPrice());
-                            card.setOwner(Account.getLoggedAccount());
-                            System.out.println("Purchase Successful");
+                            card.setOwner(loggedAccount);
+                            System.out.println("Purchase Successful "+name);
                     }
                 }
             } else if (usableItems.get(i - cards.size()).getName().equalsIgnoreCase(name)) {
                 found = true;
-                if (usableItems.get(i).getPrice() > playersMoney) {
-                    System.out.println("Insufficient Money");
+                if (usableItems.get(i-cards.size()).getPrice() > playersMoney) {
+                    System.out.println("Insufficient Money " +name);
                 } else if (playerCollection.getItems().size() >= 3) {
                     System.out.println("You Already Have 3 Items");
                 } else {
                     Item item = CardGenerator.getClone(usableItems.get(i-cards.size()));
                     playerCollection.addToCollection(item);
                     loggedAccount.pay(item.getPrice());
-                    item.setOwner(Account.getLoggedAccount());
-                    System.out.println("Purchase Successful");
+                    item.setOwner(loggedAccount);
+                    System.out.println("Purchase Successful "+name);
                 }
             }
         }
@@ -110,9 +110,9 @@ public class Shop {
         }
     }
 
-    public void sellCard(int ID) {
-        Account loggedAccount = Account.getLoggedAccount();
-        Collection playerCollection = Account.getLoggedAccount().getCollection();
+    public void sellCard(Account acc, int ID) {
+        Account loggedAccount = acc;
+        Collection playerCollection = loggedAccount.getCollection();
 
         GameObject object = playerCollection.getCard(ID);
         if (object == null) {

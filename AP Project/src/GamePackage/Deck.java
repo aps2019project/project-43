@@ -11,10 +11,13 @@ public class Deck {
     private ArrayList<Card> cardsNotInHand = new ArrayList<>();
     private ArrayList<Card> hand = new ArrayList<>();
     private Card nextCard;//the card that's visible
+    private ArrayList<Collectible> items =new ArrayList<>();
 
     Deck(String name) {
         this.name = name;
     }
+
+    public void addItem(Collectible item){items.add(item);}
 
     public void setItem(Item item){
         this.item = item;
@@ -51,6 +54,7 @@ public class Deck {
         cardsNotInHand.addAll(cards);
         Collections.shuffle(cardsNotInHand);
         nextCard = null;
+        items.clear();
         hand.clear();
         updateNextCard();
         for(int i=0;i<5;i++) addNextCard();
@@ -80,7 +84,30 @@ public class Deck {
                 return card;
             }
         }
+        for(Collectible card: items){
+            if(card.getName().equalsIgnoreCase(name)) {
+                if(use) items.remove(card);
+                return card;
+            }
+        }
         return null;
+    }
+
+    public ArrayList<Card> cardsToBeInserted(int mana){
+        ArrayList<Card> cards =new ArrayList<>();
+        for(Card card: hand){
+            if(card.getManaCost()<=mana) {
+                cards.add(card);
+                mana-=card.getManaCost();
+            }
+        }
+        for(Collectible card: items){
+            if(card.getManaCost()<=mana) {
+                cards.add(card);
+                mana-=card.getManaCost();
+            }
+        }
+        return cards;
     }
 
     public Card getCard(String cardName){
@@ -113,13 +140,17 @@ public class Deck {
     public void removeCard(Card card) {this.cards.remove(card);}
     public void removeItem() {this.item = null;}
 
-
     public boolean validate() {
         return cards.size() == 20 && getHero() != null;
     }
 
     public void showHand(){
         int cardCounter = 0;
+        System.out.println("Item:");
+        System.out.println("\t"+item);
+        for (Collectible item: items) {
+            System.out.println("\t" + item);
+        }
         for (Card card: hand) {
             cardCounter++;
             System.out.println("\t"+cardCounter + " : " + card);

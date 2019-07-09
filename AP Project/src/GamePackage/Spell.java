@@ -58,5 +58,7 @@ public class Spell extends Card {
 
     public void setBuff(Buff buff, int changeHP, int changeAP) {
         this.buff=buff;
+        this.changeHP=changeHP;
+        this.changeAP=changeAP;
     }
 }

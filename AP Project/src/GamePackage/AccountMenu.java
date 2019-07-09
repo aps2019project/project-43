@@ -5,25 +5,51 @@ import static GamePackage.Account.*;
 public class AccountMenu extends GameMenu {
 
     private static AccountMenu accountMenu = new AccountMenu();
+    private State state = State.INITIAL;
+    private String username;
 
     @Override
     public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
         if (getLoggedAccount() == null) {
-            switch (input) {
-                case "create account":
-                    createAccount();
+            switch (state){
+                case INITIAL:
+                    switch (input) {
+                        case "create account":
+                            System.out.println("Please Enter UserName");
+                            state=State.USERNAME_C;
+                            break;
+                        case "login":
+                            System.out.println("please enter Your Username");
+                            state=State.USERNAME_L;
+                            break;
+                        case "help":
+                            showMenu();
+                            break;
+                        case "exit":
+                            return false;
+                        default:
+                            System.out.println("Invalid Command");
+                    }
                     break;
-                case "login":
-                    login();
+                case USERNAME_C:
+                    username=input;
+                    System.out.println("And Your Password");
+                    state=State.PASSWORD_C;
                     break;
-                case "help":
-                    showMenu();
+                case PASSWORD_C:
+                    createAccount(username, input);
+                    state=State.INITIAL;
                     break;
-                case "exit":
-                    return false;
-                default:
-                    System.out.println("Invalid Command");
+                case USERNAME_L:
+                    username=input;
+                    System.out.println("Please enter Your password");
+                    state=State.PASSWORD_L;
+                    break;
+                case PASSWORD_L:
+                    login(username, input);
+                    state=State.INITIAL;
+                    break;
             }
         } else {
             switch (input) {
@@ -67,9 +93,17 @@ public class AccountMenu extends GameMenu {
         }
     }
 
-    public static void goToAccountMenu(){
+    public static GameMenu goToAccountMenu(){
         Main.setCurrentMenu(accountMenu);
+        return accountMenu;
     }
 
 
+    private enum State{
+        INITIAL,
+        USERNAME_C,
+        PASSWORD_C,
+        USERNAME_L,
+        PASSWORD_L
+    }
 }

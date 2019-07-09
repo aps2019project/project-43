@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cell {
     private int x;
     private int y;
-    private ArrayList<Effect> effects;
+    private ArrayList<Effect> effects = new ArrayList<>();
     private Force force;
     private Flag flag;
     private Collectible item=null;
@@ -17,6 +17,10 @@ public class Cell {
 
     public void setItem(Collectible item) {
         this.item = item;
+    }
+
+    public Collectible getItem() {
+        return item;
     }
 
     public ArrayList<Effect> getEffects() {
@@ -68,6 +72,16 @@ public class Cell {
 
     Flag getFlag(){
         return flag;
+    }
+
+    @Override
+    public String toString() {
+        return x + " " + y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o!=null && o instanceof Cell && ((Cell) o).x == x && ((Cell) o).y == y;
     }
 }
 

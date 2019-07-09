@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class Battle {
 
-    private boolean multiPlayer; // false for single player and true for multi player
-    private boolean Story; // false for custom game and true for story
     private String mode; //
     private Account[] players = new Account[2];
     private int[] mana = new int[]{2,2};
@@ -15,25 +13,31 @@ public class Battle {
     private ArrayList<Card> graveyard1 =new ArrayList<>();
     private ArrayList<Card> graveyard2 =new ArrayList<>();
     private int numberOfFlags;
-    private Random random = new Random();
+    private int award = 1000;
+    Random random = new Random();
 
     public void showBoard(){
         System.out.println();
         for(int i=0;i<5;i++){
             for(int j=0;j<9;j++){
-                if(!cells[i][j].isBusy()) System.out.print("O  ");
-                else if(cells[i][j].getForce() instanceof Hero){
-                    if(cells[i][j].getForce().getOwner()==players[0]) System.out.print("H1 ");
-                    if(cells[i][j].getForce().getOwner()==players[1]) System.out.print("H2 ");
+                Cell cell = cells[i][j];
+                if(!cells[i][j].isBusy()){
+                    if(cell.getFlag()!=null) System.out.print("F  ");
+                    else if(cell.getItem()!=null) System.out.print("I  ");
+                    else System.out.print("O  ");
                 }
-                else if(cells[i][j].getForce() instanceof Minion){
-                    if(cells[i][j].getForce().getOwner()==players[0]) System.out.print("M1 ");
-                    if(cells[i][j].getForce().getOwner()==players[1]) System.out.print("M2 ");
+                else if(cell.getForce() instanceof Hero){
+                    if(cell.getForce().getOwner()==players[0]) System.out.print("H1 ");
+                    else System.out.print("H2 ");
+                }
+                else if(cell.getForce() instanceof Minion){
+                    if(cell.getForce().getOwner()==players[0]) System.out.print("M1 ");
+                    else System.out.print("M2 ");
                 }
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println(getTurnAccount().getMainDeck().getHero().getLocation());
     }
 
     public void showGameInfo(){
@@ -41,8 +45,8 @@ public class Battle {
         System.out.println("player2 mana: " + mana[1]);
         switch (mode) {
             case "hero":
-                System.out.println("player0 hero health: " + players[0].getMainDeck().getHero().getHealth());
-                System.out.println("player1 hero health: " + players[1].getMainDeck().getHero().getHealth());
+                System.out.println("player1 hero health: " + players[0].getMainDeck().getHero().getHealth());
+                System.out.println("player2 hero health: " + players[1].getMainDeck().getHero().getHealth());
                 break;
             case "flag6":
                 printFlags();
@@ -51,6 +55,8 @@ public class Battle {
                 printFlags();
                 break;
         }
+        System.out.println("turn: player"+(getIndexTurn()+1)+": "+getTurnAccount().getUsername());
+        showBoard();
     }
 
     private void printFlags() {
@@ -95,22 +101,29 @@ public class Battle {
             }
         }
 
-        if(random.nextInt(100)>70){
-            getCell(random.nextInt(5),random.nextInt(9)).setItem(Shop.getItem());
+        for(int i=0;i<5;i++) {
+            for(int j=0;j<9;j++) {
+                if(getCell(i,j).getFlag()==null&&!getCell(i,j).isBusy()&&getCell(i,j).getItem()==null) {
+                    if(random.nextInt(100)>98) {
+                        getCell(i,j).setItem(Shop.getItem());
+                    }
+                }
+            }
         }
 
 
+
         if(mode.equals("hero")){
-            if(players[0].getMainDeck().getHero().getAp()<=0){
+            if(players[0].getMainDeck().getHero().getLocation()==null){
                 System.out.println("player " + players[0].getUsername() + " won!");
-                players[0].win(1000);
+                players[0].win(award);
                 players[0].addMatch(new Match(players[1],true, turn));
                 players[1].addMatch(new Match(players[0],false, turn));
                 MainMenu.goToMainMenu();
             }
-            if(players[1].getMainDeck().getHero().getAp()<=0){
+            if(players[1].getMainDeck().getHero().getLocation()==null){
                 System.out.println("player " + players[1].getUsername() + " won!");
-                players[1].win(1000);
+                players[1].win(award);
                 players[1].addMatch(new Match(players[0],true, turn));
                 players[0].addMatch(new Match(players[1],false, turn));
                 MainMenu.goToMainMenu() ;
@@ -122,14 +135,14 @@ public class Battle {
                     if(getCell(i,j).isBusy()&&getCell(i,j).getForce().getHadFlag()>=6){
                         if(getCell(i,j).getForce().getOwner()==players[0]){
                             System.out.println("player " + players[0].getUsername() + " won!");
-                            players[0].win(1000);
+                            players[0].win(award);
                             players[0].addMatch(new Match(players[1],true, turn));
                             players[1].addMatch(new Match(players[0],false, turn));
                             MainMenu.goToMainMenu();
                         }
                         else{
                             System.out.println("player " + players[1].getUsername() + " won!");
-                            players[1].win(1000);
+                            players[1].win(award);
                             players[1].addMatch(new Match(players[0],true, turn));
                             players[0].addMatch(new Match(players[1],false, turn));
                             MainMenu.goToMainMenu() ;
@@ -155,23 +168,25 @@ public class Battle {
             }
             if(flags1>half){
                 System.out.println("player " + players[0].getUsername() + " won!");
-                players[0].win(1000);
+                players[0].win(award);
                 players[0].addMatch(new Match(players[1],true, turn));
                 players[1].addMatch(new Match(players[0],false, turn));
                 MainMenu.goToMainMenu();
             }
             else if(flags2>half){
                 System.out.println("player " + players[1].getUsername() + " won!");
-                players[1].win(1000);
+                players[1].win(award);
                 players[1].addMatch(new Match(players[0],true, turn));
                 players[0].addMatch(new Match(players[1],false, turn));
                 MainMenu.goToMainMenu() ;
             }
         }
+
+        showGameInfo();
+        getTurnAccount().doYourTurn(this);
     }
 
     Battle(String mode, int numberOfFlags, Account player1, Account player2){
-        multiPlayer = true;
         this.mode = mode;
         players[0]=player1;
         players[1]=player2;
@@ -197,12 +212,32 @@ public class Battle {
         }
     }
 
-//    Battle(String mode, int numberOfFlags){
-//        multiPlayer = false;
-//        this.mode = mode;
-//        this.numberOfFlags=numberOfFlags;
-//        players[0] = Account.getLoggedAccount();
-//    }
+    Battle(String mode, int numberOfFlags, int award, String deck){
+        this.mode = mode;
+        players[0] = Account.getLoggedAccount();
+        players[1] = new ComputerAccount(deck);
+        this.numberOfFlags=numberOfFlags;
+        this.award=award;
+        initialize();
+
+        switch (mode){
+            case "flag6":
+                getCell(2,4).putFlag(new Flag());
+                break;
+            case "flag1/2":
+                int num=0;
+                int k=0;
+                for(int i=0;i<5;i++){
+                    for(int j=0;j<9;j++){
+                        if(k%(9/(numberOfFlags/5.0))==0&&num<numberOfFlags){
+                            getCell(i,j).putFlag(new Flag());
+                            num++;}
+                        k++;
+                    }
+                }
+                break;
+        }
+    }
 
     private void initialize() {
         for(int i=0;i<5;i++){
@@ -272,7 +307,7 @@ public class Battle {
         return getIndexTurn()+1;
     }
 
-    private int getMana() {
+    int getMana() {
         return mana[getIndexTurn()];
     }
 
@@ -285,7 +320,7 @@ public class Battle {
         else graveyard2.add(force);
     }
 
-    private Account getTurnAccount(){
+    Account getTurnAccount(){
         return players[getIndexTurn()];
     }
 
@@ -327,12 +362,10 @@ public class Battle {
         setSelectedCard(card.getId());
     }
 
-    private ArrayList<Cell> getCells(int x,int y,int area){
+    ArrayList<Cell> getCells(int x, int y, int area){
         ArrayList<Cell> res=new ArrayList<>();
-        for(int i=x;i<x+area&&i<5;i++){
-            if(i<0) i=0;
-            for(int j=y;j<y+area&&y<9;y++){
-                if(j<0) j=0;
+        for(int i=(x<0?0:x);(i<(x+area))&&(i<5);i++){
+            for(int j=(y<0?0:y);(j<(y+area))&&(j<9);j++){
                 res.add(cells[i][j]);
             }
         }
@@ -522,6 +555,10 @@ public class Battle {
             System.out.println("Invalid card id");
             return;
         }
+        if(selectedCard==null){
+            System.out.println("please select a force");
+            return;
+        }
         Force force = selectedCard;
         if(force instanceof Minion){
             if(((Minion) force).getActivateTime()==ActivateTime.ON_ATTACK){
@@ -595,6 +632,10 @@ public class Battle {
 
     public void move(int x, int y) {
         Cell cell = getCell(x,y);
+        if(selectedCard==null){
+            System.out.println("please select a force");
+            return;
+        }
         if(cell == null || cell.isBusy() || interruption(selectedCard.getLocation() , cell)){
             System.out.println("Invalid target");
             return;
@@ -707,7 +748,7 @@ public class Battle {
         }
         if(y>0) if(getCell(x,y-1).isBusy()&&getCell(x,y-1).getForce().getOwner()==getTurnAccount()) return true;
         if(y<8) if(getCell(x,y+1).isBusy()&&getCell(x,y+1).getForce().getOwner()==getTurnAccount()) return true;
-        if(x<5){
+        if(x<4){
             if(y>0) if(getCell(x+1,y-1).isBusy()&&getCell(x+1,y-1).getForce().getOwner()==getTurnAccount()) return true;
             if(getCell(x+1,y).isBusy()&&getCell(x+1,y).getForce().getOwner()==getTurnAccount()) return true;
             if(y<8)
@@ -715,7 +756,7 @@ public class Battle {
         }
         return false;
     }
-    private ArrayList<Cell> getAdjacentCells(Cell cell) {
+    ArrayList<Cell> getAdjacentCells(Cell cell) {
         ArrayList<Cell> res=new ArrayList<>();
         int x=cell.getX(), y=cell.getY();
         if(x>0){
@@ -725,7 +766,7 @@ public class Battle {
         }
         if(y>0) res.add(getCell(x,y-1));
         if(y<8) res.add(getCell(x,y+1));
-        if(x<5){
+        if(x<4){
             if(y>0) res.add(getCell(x+1,y-1));
             res.add(getCell(x+1,y));
             if(y<8) res.add(getCell(x + 1, y + 1));
@@ -768,4 +809,7 @@ public class Battle {
         return null;
     }
 
+    public int getTurn() {
+        return turn;
+    }
 }

@@ -101,8 +101,6 @@ class PlayMenu extends GameMenu {
                 }
             }
 
-            battle.showBoard();
-
         }catch (Exception e){
             e.printStackTrace();
         }

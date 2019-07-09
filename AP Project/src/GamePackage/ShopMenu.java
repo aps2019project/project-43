@@ -28,11 +28,11 @@ public class ShopMenu extends GameMenu {
                 break;
             case "sell":
                 for (int i = 1; i < inputArray.length; i++) {
-                    playersShop.sellCard(Integer.parseInt(inputArray[i]));
+                    playersShop.sellCard(Account.getLoggedAccount(),Integer.parseInt(inputArray[i]));
                 }
                 break;
             case "buy":
-                playersShop.buyCard(inputArray[1]);
+                playersShop.buyCard(Account.getLoggedAccount(), inputArray[1]);
                 break;
             case "help":
                 showMenu();
