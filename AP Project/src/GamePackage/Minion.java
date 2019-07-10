@@ -15,12 +15,7 @@ public class Minion extends Force {
     }
 
     @Override
-    public void showCardInfo() {
-        System.out.println("Minion:");
-        System.out.println("Name: "+getName());
-        System.out.println("HP: "+ getHealth() + " AP: "+getAp()+" MP: "+ getManaCost());
-        System.out.println("combo-ability: ");
-        System.out.println("Cost: "+getPrice());
-        System.out.println("Desc: "+getInfo());
+    public String showCardInfo() {
+        return ("Minion:")+("\n\tName: "+getName())+("\n\tHP: "+ getHealth() + "\n\tAP: "+getAp()+"\n\tMP: "+ getManaCost())+("\n\tCombo-ability: ")+("\n\tCost: "+getPrice())+("\n\tDesc: "+getInfo());
     }
 }

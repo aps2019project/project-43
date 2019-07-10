@@ -8,62 +8,80 @@ class PlayMenu extends GameMenu {
     
     private Battle battle;
     private boolean inGraveyard = false;
-    
-    PlayMenu(Battle battle){
+    private WaitForOpponentMenu waitForOpponentMenu= null;
+
+    PlayMenu(ClientInfo client, Battle battle){
+        super(client);
         this.battle = battle;
     }
 
+    PlayMenu(ClientInfo client, Battle battle, WaitForOpponentMenu waitForOpponentMenu){
+        super(client);
+        this.battle = battle;
+        this.waitForOpponentMenu=waitForOpponentMenu;
+    }
 
     @Override
     public boolean execCommand(String input) {
+        if(battle.getTurnAccount()!=client.getLoggedAccount()){
+            client.sendPrint("It is not your turn");
+            return true;
+        }
         String[] inputArray;
-        try {
             input = input.trim().toLowerCase();
             inputArray = input.split(" ");
             if (!inGraveyard)
                 switch (inputArray[0]) {
                     case "game":
-                        battle.showGameInfo();
+                        client.sendPrint(battle.showGameInfo());
                         break;
                     case "move":
-                        battle.move(parseInt(inputArray[2].substring(2, inputArray[2].length() - 2)), parseInt(inputArray[3].substring(1, inputArray[3].length() - 2)));
+                        battle.move(client, parseInt(inputArray[2].substring(2, inputArray[2].length() - 2)), parseInt(inputArray[3].substring(1, inputArray[3].length() - 2)));
                         break;
                     case "select":
-                        battle.setSelectedCard(parseInt(inputArray[1]));
+                        battle.setSelectedCard(client, parseInt(inputArray[1]));
                         break;
                     case "show":
                         switch (inputArray[1]) {
                             case "my":
-                                Force.printForces(battle.getMyCardsInGame());
+                                Force.printForces(client, battle.getMyCardsInGame());
                                 break;
                             case "opponent":
-                                Force.printForces(battle.getOpponentCardsInGame());
+                                Force.printForces(client, battle.getOpponentCardsInGame());
                                 break;
                             case "card":
-                                battle.showCardInfo(parseInt(inputArray[3]));
+                                client.sendPrint(battle.showCardInfo(parseInt(inputArray[3])));
                                 break;
                             case "hand":
-                                battle.showHand();
+                                client.sendPrint(battle.showHand());
                                 break;
                             case "next":
-                                battle.showNextCard();
+                                client.sendPrint(battle.showNextCard());
                                 break;
                             case "board":
-                                battle.showBoard();
+                                client.sendPrint(battle.showBoard());
                                 break;
                         }
                         break;
                     case "insert":
-                        battle.insert(inputArray[1], parseInt(inputArray[3].substring(1, inputArray[3].length() - 1)), parseInt(inputArray[4].substring(0, inputArray[4].length() - 1)));
+                        battle.insert(client, inputArray[1], parseInt(inputArray[3].substring(1, inputArray[3].length() - 1)), parseInt(inputArray[4].substring(0, inputArray[4].length() - 1)));
                         break;
                     case "use":
-                        battle.useSpecialPower(parseInt(inputArray[3].substring(1, inputArray[3].length() - 1)), parseInt(inputArray[4].substring(0, inputArray[4].length() - 1)));
+                        battle.useSpecialPower(client, parseInt(inputArray[3].substring(1, inputArray[3].length() - 1)), parseInt(inputArray[4].substring(0, inputArray[4].length() - 1)));
                         break;
                     case "enter":
-                        inGraveyard = true;
+                        switch (inputArray[1]){
+                            case "graveyard":
+                                inGraveyard = true;
+                                break;
+                            case "chatroom":
+                                client.sendChat();
+                                new ChatMenu(client, this).setCurrentMenu();
+                                break;
+                        }
                         break;
                     case "end":
-                        battle.endTurn();
+                        battle.endTurn(client);
                         break;
                     case "attack":
                         switch (inputArray[1]) {
@@ -72,65 +90,84 @@ class PlayMenu extends GameMenu {
                                 for (int i = 3; i < inputArray.length; i++) {
                                     ids.add(parseInt(inputArray[i]));
                                 }
-                                battle.attackCombo(parseInt(inputArray[2]), ids);
+                                battle.attackCombo(client, parseInt(inputArray[2]), ids);
                                 break;
                             default:
-                                battle.attack(parseInt(inputArray[1]), true);
+                                battle.attack(client, parseInt(inputArray[1]), true);
                         }
                         break;
                     default: {
-                        System.out.println("Invalid Command");
+                        client.sendPrint("Invalid Command");
                     }
                 }
             else switch (inputArray[0]) {
                 case "show":
                     switch (inputArray[1]) {
                         case "cards":
-                            battle.showGraveyard();
+                            client.sendPrint(battle.showGraveyard());
                             break;
                         case "info":
-                            battle.showGraveyardCard(parseInt(inputArray[2]));
+                            client.sendPrint(battle.showGraveyardCard(parseInt(inputArray[2])));
                             break;
                     }
                     break;
                 case "exit":
                     inGraveyard = false;
                     break;
+                case "help":
+                    showGraveyardMenu();
+                    break;
                 default: {
-                    System.out.println("Invalid Command");
+                    client.sendPrint("Invalid Command\n");
+                    showGraveyardMenu();
                 }
             }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return true;
     }
 
     @Override
+    void setCurrentMenu() {
+        super.setCurrentMenu();
+        if(waitForOpponentMenu!=null) waitForOpponentMenu.opponentJoined();
+    }
+
+    private Account getPlayer(){
+        return client.getLoggedAccount();
+    }
+
+    public Account getOpponent() {
+        return battle.getTurnAccount()==getPlayer()?battle.getNotTurnAccount():battle.getTurnAccount();
+    }
+
+    private void showGraveyardMenu(){
+        client.sendPrint("1. show cards");
+        client.sendPrint("2. show info [card id]");
+        client.sendPrint("3. help");
+        client.sendPrint("4. exit");
+    }
+
+    @Override
     void showMenu() {
-        System.out.println("1. Game info");
-        System.out.println("2. Show my minions");
-        System.out.println("3. Show opponent minions");
-        System.out.println("4. Show card info [card id]");
-        System.out.println("5. Select [card id]");
-        System.out.println("6. Move to ([x], [y])");
-        System.out.println("7. Attack [opponent card id]");
-        System.out.println("8. Attack combo [opponent card id] [my card id] [my card id] [...]");
-        System.out.println("9. Use special power (x, y)");
-        System.out.println("10. Show hand");
-        System.out.println("11. Insert [card name] in (x, y)");
-        System.out.println("12. End turn");
-        System.out.println("13. Show collectables");
-        System.out.println("14. Select [collectable id]");
-        System.out.println("15. Show info");
-        System.out.println("16. Use [location x, y]");
-        System.out.println("17. Show next card");
-        System.out.println("18. Enter graveyard");
-        System.out.println("19. Show cards");
-        System.out.println("20. End game");
-        System.out.println("21. Show menu");
-        System.out.println("22. Help");
-        System.out.println("23. Exit");
+        client.sendPrint("1. Game info");
+        client.sendPrint("2. Show my minions");
+        client.sendPrint("3. Show opponent minions");
+        client.sendPrint("4. Show card info [card id]");
+        client.sendPrint("5. Select [card id]");
+        client.sendPrint("6. Move to ([x], [y])");
+        client.sendPrint("7. Attack [opponent card id]");
+        client.sendPrint("8. Attack combo [opponent card id] [my card id] [my card id] [...]");
+        client.sendPrint("9. Use special power (x, y)");
+        client.sendPrint("10. Show hand");
+        client.sendPrint("11. Insert [card name] in (x, y)");
+        client.sendPrint("12. End turn");
+        client.sendPrint("13. Show info");
+        client.sendPrint("14. Show next card");
+        client.sendPrint("15. Enter graveyard");
+        client.sendPrint("16. Enter chatroom");
+        client.sendPrint("17. Show cards");
+        client.sendPrint("18. End game");
+        client.sendPrint("19. Show menu");
+        client.sendPrint("20. Help");
+        client.sendPrint("21. Exit");
     }
 }

@@ -3,8 +3,16 @@ package GamePackage;
 import java.util.ArrayList;
 
 public class ComputerAccount extends Account {
-    ComputerAccount(String deck) {
+
+    private Shop shop = new Shop();
+    private Shop getShop(){
+        return shop;
+    }
+
+    ComputerAccount(String deck, ComputerClientInfo client) {
         super("Computer", "");
+        this.setClient(client);
+        client.setLoggedAccount(this);
         getPaid(1000000);
         createDeck("first");
         createDeck("second");
@@ -12,21 +20,21 @@ public class ComputerAccount extends Account {
         setMainDeck(deck);
 
         //hero1
-        getShop().buyCard(this, "WhiteBeast");
+        getShop().buyCard(getClient(), "WhiteBeast");
         addObjectToDeck("WhiteBeast", "first");
 
         //item1
-        getShop().buyCard(this, "WisdomCrown");
+        getShop().buyCard(getClient(), "WisdomCrown");
         addObjectToDeck("wisdomcrown", "first");
 
         //spell1
-        getShop().buyCard(this, "totaldisarm");
-        getShop().buyCard(this, "lightingbolt");
-        getShop().buyCard(this, "alldisarm");
-        getShop().buyCard(this, "allpoison");
-        getShop().buyCard(this, "dispel");
-        getShop().buyCard(this, "sacrifice");
-        getShop().buyCard(this, "shock");
+        getShop().buyCard(getClient(), "totaldisarm");
+        getShop().buyCard(getClient(), "lightingbolt");
+        getShop().buyCard(getClient(), "alldisarm");
+        getShop().buyCard(getClient(), "allpoison");
+        getShop().buyCard(getClient(), "dispel");
+        getShop().buyCard(getClient(), "sacrifice");
+        getShop().buyCard(getClient(), "shock");
         addObjectToDeck("totaldisarm", "first");
         addObjectToDeck("lightingbolt", "first");
         addObjectToDeck("alldisarm", "first");
@@ -36,19 +44,19 @@ public class ComputerAccount extends Account {
         addObjectToDeck("shock", "first");
 
         //minion1
-        getShop().buyCard(this, "persianarcher");
-        getShop().buyCard(this, "turanianpikesman");
-        getShop().buyCard(this, "turanianrockerman");
-        getShop().buyCard(this, "turanianrockerman");
-        getShop().buyCard(this, "blackgiant");
-        getShop().buyCard(this, "oneeyegiant");
-        getShop().buyCard(this, "poisonoussnake");
-        getShop().buyCard(this, "giantsnake");
-        getShop().buyCard(this, "whitewolf");
-        getShop().buyCard(this, "greatwizard");
-        getShop().buyCard(this, "nanesarma");
-        getShop().buyCard(this, "siavash");
-        getShop().buyCard(this, "arzhang");
+        getShop().buyCard(getClient(), "persianarcher");
+        getShop().buyCard(getClient(), "turanianpikesman");
+        getShop().buyCard(getClient(), "turanianrockerman");
+        getShop().buyCard(getClient(), "turanianrockerman");
+        getShop().buyCard(getClient(), "blackgiant");
+        getShop().buyCard(getClient(), "oneeyegiant");
+        getShop().buyCard(getClient(), "poisonoussnake");
+        getShop().buyCard(getClient(), "giantsnake");
+        getShop().buyCard(getClient(), "whitewolf");
+        getShop().buyCard(getClient(), "greatwizard");
+        getShop().buyCard(getClient(), "nanesarma");
+        getShop().buyCard(getClient(), "siavash");
+        getShop().buyCard(getClient(), "arzhang");
         addObjectToDeck("persianarcher", "first");
         addObjectToDeck("turanianpikesman", "first");
         addObjectToDeck("turanianrockerman", "first");
@@ -65,21 +73,21 @@ public class ComputerAccount extends Account {
 
 
         //hero2
-        getShop().buyCard(this, "Zahhak");
+        getShop().buyCard(getClient(), "Zahhak");
         addObjectToDeck("Zahhak", "second");
 
         //item2
-        getShop().buyCard(this, "SoulEater");
+        getShop().buyCard(getClient(), "SoulEater");
         addObjectToDeck("SoulEater", "second");
 
         //spell2
-        getShop().buyCard(this, "areadispel");
-        getShop().buyCard(this, "empower");
-        getShop().buyCard(this, "godstrength");
-        getShop().buyCard(this, "poisonlake");
-        getShop().buyCard(this, "madness");
-        getShop().buyCard(this, "healthwithprofit");
-        getShop().buyCard(this, "kingsguard");
+        getShop().buyCard(getClient(), "areadispel");
+        getShop().buyCard(getClient(), "empower");
+        getShop().buyCard(getClient(), "godstrength");
+        getShop().buyCard(getClient(), "poisonlake");
+        getShop().buyCard(getClient(), "madness");
+        getShop().buyCard(getClient(), "healthwithprofit");
+        getShop().buyCard(getClient(), "kingsguard");
         addObjectToDeck("areadispel", "second");
         addObjectToDeck("empower", "second");
         addObjectToDeck("godstrength", "second");
@@ -89,19 +97,19 @@ public class ComputerAccount extends Account {
         addObjectToDeck("kingsguard", "second");
 
         //minion2
-        getShop().buyCard(this, "persianswordman");
-        getShop().buyCard(this, "persianpikesman");
-        getShop().buyCard(this, "pahlavan");
-        getShop().buyCard(this, "turanianrockerman");
-        getShop().buyCard(this, "turanianprince");
-        getShop().buyCard(this, "eagle");
-        getShop().buyCard(this, "eagle");
-        getShop().buyCard(this, "dragon");
-        getShop().buyCard(this, "panther");
-        getShop().buyCard(this, "jen");
-        getShop().buyCard(this, "give");
-        getShop().buyCard(this, "iraj");
-        getShop().buyCard(this, "kinggiant");
+        getShop().buyCard(getClient(), "persianswordman");
+        getShop().buyCard(getClient(), "persianpikesman");
+        getShop().buyCard(getClient(), "pahlavan");
+        getShop().buyCard(getClient(), "turanianrockerman");
+        getShop().buyCard(getClient(), "turanianprince");
+        getShop().buyCard(getClient(), "eagle");
+        getShop().buyCard(getClient(), "eagle");
+        getShop().buyCard(getClient(), "dragon");
+        getShop().buyCard(getClient(), "panther");
+        getShop().buyCard(getClient(), "jen");
+        getShop().buyCard(getClient(), "give");
+        getShop().buyCard(getClient(), "iraj");
+        getShop().buyCard(getClient(), "kinggiant");
         addObjectToDeck("persianswordman", "second");
         addObjectToDeck("persianpikesman", "second");
         addObjectToDeck("pahlavan", "second");
@@ -118,21 +126,21 @@ public class ComputerAccount extends Account {
 
 
         //hero3
-        getShop().buyCard(this, "Arash");
+        getShop().buyCard(getClient(), "Arash");
         addObjectToDeck("Arash", "third");
 
         //item3
-        getShop().buyCard(this, "TerrorHood");
+        getShop().buyCard(getClient(), "TerrorHood");
         addObjectToDeck("TerrorHood", "third");
 
         //spell3
-        getShop().buyCard(this, "hellfire");
-        getShop().buyCard(this, "alldisarm");
-        getShop().buyCard(this, "dispel");
-        getShop().buyCard(this, "powerup");
-        getShop().buyCard(this, "allpower");
-        getShop().buyCard(this, "allattack");
-        getShop().buyCard(this, "weakening");
+        getShop().buyCard(getClient(), "hellfire");
+        getShop().buyCard(getClient(), "alldisarm");
+        getShop().buyCard(getClient(), "dispel");
+        getShop().buyCard(getClient(), "powerup");
+        getShop().buyCard(getClient(), "allpower");
+        getShop().buyCard(getClient(), "allattack");
+        getShop().buyCard(getClient(), "weakening");
         addObjectToDeck("hellfire", "third");
         addObjectToDeck("alldisarm", "third");
         addObjectToDeck("dispel", "third");
@@ -142,19 +150,19 @@ public class ComputerAccount extends Account {
         addObjectToDeck("weakening", "third");
 
         //minion3
-        getShop().buyCard(this, "sepahsalar");
-        getShop().buyCard(this, "turanianarcher");
-        getShop().buyCard(this, "turanianspy");
-        getShop().buyCard(this, "rockthrowergiant");
-        getShop().buyCard(this, "hogridergiant");
-        getShop().buyCard(this, "hogridergiant");
-        getShop().buyCard(this, "lion");
-        getShop().buyCard(this, "wolf");
-        getShop().buyCard(this, "wizard");
-        getShop().buyCard(this, "wildhug");
-        getShop().buyCard(this, "piran");
-        getShop().buyCard(this, "bahman");
-        getShop().buyCard(this, "greatgiant");
+        getShop().buyCard(getClient(), "sepahsalar");
+        getShop().buyCard(getClient(), "turanianarcher");
+        getShop().buyCard(getClient(), "turanianspy");
+        getShop().buyCard(getClient(), "rockthrowergiant");
+        getShop().buyCard(getClient(), "hogridergiant");
+        getShop().buyCard(getClient(), "hogridergiant");
+        getShop().buyCard(getClient(), "lion");
+        getShop().buyCard(getClient(), "wolf");
+        getShop().buyCard(getClient(), "wizard");
+        getShop().buyCard(getClient(), "wildhug");
+        getShop().buyCard(getClient(), "piran");
+        getShop().buyCard(getClient(), "bahman");
+        getShop().buyCard(getClient(), "greatgiant");
         addObjectToDeck("sepahsalar", "third");
         addObjectToDeck("turanianarcher", "third");
         addObjectToDeck("turanianspy", "third");
@@ -174,48 +182,50 @@ public class ComputerAccount extends Account {
 
     @Override
     public void doYourTurn(Battle battle) {
+        try {
 
-        ArrayList<Card> cards = battle.getTurnAccount().getMainDeck().cardsToBeInserted(battle.getMana());
-        for (Card card : cards) {
-            if(battle.getMana()<card.getManaCost())continue;
-            int x,y;
-            if(card instanceof Minion){
-                ArrayList<Cell> cells = new ArrayList<>();
-                for (Force force : battle.getMyCardsInGame()) {
-                    cells.addAll(battle.getAdjacentCells(force.getLocation()));
-                }
-                cells.removeIf(Cell::isBusy);
-                Cell cell = cells.get(battle.random.nextInt(cells.size()));
-                x=cell.getX();
-                y=cell.getY();
-            } else {
-                x=2;
-                y=4;
-            }
-            Main.exec("insert "+card.getName()+" in ("+x+", "+y+")");
-        }
-
-        for(Force force: battle.getMyCardsInGame()){
-            if(force.canMove(battle.getTurn())){
-                ArrayList<Cell> cells = battle.getCells(force.getLocation().getX()-2,force.getLocation().getY()-2,5);
-                cells.removeIf(cell -> cell.getDistance(force.getLocation())>2 || cell==force.getLocation() || cell.isBusy());
-                if(cells.size()>0){
-                    Main.exec("select "+force.getId());
+            ArrayList<Card> cards = battle.getTurnAccount().getMainDeck().cardsToBeInserted(battle.getMana());
+            for (Card card : cards) {
+                if (battle.getMana() < card.getManaCost()) continue;
+                int x, y;
+                if (card instanceof Minion) {
+                    ArrayList<Cell> cells = new ArrayList<>();
+                    for (Force force : battle.getMyCardsInGame()) {
+                        cells.addAll(battle.getAdjacentCells(force.getLocation()));
+                    }
+                    cells.removeIf(Cell::isBusy);
                     Cell cell = cells.get(battle.random.nextInt(cells.size()));
-                    Main.exec("move to (["+cell.getX()+"], ["+cell.getY()+"])");
+                    x = cell.getX();
+                    y = cell.getY();
+                } else {
+                    x = 2;
+                    y = 4;
+                }
+                getClient().exec("insert " + card.getName() + " in (" + x + ", " + y + ")");
+            }
+
+            for (Force force : battle.getMyCardsInGame()) {
+                if (force.canMove(battle.getTurn())) {
+                    ArrayList<Cell> cells = battle.getCells(force.getLocation().getX() - 2, force.getLocation().getY() - 2, 5);
+                    cells.removeIf(cell -> cell.getDistance(force.getLocation()) > 2 || cell == force.getLocation() || cell.isBusy());
+                    if (cells.size() > 0) {
+                        getClient().exec("select " + force.getId());
+                        Cell cell = cells.get(battle.random.nextInt(cells.size()));
+                        getClient().exec("move to ([" + cell.getX() + "], [" + cell.getY() + "])");
+                    }
                 }
             }
-        }
 
-        for (Force force : battle.getMyCardsInGame()) {
-            Main.exec("select "+force.getId());
-            for (Force force1 : battle.getOpponentCardsInGame()) {
-                Main.exec("attack "+force1.getId());
+            for (Force force : battle.getMyCardsInGame()) {
+                getClient().exec("select " + force.getId());
+                for (Force force1 : battle.getOpponentCardsInGame()) {
+                    getClient().exec("attack " + force1.getId());
+                }
             }
-        }
 
-        Main.exec("use special power ("+2+", "+4+")");
+            getClient().exec("use special power (" + 2 + ", " + 4 + ")");
 
-        Main.exec("end turn");
+            getClient().exec("end turn");
+        }catch (Exception ignored){}
     }
 }

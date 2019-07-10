@@ -1,26 +1,27 @@
 package GamePackage;
 
-import static GamePackage.Account.*;
-
 public class AccountMenu extends GameMenu {
 
-    private static AccountMenu accountMenu = new AccountMenu();
     private State state = State.INITIAL;
     private String username;
+
+    AccountMenu(ClientInfo client) {
+        super(client);
+    }
 
     @Override
     public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
-        if (getLoggedAccount() == null) {
+        if (client.getLoggedAccount() == null) {
             switch (state){
                 case INITIAL:
                     switch (input) {
                         case "create account":
-                            System.out.println("Please Enter UserName");
+                            client.sendPrint("Please Enter UserName");
                             state=State.USERNAME_C;
                             break;
                         case "login":
-                            System.out.println("please enter Your Username");
+                            client.sendPrint("please enter Your Username");
                             state=State.USERNAME_L;
                             break;
                         case "help":
@@ -29,41 +30,42 @@ public class AccountMenu extends GameMenu {
                         case "exit":
                             return false;
                         default:
-                            System.out.println("Invalid Command");
+                            client.sendPrint("Invalid Command\n");
+                            showMenu();
                     }
                     break;
                 case USERNAME_C:
                     username=input;
-                    System.out.println("And Your Password");
+                    client.sendPrint("And Your Password");
                     state=State.PASSWORD_C;
                     break;
                 case PASSWORD_C:
-                    createAccount(username, input);
+                    client.server.createAccount(client, username, input);
                     state=State.INITIAL;
                     break;
                 case USERNAME_L:
                     username=input;
-                    System.out.println("Please enter Your password");
+                    client.sendPrint("Please enter Your password");
                     state=State.PASSWORD_L;
                     break;
                 case PASSWORD_L:
-                    login(username, input);
+                    client.server.login(client, username, input);
                     state=State.INITIAL;
                     break;
             }
         } else {
             switch (input) {
                 case "main menu":
-                    MainMenu.goToMainMenu();
+                    client.mainMenu.setCurrentMenu();
                     break;
                 case "show leaderboard":
-                    showLeaderboard();
+                    client.sendPrint(client.server.showLeaderboard());
                     break;
                 case "save":
                     //todo
                     break;
                 case "logout":
-                    logout();
+                    client.server.logout(client);
                     break;
                 case "help":
                     showMenu();
@@ -71,31 +73,27 @@ public class AccountMenu extends GameMenu {
                 case "exit":
                     return false;
                 default:
-                    System.out.println("Invalid Command");
+                    client.sendPrint("Invalid Command\n");
+                    showMenu();
             }
         }
         return true;
     }
 
     void showMenu() {
-        if (getLoggedAccount() == null) {
-            System.out.println("1. Create account");
-            System.out.println("2. Login");
-            System.out.println("3. Help (show menu)");
-            System.out.println("4. Exit");
+        if (client.getLoggedAccount() == null) {
+            client.sendPrint("1. Create account");
+            client.sendPrint("2. Login");
+            client.sendPrint("3. Help (show menu)");
+            client.sendPrint("4. Exit");
         } else {
-            System.out.println("1. Main menu");
-            System.out.println("2. Show leaderboard");
-            System.out.println("3. Save");
-            System.out.println("4. Logout");
-            System.out.println("5. Help (show menu)");
-            System.out.println("6. Exit");
+            client.sendPrint("1. Main menu");
+            client.sendPrint("2. Show leaderboard");
+            client.sendPrint("3. Save");
+            client.sendPrint("4. Logout");
+            client.sendPrint("5. Help (show menu)");
+            client.sendPrint("6. Exit");
         }
-    }
-
-    public static GameMenu goToAccountMenu(){
-        Main.setCurrentMenu(accountMenu);
-        return accountMenu;
     }
 
 

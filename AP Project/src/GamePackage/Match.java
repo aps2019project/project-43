@@ -1,6 +1,7 @@
 package GamePackage;
 
 public class Match {
+    private Account player;
     private Account opponent;
     private boolean winner;
     private int time = 0; //turns count
@@ -10,10 +11,11 @@ public class Match {
     }
 
     public Account getWinner(){
-        return winner?Account.getLoggedAccount():opponent;
+        return winner?player:opponent;
     }
 
-    public Match(Account opponent, boolean winner, int time) {
+    public Match(Account player, Account opponent, boolean winner, int time) {
+        this.player = player;
         this.opponent = opponent;
         this.winner=winner;
         this.time=time;

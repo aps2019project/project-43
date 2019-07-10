@@ -48,12 +48,8 @@ public class Spell extends Card {
     } //Use for Show Command in Shop
 
     @Override
-    public void showCardInfo() {
-        System.out.println("Spell:");
-        System.out.println("Name: "+getName());
-        System.out.println("MP: "+getManaCost());
-        System.out.println("Cost: "+getPrice());
-        System.out.println("Desc: "+getInfo());
+    public String showCardInfo() {
+        return ("Spell:")+("\n\tName: "+getName())+("\n\tMP: "+getManaCost())+("\n\tCost: "+getPrice())+("\n\tDesc: "+getInfo());
     }
 
     public void setBuff(Buff buff, int changeHP, int changeAP) {

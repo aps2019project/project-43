@@ -31,10 +31,7 @@ public class Hero extends Force {
     }
 
     @Override
-    public void showCardInfo() {
-        System.out.println("Hero:");
-        System.out.println("Name: "+getName());
-        System.out.println("Cost: "+getPrice());
-        System.out.println("Desc: "+getInfo());
+    public String showCardInfo() {
+        return ("Hero:")+("\n\tName: "+getName())+("\n\tCost: "+getPrice())+("\n\tDesc: "+getInfo());
     }
 }

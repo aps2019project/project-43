@@ -2,63 +2,62 @@ package GamePackage;
 
 public class ShopMenu extends GameMenu {
 
-    private static GameMenu shopMenu = new ShopMenu();
+    ShopMenu(ClientInfo client) {
+        super(client);
+    }
 
     @Override
     public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
         String[] inputArray = input.split(" ");
-        Shop playersShop = Account.getLoggedAccount().getShop();
+        Shop playersShop = client.server.getShop();
         switch (inputArray[0]) {
             case "show":
                 if (inputArray.length > 1) {
                     if (inputArray[1].equalsIgnoreCase("collection")) {
-                        Account.getLoggedAccount().getCollection().print();
+                        client.sendPrint(client.getLoggedAccount().getCollection().show());
                     }
                 } else {
-                    playersShop.show();
+                    client.sendPrint(playersShop.show());
                 }
                 break;
             case "search":
                 if (inputArray[1].equalsIgnoreCase("collection")) {
-                    Account.getLoggedAccount().getCollection().search(inputArray[2]);
+                    client.sendPrint(client.getLoggedAccount().getCollection().search(inputArray[2]));
                 } else {
-                    playersShop.search(inputArray[1]);
+                    client.sendPrint(playersShop.search(inputArray[1]));
                 }
                 break;
             case "sell":
                 for (int i = 1; i < inputArray.length; i++) {
-                    playersShop.sellCard(Account.getLoggedAccount(),Integer.parseInt(inputArray[i]));
+                    playersShop.sellCard(client,Integer.parseInt(inputArray[i]));
                 }
                 break;
             case "buy":
-                playersShop.buyCard(Account.getLoggedAccount(), inputArray[1]);
+                playersShop.buyCard(client, inputArray[1]);
                 break;
             case "help":
                 showMenu();
                 break;
             case "exit":
-                MainMenu.goToMainMenu();
+                client.mainMenu.setCurrentMenu();
                 break;
             default:
-                System.out.println("Invalid Command");
+                client.sendPrint("Invalid Command\n");
+                showMenu();
         }
         return true;
     }
 
     void showMenu() {
-        System.out.println("1. Show");
-        System.out.println("2. Show collection");
-        System.out.println("3. Search[item name|card name]");
-        System.out.println("4. Search collection[item name|card name]");
-        System.out.println("5. Buy[card name|item name]");
-        System.out.println("6. Sell[card ID]");
-        System.out.println("8. Help (show menu)");
-        System.out.println("7. Exit");
-    }
-
-    public static void goToShopMenu() {
-        Main.setCurrentMenu(shopMenu);
+        client.sendPrint("1. Show");
+        client.sendPrint("2. Show collection");
+        client.sendPrint("3. Search[item name|card name]");
+        client.sendPrint("4. Search collection[item name|card name]");
+        client.sendPrint("5. Buy[card name|item name]");
+        client.sendPrint("6. Sell[card ID]");
+        client.sendPrint("8. Help (show menu)");
+        client.sendPrint("7. Exit");
     }
 
 }

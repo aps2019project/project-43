@@ -245,7 +245,7 @@ public abstract class Force extends Card {
     public void move(Cell cell, int turn) {
         if(getLocation().getDistance(cell) > 2
                 ||!canMove(turn)){
-            System.out.println("Invalid target");
+            getOwner().getClient().sendPrint("Invalid target");
             return;
         }
         setLocation(cell);
@@ -261,11 +261,11 @@ public abstract class Force extends Card {
 
     void attack(Force target, int turn, boolean defend){
         if(!canAttack(turn)){
-            System.out.println("Card with id "+ getId() +" can't attack");
+            getOwner().getClient().sendPrint("Card with id "+ getId() +" can't attack");
             return;
         }
         if(getTroopType().isInRangeForAttack(this, target)){
-            System.out.println("opponent minion is unavailable for attack");
+            getOwner().getClient().sendPrint("opponent minion is unavailable for attack");
             return;
         }
         turnAttacked=turn;
@@ -293,9 +293,9 @@ public abstract class Force extends Card {
         return flag;
     }
 
-    public static void printForces(ArrayList<Force> forces) {
+    public static void printForces(ClientInfo client, ArrayList<Force> forces) {
         for (Force force: forces) {
-            System.out.println(force.getId() + " : " + force.getName() +
+            client.sendPrint(force.getId() + " : " + force.getName() +
                     ", health : " + force.getHealth() + ", location : (" + force.getLocation().getX() +
                     ", " + force.getLocation().getY() + "), power : " + force.getAp());
         }

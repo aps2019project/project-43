@@ -27,9 +27,9 @@ public class Deck {
         this.hero = hero;
     }
 
-    public void addCard(Card card){
+    public void addCard(ClientInfo client, Card card){
         if(cards.size()<20) this.cards.add(card);
-        else System.out.println("there's no free space!");
+        else client.sendPrint("there's no free space!");
     }
 
     public String getName() {
@@ -144,34 +144,37 @@ public class Deck {
         return cards.size() == 20 && getHero() != null;
     }
 
-    public void showHand(){
+    public String showHand(){
+        StringBuilder res=new StringBuilder();
         int cardCounter = 0;
-        System.out.println("Item:");
-        System.out.println("\t"+item);
+        res.append("Item:\n");
+        res.append("\t").append(item).append("\n");
         for (Collectible item: items) {
-            System.out.println("\t" + item);
+            res.append("\t").append(item).append("\n");
         }
         for (Card card: hand) {
             cardCounter++;
-            System.out.println("\t"+cardCounter + " : " + card);
+            res.append("\t").append(cardCounter).append(" : ").append(card).append("\n");
         }
-        System.out.println("\tNext Card:");
-        System.out.println("\t\t"+cardCounter + " : " + nextCard);
-        System.out.println();
+        res.append("\tNext Card:\n");
+        res.append("\t\t").append(cardCounter).append(" : ").append(nextCard).append("\n\n");
+        return res.toString();
     }
 
-    public void showDeck(){
-        System.out.println("\tHeroes :");
-        if(hero!=null) System.out.println("\t\t"+hero);
-        System.out.println("\tItem :");
-        if(item!=null) System.out.println(item);
-        System.out.println("\tCards :");
+    public String showDeck(){
+        StringBuilder res = new StringBuilder();
+        res.append("\tHeroes :\n");
+        if(hero!=null) res.append("\t\t").append(hero).append("\n");
+        res.append("\tItem :\n");
+        if(item!=null) res.append(item).append("\n");
+        res.append("\tCards :\n");
         int cardCounter = 0;
         for (Card card: cards) {
             cardCounter++;
-            System.out.println("\t\t"+cardCounter + " : " + card);
+            res.append("\t\t").append(cardCounter).append(" : ").append(card).append("\n");
         }
-        System.out.println();
+        res.append("\n");
+        return res.toString();
     }
 
     @Override

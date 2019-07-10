@@ -16,62 +16,67 @@ public class Battle {
     private int award = 1000;
     Random random = new Random();
 
-    public void showBoard(){
-        System.out.println();
+    public String showBoard(){
+        StringBuilder res = new StringBuilder("\n");
         for(int i=0;i<5;i++){
             for(int j=0;j<9;j++){
                 Cell cell = cells[i][j];
                 if(!cells[i][j].isBusy()){
-                    if(cell.getFlag()!=null) System.out.print("F  ");
-                    else if(cell.getItem()!=null) System.out.print("I  ");
-                    else System.out.print("O  ");
+                    if(cell.getFlag()!=null) res.append("F  ");
+                    else if(cell.getItem()!=null) res.append("I  ");
+                    else res.append("O  ");
                 }
                 else if(cell.getForce() instanceof Hero){
-                    if(cell.getForce().getOwner()==players[0]) System.out.print("H1 ");
-                    else System.out.print("H2 ");
+                    if(cell.getForce().getOwner()==players[0]) res.append("H1 ");
+                    else res.append("H2 ");
                 }
                 else if(cell.getForce() instanceof Minion){
-                    if(cell.getForce().getOwner()==players[0]) System.out.print("M1 ");
-                    else System.out.print("M2 ");
+                    if(cell.getForce().getOwner()==players[0]) res.append("M1 ");
+                    else res.append("M2 ");
                 }
             }
-            System.out.println();
+            res.append("\n");
         }
-        System.out.println(getTurnAccount().getMainDeck().getHero().getLocation());
+        res.append(getTurnAccount().getMainDeck().getHero().getLocation());
+        return res.toString();
     }
 
-    public void showGameInfo(){
-        System.out.println("player1 mana: " + mana[0]);
-        System.out.println("player2 mana: " + mana[1]);
+    public String showGameInfo(){
+        StringBuilder res = new StringBuilder();
+        res.append("player1 mana: ").append(mana[0]).append("\n");
+        res.append("player2 mana: ").append(mana[1]).append("\n");
         switch (mode) {
             case "hero":
-                System.out.println("player1 hero health: " + players[0].getMainDeck().getHero().getHealth());
-                System.out.println("player2 hero health: " + players[1].getMainDeck().getHero().getHealth());
+                res.append("player1 hero health: ").append(players[0].getMainDeck().getHero().getHealth()).append("\n");
+                res.append("player2 hero health: ").append(players[1].getMainDeck().getHero().getHealth()).append("\n");
                 break;
             case "flag6":
-                printFlags();
+                res.append(printFlags()).append('\n');
                 break;
             case "flag1/2":
-                printFlags();
+                res.append(printFlags()).append('\n');
                 break;
         }
-        System.out.println("turn: player"+(getIndexTurn()+1)+": "+getTurnAccount().getUsername());
-        showBoard();
+        res.append("turn: player").append(getIndexTurn() + 1).append(": ").append(getTurnAccount().getUsername()).append("\n");
+        res.append(showBoard());
+        return res.toString();
     }
 
-    private void printFlags() {
+    private String printFlags() {
+        StringBuilder res = new StringBuilder();
         for(int i=0;i<5;i++){
             for(int j=0;j<9;j++){
                 if(getCell(i,j).getFlag()!=null){
-                    System.out.println("flag in position: "+(i)+", "+(j));
+                    res.append("flag in position: ").append(i).append(", ").append(j).append("\n");
                 }else if(getCell(i,j).isBusy()&&getCell(i,j).getForce().getFlag()!=null){
-                    System.out.println("flag is in "+getCell(i,j).getForce().getOwner().getUsername()+"'s hand");
+                    res.append("flag is in ").append(getCell(i, j).getForce().getOwner().getUsername()).append("'s hand\n");
                 }
             }
         }
+        return res.toString();
     }
 
-    void endTurn(){
+    void endTurn(ClientInfo client){
         getTurnAccount().getMainDeck().addNextCard();
         for(int i=0;i<5;i++){
             for(int j=0;j<9;j++){
@@ -111,22 +116,26 @@ public class Battle {
             }
         }
 
-
+        boolean finished=false;
 
         if(mode.equals("hero")){
-            if(players[0].getMainDeck().getHero().getLocation()==null){
-                System.out.println("player " + players[0].getUsername() + " won!");
-                players[0].win(award);
-                players[0].addMatch(new Match(players[1],true, turn));
-                players[1].addMatch(new Match(players[0],false, turn));
-                MainMenu.goToMainMenu();
-            }
             if(players[1].getMainDeck().getHero().getLocation()==null){
-                System.out.println("player " + players[1].getUsername() + " won!");
+                players[0].getClient().sendPrint("player " + players[0].getUsername() + " won!");
+                players[1].getClient().sendPrint("player " + players[0].getUsername() + " won!");
+                players[0].win(award);
+                players[0].addMatch(new Match(players[0], players[1],true, turn));
+                players[1].addMatch(new Match(players[1], players[0],false, turn));
+//                MainMenu.goToMainMenu();
+                finished=true;
+            }
+            if(players[0].getMainDeck().getHero().getLocation()==null){
+                players[0].getClient().sendPrint("player " + players[1].getUsername() + " won!");
+                players[1].getClient().sendPrint("player " + players[1].getUsername() + " won!");
                 players[1].win(award);
-                players[1].addMatch(new Match(players[0],true, turn));
-                players[0].addMatch(new Match(players[1],false, turn));
-                MainMenu.goToMainMenu() ;
+                players[1].addMatch(new Match(players[1], players[0],true, turn));
+                players[0].addMatch(new Match(players[0], players[1],false, turn));
+//                MainMenu.goToMainMenu() ;
+                finished=true;
             }
         }
         if(mode.equals("flag6")){
@@ -134,18 +143,22 @@ public class Battle {
                 for(int j=0;j<9;j++){
                     if(getCell(i,j).isBusy()&&getCell(i,j).getForce().getHadFlag()>=6){
                         if(getCell(i,j).getForce().getOwner()==players[0]){
-                            System.out.println("player " + players[0].getUsername() + " won!");
+                            players[0].getClient().sendPrint("player " + players[0].getUsername() + " won!");
+                            players[1].getClient().sendPrint("player " + players[0].getUsername() + " won!");
                             players[0].win(award);
-                            players[0].addMatch(new Match(players[1],true, turn));
-                            players[1].addMatch(new Match(players[0],false, turn));
-                            MainMenu.goToMainMenu();
+                            players[0].addMatch(new Match(players[0], players[1],true, turn));
+                            players[1].addMatch(new Match(players[1], players[0],false, turn));
+//                            MainMenu.goToMainMenu();
+                            finished=true;
                         }
                         else{
-                            System.out.println("player " + players[1].getUsername() + " won!");
+                            players[0].getClient().sendPrint("player " + players[1].getUsername() + " won!");
+                            players[1].getClient().sendPrint("player " + players[1].getUsername() + " won!");
                             players[1].win(award);
-                            players[1].addMatch(new Match(players[0],true, turn));
-                            players[0].addMatch(new Match(players[1],false, turn));
-                            MainMenu.goToMainMenu() ;
+                            players[1].addMatch(new Match(players[1], players[0],true, turn));
+                            players[0].addMatch(new Match(players[0], players[1],false, turn));
+//                            MainMenu.goToMainMenu() ;
+                            finished=true;
                         }
                     }
                 }
@@ -167,23 +180,35 @@ public class Battle {
                 }
             }
             if(flags1>half){
-                System.out.println("player " + players[0].getUsername() + " won!");
+                players[0].getClient().sendPrint("player " + players[0].getUsername() + " won!");
+                players[1].getClient().sendPrint("player " + players[0].getUsername() + " won!");
                 players[0].win(award);
-                players[0].addMatch(new Match(players[1],true, turn));
-                players[1].addMatch(new Match(players[0],false, turn));
-                MainMenu.goToMainMenu();
+                players[0].addMatch(new Match(players[0], players[1],true, turn));
+                players[1].addMatch(new Match(players[1], players[0],false, turn));
+//                MainMenu.goToMainMenu();
+                finished=true;
             }
             else if(flags2>half){
-                System.out.println("player " + players[1].getUsername() + " won!");
+                players[0].getClient().sendPrint("player " + players[1].getUsername() + " won!");
+                players[1].getClient().sendPrint("player " + players[1].getUsername() + " won!");
                 players[1].win(award);
-                players[1].addMatch(new Match(players[0],true, turn));
-                players[0].addMatch(new Match(players[1],false, turn));
-                MainMenu.goToMainMenu() ;
+                players[1].addMatch(new Match(players[1], players[0],true, turn));
+                players[0].addMatch(new Match(players[0], players[1],false, turn));
+//                MainMenu.goToMainMenu() ;
+                finished=true;
             }
         }
 
-        showGameInfo();
-        getTurnAccount().doYourTurn(this);
+        if(finished){
+            getTurnAccount().getClient().sendPrint(showGameInfo());
+            getNotTurnAccount().getClient().sendPrint(showGameInfo());
+            getTurnAccount().getClient().mainMenu.setCurrentMenu();
+            getNotTurnAccount().getClient().mainMenu.setCurrentMenu();
+        }else{
+            client.sendPrint(showGameInfo());
+            getTurnAccount().getClient().sendPrint("\nThis is your turn now");
+            getTurnAccount().doYourTurn(this);
+        }
     }
 
     Battle(String mode, int numberOfFlags, Account player1, Account player2){
@@ -212,10 +237,14 @@ public class Battle {
         }
     }
 
-    Battle(String mode, int numberOfFlags, int award, String deck){
+    Battle(Account account,String mode, int numberOfFlags, int award, String deck){
         this.mode = mode;
-        players[0] = Account.getLoggedAccount();
-        players[1] = new ComputerAccount(deck);
+        players[0] = account;
+
+        ClientInfo computerClient = new ComputerClientInfo(deck);
+        new PlayMenu(computerClient, this).setCurrentMenu();
+        players[1] = computerClient.getLoggedAccount();
+
         this.numberOfFlags=numberOfFlags;
         this.award=award;
         initialize();
@@ -324,42 +353,42 @@ public class Battle {
         return players[getIndexTurn()];
     }
 
-    private Account getNotTurnAccount(){
+    Account getNotTurnAccount(){
         return players[1-getIndexTurn()];
     }
 
-    public void showHand(){
-        getTurnAccount().getMainDeck().showHand();
+    public String showHand(){
+        return getTurnAccount().getMainDeck().showHand();
     }
 
-    public void showNextCard(){
-        getTurnAccount().getMainDeck().getNextCard().showCardInfo();
+    public String showNextCard(){
+        return getTurnAccount().getMainDeck().getNextCard().showCardInfo();
     }
 
-    public void showCardInfo(int id){
-        getTurnAccount().getMainDeck().getCard(id).showCardInfo();
+    public String showCardInfo(int id){
+        return getTurnAccount().getMainDeck().getCard(id).showCardInfo();
     }
 
-    void attackCombo(int opponentId, List<Integer> forcesId){
+    void attackCombo(ClientInfo client, int opponentId, List<Integer> forcesId){
         Force card = selectedCard;
         for (int id: forcesId){
             Minion force = (Minion) getCardById(getMyCardsInGame(), id);
             if(force == null){
-                System.out.println("invalid card id");
+                client.sendPrint("invalid card id");
                 return;
             }
             if (force.getActivateTime() != ActivateTime.COMBO) {
-                System.out.println("card with id " + id + "can't combo attack");
+                client.sendPrint("card with id " + id + "can't combo attack");
                 return;
             }
         }
         boolean first=true;
         for (int id: forcesId){
-            setSelectedCard(id);
-            attack(opponentId, first);
+            setSelectedCard(client, id);
+            attack(client, opponentId, first);
             first=false;
         }
-        setSelectedCard(card.getId());
+        setSelectedCard(client, card.getId());
     }
 
     ArrayList<Cell> getCells(int x, int y, int area){
@@ -494,21 +523,21 @@ public class Battle {
         return forces.size()>0;
     }
 
-    void useSpecialPower(int x, int y){
+    void useSpecialPower(ClientInfo client, int x, int y){
         if(getTurnAccount().getMainDeck().getHero().getManaCost()>getMana()){
-            System.out.println("You don't have enough mana");
+            client.sendPrint("You don't have enough mana");
             return;
         }
         if(getTurnAccount().getMainDeck().getHero().getLocation()==null){
-            System.out.println("your hero is dead");
+            client.sendPrint("your hero is dead");
             return;
         }
         if(getTurnAccount().getMainDeck().getHero().isCooling()){
-            System.out.println("your hero is cooling down");
+            client.sendPrint("your hero is cooling down");
             return;
         }
         if(getTurnAccount().getMainDeck().getHero().getSpecialPower().size()==0){
-            System.out.println("you don't have any special powers");
+            client.sendPrint("you don't have any special powers");
             return;
         }
         boolean used=false;
@@ -521,7 +550,7 @@ public class Battle {
             useMana(getTurnAccount().getMainDeck().getHero().getManaCost());
             getTurnAccount().getMainDeck().getHero().useSpecialPower();
         }else{
-            System.out.println("Invalid target");
+            client.sendPrint("Invalid target");
         }
     }
 
@@ -549,14 +578,14 @@ public class Battle {
         }
     }
 
-    void attack(int id, boolean defend){
+    void attack(ClientInfo client, int id, boolean defend){
         Force target = (Force) getCardById(getOpponentCardsInGame(), id);
         if(target==null){
-            System.out.println("Invalid card id");
+            client.sendPrint("Invalid card id");
             return;
         }
         if(selectedCard==null){
-            System.out.println("please select a force");
+            client.sendPrint("please select a force");
             return;
         }
         Force force = selectedCard;
@@ -592,19 +621,19 @@ public class Battle {
         checkIfDead(target);
     }
 
-    public void insert(String cardName, int x, int y){
+    public void insert(ClientInfo client, String cardName, int x, int y){
         Card card = getTurnAccount().getMainDeck().getCardFromHand(cardName, false);
         if(card==null){
-            System.out.println("Invalid card name");
+            client.sendPrint("Invalid card name");
             return;
         }
         Cell cell = getCell(x, y);
         if(cell == null || card instanceof Minion && !isAdjacentToFriendCell(cell)){
-            System.out.println("Invalid target");
+            client.sendPrint("Invalid target");
             return;
         }
         if(card.getManaCost()>getMana()){
-            System.out.println("You don't have enough mana");
+            client.sendPrint("You don't have enough mana");
             return;
         }
         getTurnAccount().getMainDeck().getCardFromHand(cardName, true);
@@ -630,23 +659,23 @@ public class Battle {
         }
     }
 
-    public void move(int x, int y) {
+    public void move(ClientInfo client, int x, int y) {
         Cell cell = getCell(x,y);
         if(selectedCard==null){
-            System.out.println("please select a force");
+            client.sendPrint("please select a force");
             return;
         }
         if(cell == null || cell.isBusy() || interruption(selectedCard.getLocation() , cell)){
-            System.out.println("Invalid target");
+            client.sendPrint("Invalid target");
             return;
         }
         selectedCard.move(getCell(x, y), turn);
     }
 
-    public void setSelectedCard(int id) {
+    public void setSelectedCard(ClientInfo client, int id) {
         Force force = (Force) getCardById(getMyCardsInGame(),id);
         if(force==null){
-            System.out.println("Invalid card id: "+id);
+            client.sendPrint("Invalid card id: "+id);
             return;
         }
         selectedCard = force;
@@ -728,15 +757,16 @@ public class Battle {
         return true;
     }
 
-    public void showGraveyard(){
+    public String showGraveyard(){
+        StringBuilder res = new StringBuilder("");
         for (Card card : getGraveyard()) {
-            card.showCardInfo();
-            System.out.println();
+            res.append(card.showCardInfo()).append("\n");
         }
+        return res.toString();
     }
 
-    public void showGraveyardCard(int id){
-        getTurnAccount().getMainDeck().getCard(id).showCardInfo();
+    public String showGraveyardCard(int id){
+        return getTurnAccount().getMainDeck().getCard(id).showCardInfo();
     }
 
     private boolean isAdjacentToFriendCell(Cell cell) {

@@ -2,44 +2,44 @@ package GamePackage;
 
 public class MainMenu extends GameMenu {
 
-    private static GameMenu mainMenu = new MainMenu();
+    MainMenu(ClientInfo client) {
+        super(client);
+    }
 
     @Override
     public boolean execCommand(String input) {
         input = input.trim().toLowerCase();
         switch (input) {
             case "battle":
-                if (Account.getLoggedAccount().getMainDeck()!= null && Account.getLoggedAccount().getMainDeck().validate()) BattleMenu.goToBattleMenu();
-                else System.out.println("selected deck is invalid");
+                if (client.getLoggedAccount().getMainDeck()!= null && client.getLoggedAccount().getMainDeck().validate()) client.battleMenu.setCurrentMenu();
+                else client.sendPrint("selected deck is invalid");
                 break;
             case "shop":
-                ShopMenu.goToShopMenu();
+                client.shopMenu.setCurrentMenu();
                 break;
             case "collection":
-                CollectionMenu.goToCollectionMenu();
+                client.collectionMenu.setCurrentMenu();
                 break;
             case "help":
                 showMenu();
                 break;
             case "exit":
-                AccountMenu.goToAccountMenu();
+                client.accountMenu.setCurrentMenu();
                 break;
             default:
-                System.out.println("Invalid Command");
+                client.sendPrint("Invalid Command\n");
+                showMenu();
         }
         return true;
     }
 
     void showMenu() {
-        System.out.println("*****Main Menu*****");
-        System.out.println("1. Battle");
-        System.out.println("2. Collection");
-        System.out.println("3. Shop");
-        System.out.println("4. Help (show menu)");
-        System.out.println("5. Exit");
+        client.sendPrint("*****Main Menu*****");
+        client.sendPrint("1. Battle");
+        client.sendPrint("2. Collection");
+        client.sendPrint("3. Shop");
+        client.sendPrint("4. Help (show menu)");
+        client.sendPrint("5. Exit");
     }
 
-    public static void goToMainMenu() {
-        Main.setCurrentMenu(mainMenu);
-    }
 }

@@ -38,10 +38,10 @@ public class Collection {
         return items;
     }
 
-    public void addToCollection(GameObject object) {
+    public void addToCollection(ClientInfo client, GameObject object) {
         if (object instanceof Item) {
             if(items.size()>=3){
-                System.out.println("Collection is full of items");
+                client.sendPrint("Collection is full of items");
                 return;
             }
             items.add((Item) object);
@@ -60,22 +60,24 @@ public class Collection {
     }
 
     // Show cards and items
-    public void print() {
-        System.out.println("Heroes : ");
+    public String show() {
+        StringBuilder res=new StringBuilder();
+        res.append("Heroes : \n");
         for (Card card : getHeroes()) {
-            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
+            res.append("\t").append(card).append(" - Sell Cost : ").append(card.getPrice()).append("\n");
         }
-        System.out.println("Items :");
+        res.append("Items :\n");
         for (Item item : items) {
-            System.out.println("\t"+item+ " - Sell Cost : " + item.getPrice());
+            res.append("\t").append(item).append(" - Sell Cost : ").append(item.getPrice()).append("\n");
         }
-        System.out.println("Cards : ");
+        res.append("Cards :\n");
         for (Card card : getMinions()) {
-            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
+            res.append("\t").append(card).append(" - Sell Cost : ").append(card.getPrice()).append("\n");
         }
         for (Card card : getSpells()) {
-            System.out.println("\t"+card+ " - Sell Cost : " + card.getPrice());
+            res.append("\t").append(card).append(" - Sell Cost : ").append(card.getPrice()).append("\n");
         }
+        return res.toString();
     }
 
     public GameObject getCard(int ID) {
@@ -108,7 +110,7 @@ public class Collection {
     }
 
 
-    public void search(String name) {
+    public String search(String name) {
         ArrayList<GameObject> objs = new ArrayList<>();
         for(Card card: cards){
             if(card.getName().equalsIgnoreCase(name)){
@@ -121,12 +123,13 @@ public class Collection {
             }
         }
         if(objs.size()>0){
-            System.out.println("these are found objects:");
+            StringBuilder res=new StringBuilder("these are found objects:\n");
             for(GameObject gameObject: objs){
-                System.out.println("\tID: "+gameObject.getId());
+                res.append("\tID: ").append(gameObject.getId()).append("\n");
             }
+            return res.toString();
         } else{
-            System.out.println("the card/item doesn't exist in the collection!");
+            return ("the card/item doesn't exist in the collection!");
         }
     }
 

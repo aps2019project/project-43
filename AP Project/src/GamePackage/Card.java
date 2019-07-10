@@ -7,5 +7,10 @@ public abstract class Card extends GameObject{
         return manaCost;
     }
 
-    public abstract void showCardInfo();
+    public abstract String showCardInfo();
+
+    @Override
+    public boolean equals(Object o) {
+        return o != null && this.getClass() == o.getClass() && this.getId() == ((Card) o).getId();
+    }
 }
