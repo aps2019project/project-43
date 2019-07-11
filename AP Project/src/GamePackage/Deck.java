@@ -148,7 +148,7 @@ public class Deck {
         StringBuilder res=new StringBuilder();
         int cardCounter = 0;
         res.append("Item:\n");
-        res.append("\t").append(item).append("\n");
+        res.append("\t").append(item==null?"":item).append("\n");
         for (Collectible item: items) {
             res.append("\t").append(item).append("\n");
         }
@@ -166,7 +166,7 @@ public class Deck {
         res.append("\tHeroes :\n");
         if(hero!=null) res.append("\t\t").append(hero).append("\n");
         res.append("\tItem :\n");
-        if(item!=null) res.append(item).append("\n");
+        res.append(item==null?"":item).append("\n");
         res.append("\tCards :\n");
         int cardCounter = 0;
         for (Card card: cards) {

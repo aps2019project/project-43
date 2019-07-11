@@ -20,8 +20,7 @@ public class Leaderboard {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < accounts.size(); i++) {
-            stringBuilder.append(i + 1).append("- ")
-                    .append(accounts.get(i).toString())
+            stringBuilder.append(i + 1).append("- ").append(accounts.get(i).toString()).append(accounts.get(i).getClient() != null ? " (online)" : "")
                     .append("\n");
         }
         return stringBuilder.toString();

@@ -250,6 +250,7 @@ public abstract class Force extends Card {
         }
         setLocation(cell);
         turnMoved=turn;
+        getOwner().getClient().sendPrint("force moved");
     }
 
     private boolean hasEffect(Buff buff){

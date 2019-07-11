@@ -166,6 +166,9 @@ public class BattleMenu extends GameMenu {
                     client.sendPrint("hero mode has been selected");
                     if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate()){
                         battle = new Battle("hero", 0,client.getLoggedAccount(), opponent);
+                        if(client.hasPlayRequest(opponent.getClient())){
+                            client.sendPrint("your opponent has requested to play with you! please go back and accept that request");
+                        } else
                         new WaitForOpponentMenu(client, opponent.getClient(), battle).setCurrentMenu();
                     }
                     else client.sendPrint("selected deck for second player is invalid");
@@ -174,6 +177,9 @@ public class BattleMenu extends GameMenu {
                     client.sendPrint("flag6 mode has been selected");
                     if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate()){
                         battle=new Battle("flag6",0, client.getLoggedAccount(), opponent);
+                        if(client.hasPlayRequest(opponent.getClient())){
+                            client.sendPrint("your opponent has requested to play with you! please go back and accept that request");
+                        } else
                         new WaitForOpponentMenu(client, opponent.getClient(), battle).setCurrentMenu();
                     }
                     else client.sendPrint("selected deck for second player is invalid");
@@ -182,6 +188,9 @@ public class BattleMenu extends GameMenu {
                     client.sendPrint("flag1/2 mode has been selected");
                     if(opponent.getMainDeck()!=null && opponent.getMainDeck().validate()){
                         battle=new Battle("flag1/2", Integer.parseInt(inputArray[1]),client.getLoggedAccount(), opponent);
+                        if(client.hasPlayRequest(opponent.getClient())){
+                            client.sendPrint("your opponent has requested to play with you! please go back and accept that request");
+                        } else
                         new WaitForOpponentMenu(client, opponent.getClient(), battle).setCurrentMenu();
                     }
                     else client.sendPrint("selected deck for second player is invalid");

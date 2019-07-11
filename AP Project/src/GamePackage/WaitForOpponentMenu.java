@@ -13,6 +13,7 @@ public class WaitForOpponentMenu extends GameMenu{
         this.opponentClient=opponentClient;
         opponentPlayMenu=new PlayMenu(opponentClient, battle, this);
         opponentClient.addToPlayRequests(opponentPlayMenu);
+        opponentClient.sendPrint("User "+client.getLoggedAccount().getUsername()+" has requested to play with you! you can go to multi player and select them to accept the request");
         client.sendWaitOrCancel();
     }
 

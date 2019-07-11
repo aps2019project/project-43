@@ -43,20 +43,11 @@ public class ServerInfo {
         return (new Leaderboard(accounts).sortByWins()).toString();
     }
 
-    public Account getUser(String name) {
-        return userMap.get(name);
-    }
-
     public Account getOnlineUser(String name) {
         for (ClientInfo client: clients) {
             if(client.getLoggedAccount()!=null&&client.getLoggedAccount().getUsername().equals(name)) return client.getLoggedAccount();
         }
         return null;
-    }
-
-
-    public ClientInfo getClient(int clientId) {
-        return clientsMap.get(clientId);
     }
 
     public void addClient(Socket clientSocket){
@@ -66,14 +57,6 @@ public class ServerInfo {
         clientsMap.put(LAST_CLIENT_ID, client);
         client.start();
         System.out.println("Client "+client+" is connected ..");
-    }
-
-    public void printUsers(ClientInfo client) {
-        int count = 1;
-        client.sendPrint("*****Users List*****");
-        for (String key: userMap.keySet()) {
-            client.sendPrint(count++ + ". " + key);
-        }
     }
 
     public void printOnlineUsers(ClientInfo client) {

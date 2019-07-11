@@ -23,14 +23,15 @@ class PlayMenu extends GameMenu {
 
     @Override
     public boolean execCommand(String input) {
-        if(battle.getTurnAccount()!=client.getLoggedAccount()){
+        String[] inputArray;
+        input = input.trim().toLowerCase();
+        inputArray = input.split(" ");
+
+        if(battle.getTurnAccount()!=client.getLoggedAccount() && !input.equals("enter chatroom")){
             client.sendPrint("It is not your turn");
             return true;
         }
-        String[] inputArray;
-            input = input.trim().toLowerCase();
-            inputArray = input.split(" ");
-            if (!inGraveyard)
+            if (!inGraveyard) {
                 switch (inputArray[0]) {
                     case "game":
                         client.sendPrint(battle.showGameInfo());
@@ -70,7 +71,7 @@ class PlayMenu extends GameMenu {
                         battle.useSpecialPower(client, parseInt(inputArray[3].substring(1, inputArray[3].length() - 1)), parseInt(inputArray[4].substring(0, inputArray[4].length() - 1)));
                         break;
                     case "enter":
-                        switch (inputArray[1]){
+                        switch (inputArray[1]) {
                             case "graveyard":
                                 inGraveyard = true;
                                 break;
@@ -96,30 +97,37 @@ class PlayMenu extends GameMenu {
                                 battle.attack(client, parseInt(inputArray[1]), true);
                         }
                         break;
-                    default: {
+                    case "help":
+                        showMenu();
+                        break;
+                    case "exit":
+                        client.sendPrint("Game has not ended yet!");
+                        break;
+                    default:
                         client.sendPrint("Invalid Command");
-                    }
+                        showMenu();
                 }
-            else switch (inputArray[0]) {
-                case "show":
-                    switch (inputArray[1]) {
-                        case "cards":
-                            client.sendPrint(battle.showGraveyard());
-                            break;
-                        case "info":
-                            client.sendPrint(battle.showGraveyardCard(parseInt(inputArray[2])));
-                            break;
-                    }
-                    break;
-                case "exit":
-                    inGraveyard = false;
-                    break;
-                case "help":
-                    showGraveyardMenu();
-                    break;
-                default: {
-                    client.sendPrint("Invalid Command\n");
-                    showGraveyardMenu();
+            } else {
+                switch (inputArray[0]) {
+                    case "show":
+                        switch (inputArray[1]) {
+                            case "cards":
+                                client.sendPrint(battle.showGraveyard());
+                                break;
+                            case "info":
+                                client.sendPrint(battle.showGraveyardCard(parseInt(inputArray[2])));
+                                break;
+                        }
+                        break;
+                    case "exit":
+                        inGraveyard = false;
+                        break;
+                    case "help":
+                        showGraveyardMenu();
+                        break;
+                    default:
+                        client.sendPrint("Invalid Command\n");
+                        showGraveyardMenu();
                 }
             }
         return true;
@@ -131,7 +139,7 @@ class PlayMenu extends GameMenu {
         if(waitForOpponentMenu!=null) waitForOpponentMenu.opponentJoined();
     }
 
-    private Account getPlayer(){
+    private Account getPlayer() {
         return client.getLoggedAccount();
     }
 
@@ -139,7 +147,7 @@ class PlayMenu extends GameMenu {
         return battle.getTurnAccount()==getPlayer()?battle.getNotTurnAccount():battle.getTurnAccount();
     }
 
-    private void showGraveyardMenu(){
+    private void showGraveyardMenu() {
         client.sendPrint("1. show cards");
         client.sendPrint("2. show info [card id]");
         client.sendPrint("3. help");

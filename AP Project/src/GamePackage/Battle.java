@@ -549,6 +549,7 @@ public class Battle {
         if(used){
             useMana(getTurnAccount().getMainDeck().getHero().getManaCost());
             getTurnAccount().getMainDeck().getHero().useSpecialPower();
+            client.sendPrint("special power used");
         }else{
             client.sendPrint("Invalid target");
         }
@@ -657,6 +658,7 @@ public class Battle {
         }else{
             useSpell((Spell) card, x, y);
         }
+        client.sendPrint("card inserted");
     }
 
     public void move(ClientInfo client, int x, int y) {
@@ -679,6 +681,7 @@ public class Battle {
             return;
         }
         selectedCard = force;
+        client.sendPrint("card selected");
     }
 
     private List<List<Integer>> permute(int[] nums) {
