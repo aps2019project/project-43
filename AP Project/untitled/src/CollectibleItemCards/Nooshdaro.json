@@ -1,0 +1,11 @@
+{
+  "name" : "Nooshdaro",
+  "info" : "Increase HP by 6 for random force",
+  "buff" : "POWER_NOTDISPEL",
+  "changeAP" : 0,
+  "changeHP" : 6,
+  "changeMana" : 0,
+  "coolDown" : 100,
+  "target" : "ALLY_FORCE_RANDOM",
+  "targetArea" : 9
+}

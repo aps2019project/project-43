@@ -1,0 +1,137 @@
+
+#MainPane{
+    -fx-background-image: url("/backgroundMainMenu.jpg");
+    -fx-background-repeat: round;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.MainBox{
+    -fx-alignment: center-left;
+    -fx-padding: 20px;
+    -fx-translate-x: -450;
+}
+
+
+.MainButton{
+    -fx-background-color: transparent;
+    -fx-font-family: Algerian;
+    -fx-font-size: 48px;
+    -fx-text-fill: skyblue;
+}
+.MainButton:hover{
+    -fx-effect: dropshadow(three-pass-box, deepskyblue, 10, 0.55, 0, 0);
+    -fx-cursor: hand;
+    -fx-opacity: 1.45;
+
+}
+.MainButton:pressed{
+    -fx-translate-y: 2px;
+    -fx-cursor: closed-hand;
+
+}
+
+
+.BattleSubMenu{
+    -fx-background-color: linear-gradient(to top right, rgba(0, 0, 0, 0.2), rgba(0, 0, 200, 0.5), rgba(0, 0, 0, 0.2));
+    -fx-tile-alignment: right;
+    -fx-alignment: center;
+    /*-fx-opacity: 0.45;*/
+    -fx-border-width: 10px;
+    -fx-background-radius: 65px;
+    -fx-border-radius: 50px;
+    -fx-background-opacity: 45%;
+}
+
+
+.backButton{
+    -fx-background-image: url("BackButton.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 100px;
+    -fx-opacity: 0.75;
+}
+.backButton:hover{
+    -fx-effect: dropshadow(three-pass-box, deepskyblue, 10, 0.55, 0, 0);
+    -fx-opacity: 1.0;
+    -fx-cursor: hand;
+}
+.backButton:pressed{
+    -fx-cursor: closed-hand;
+}
+
+
+.battleSubmenuImage{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+}
+.battleSubmenuImage:hover{
+    -fx-effect: dropshadow(gaussian, lightskyblue, 10, 0.55, 0, 0);
+    -fx-opacity: 0.55;
+}
+.battleSubmenuImage:pressed{
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+
+.table-view{
+    -fx-font-family: Algerian;
+    -fx-font-size: 32;
+    -fx-background-color: transparent;
+    -fx-opacity: 0.75;
+}
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+}
+.table-view .column-header-background .label{
+    -fx-text-fill: white;
+}
+.table-cells{
+    -fx-background-color: linear-gradient(to top right, rgba(0, 0, 0, 0.95), rgba(0, 0, 200, 0.92), rgba(0, 0, 0, 0.91) );
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: grey;
+}
+.cell{
+    -fx-text-fill: black;
+    -fx-background-color: rgba(255, 255, 255, 0.56);
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: grey;
+    -fx-alignment: center;
+}
+.cell:odd{
+    -fx-background-color: rgba(25, 205, 205, 0.55);
+}
+.cell:hover{
+    -fx-effect: dropshadow(three-pass-box, deepskyblue, 10, 0.65, 0, 0);
+}
+
+
+.avatarSection{
+    -fx-background-image: url("lyonar_argeonhighmayne1.jpg");
+    -fx-background-size: cover;
+    /*-fx-background-position: center center;*/
+    /*-fx-fill: skyblue;*/
+    -fx-background-radius: 400;
+    /*-fx-image: url("silver.png");*/
+    /*-fx-border-style: solid;*/
+    /*-fx-border-radius: 400;*/
+    /*-fx-border-image-source: url("silver.png");*/
+}
+.user-label{
+    -fx-text-fill: linear-gradient(to top right, deepskyblue 10%, darkkhaki 50%, deepskyblue 90%);
+    -fx-font-family: Algerian;
+    -fx-font-size: 38px;
+    /*-fx-background-color: linear-gradient(to top left, rgba(0, 0, 0, 0.95), rgba(0, 0, 200, 0.92), rgba(0, 0, 0, 0.91));*/
+}
+.avatarBox{
+    -fx-background-image: url("lyonar_argeonhighmayne1.jpg");
+}

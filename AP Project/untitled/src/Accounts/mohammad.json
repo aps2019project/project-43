@@ -1,0 +1,22 @@
+{
+  "username" : "mohammad",
+  "password" : "mir",
+  "status" : null,
+  "money" : 15000,
+  "collection" : {
+    "heroes" : [ ],
+    "cards" : [ ],
+    "items" : [ ]
+  },
+  "matches" : [ ],
+  "currentMatch" : null,
+  "decks" : [ ],
+  "mainDeck" : null,
+  "deckHashMap" : {
+  },
+  "wins" : 5,
+  "rank" : 0,
+  "shop" : {
+    "cards" : [ ]
+  }
+}

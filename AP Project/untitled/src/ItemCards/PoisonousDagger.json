@@ -1,0 +1,12 @@
+{
+  "name" : "PoisonousDagger",
+  "description" : "Apply poison buff on random enemy force when ally forces hit something for one round",
+  "buff" : "POISON",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 1,
+  "price" : 7000,
+  "target" : "ENEMY_FORCE",
+  "unused" : true
+}

@@ -1,0 +1,11 @@
+{
+  "name" : "BladesOfAgility",
+  "info" : "Increase random force's AP by 6",
+  "buff" : "POWER_NOTDISPEL",
+  "changeAP" : 6,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "coolDown" : 100,
+  "target" : "ALLY_MINION_RANDOM",
+  "targetArea":9
+}

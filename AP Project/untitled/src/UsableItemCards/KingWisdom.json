@@ -1,0 +1,11 @@
+{
+  "name" : "KingWisdom",
+  "info" : "increases mana by 1 each round",
+  "buff" : "MANA",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 1,
+  "coolDown" : 100,
+  "price" : 9000,
+  "target" : "ALLY_FORCE"
+}

@@ -1,0 +1,12 @@
+{
+  "name" : "AllPoison",
+  "price" : 1500,
+  "manaCost" : 8,
+  "buff" : "POISON",
+  "info" : "Poison All Enemy Forces for 4 Truns",
+  "coolDown" : 4,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 1,
+  "changeAP" : 0,
+  "targetArea" : 9
+}

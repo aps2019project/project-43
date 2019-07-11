@@ -1,0 +1,14 @@
+{
+  "name" : "FireBall",
+  "moneyCost" : 400,
+  "manaCost" : 1,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : "Deals 4 Damage to an EnemyForce",
+  "owner" : null,
+  "coolDown" : 1,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : -4,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

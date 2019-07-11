@@ -1,0 +1,12 @@
+{
+  "name" : "SepahSalar",
+  "price" : 800,
+  "manaCost" : 7,
+  "info" : null,
+  "hp" : 12,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime" : "COMBO"
+}

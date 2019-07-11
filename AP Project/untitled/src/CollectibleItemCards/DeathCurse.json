@@ -1,0 +1,11 @@
+{
+  "name" : "DeathCurse",
+  "info" : "Give 8 AP to a random minion which can use it before death randomly on its nearest force",
+  "buff" : null,
+  "changeAP" : 8,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "coolDown" : 100,
+  "target" : "ALLY_MINION_RANDOM",
+  "targetArea":1
+}

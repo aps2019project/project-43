@@ -1,0 +1,12 @@
+{
+  "name" : "Give",
+  "price" : 450,
+  "manaCost" : 4,
+  "info" : "Won't affected by cards(Nither negative buffs nor Attack Point",
+  "hp" : 5,
+  "ap" : 7,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ ],
+  "activateTime": "ON_DEFEND"
+}

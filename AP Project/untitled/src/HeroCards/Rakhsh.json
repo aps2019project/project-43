@@ -1,0 +1,28 @@
+{
+  "name" : "Rakhsh",
+  "moneyCost" : 8000,
+  "manaCost" : 1,
+  "effects" : [ "STUN" ],
+  "cardID" : null,
+  "info" : "Stun one enemy force for one round",
+  "owner" : null,
+  "hp" : 50,
+  "ap" : 4,
+  "attackRange" : 0,
+  "coolDown" : 2,
+  "specialPower" : {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "STUN" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 1,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 13
+  },
+  "troopType" : "MELEE"
+}

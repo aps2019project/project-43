@@ -1,7 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1366d15f-33d6-469d-81f6-824da5f36f5a" name="Default Changelist" comment="" />
+    <list default="true" id="1366d15f-33d6-469d-81f6-824da5f36f5a" name="Default Changelist" comment="7$">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/Accounts/Username.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/Accounts/mohammad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/AllAttack.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/AllDisarm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/AllPoison.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/AllPower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/AreaDispel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Arzhang.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Ashkboos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Bahman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/BlackGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Dispel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/DoubleHeadGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Dragon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Eagle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Elf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Empower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/FireBall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Foolad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/GiantSnake.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Give.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/GodStrength.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/GreatGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/GreatWizard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/HealthWithProfit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/HellFire.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/HogRiderGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Iraj.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/KingGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/KingsGuard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/LightingBolt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Lion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Madness.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/NaneSarma.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/OneEyeGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Pahlavan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Panther.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PersianArcher.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PersianHorseman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PersianPikesman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PersianSwordman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Piran.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PoisonLake.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PoisonousSnake.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/PowerUp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/RockThrowerGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/RockerMan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Sacrifice.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/SepahSalar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Shock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Siavash.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TotalDisarm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TuranianArcher.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TuranianGorzdar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TuranianPikesman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TuranianPrince.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/TuranianSpy.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Weakening.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/WhiteWolf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/WildHug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Wizard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/CardSamples/Wolf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/AccountGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/AccountMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/ActivateTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/AttackType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Battle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/BattleMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Buff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/CardGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Cell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Collectible.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Collection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/CollectionMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Deck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Effect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Flag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Force.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/GameMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Generateble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Leaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Match.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Minion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/ShopMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Spell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/SpellTarget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/GamePackage/Usable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/AssassinationDagger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/Baptism.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/BladesOfAgility.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/DamonArch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/Elixir.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/Nooshdaro.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/PhoenixFeather.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/RandomDamage.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/SoulEater.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/ItemCards/WisdomCrown.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Arzhang.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Ashkboos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Bahman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/BlackGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Foolad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/GiantSnake.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Give.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/GreatGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/GreatWizard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/HogRiderGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Iraj.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Jen.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/KingGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/NaneSarma.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/PersianHorseman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/PersianPahlavan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/PersianPikesman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/PersianSwordman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Piran.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/PoisonousSnake.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/RockThrowerGiant.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianArcher.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianGorzdar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianPikesman.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianPrince.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianRockerMan.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/TuranianSpy.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/WhiteWolf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/WildHug.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Wizard.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/MinionCards/Wolf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/AssassinationDagger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/Baptism.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/DamonArch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/HugeShield.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/KingWisdom.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/PhoenixFeather.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/PoisonousDagger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/ShockHammer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/SoulEater.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/TerrorHood.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/UsableItemCards/WisdomCrown.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/playground/background@2x.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untitled/src/playground/midground@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,101 +179,76 @@
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Battle.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
-              <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+            <state relative-caret-position="191">
+              <caret line="317" column="12" lean-forward="true" selection-start-line="317" selection-start-column="12" selection-end-line="317" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/CardGenerator.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/AccountGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+            <state relative-caret-position="170">
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Usable.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/AccountMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="-3257">
+              <caret line="150" column="52" selection-start-line="150" selection-start-column="52" selection-end-line="150" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/ComputerAccount.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/ShopMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2910">
-              <caret line="194" column="46" selection-start-line="194" selection-start-column="46" selection-end-line="194" selection-end-column="46" />
+            <state relative-caret-position="-2495">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/BattleMenu.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/MainMenu.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1590">
-              <caret line="226" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="191">
+              <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Account.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3495">
-              <caret line="236" selection-start-line="236" selection-end-line="236" />
+            <state relative-caret-position="323">
+              <caret line="170" column="48" selection-start-line="170" selection-start-column="48" selection-end-line="170" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Main.java">
+        <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Force.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
-              <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/Cell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePackage/GameObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-              <folding>
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#391#392#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-102">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -193,13 +325,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SpellCards/Sacrifice.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/Lion.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/GiantSnake.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/GreatWizard.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/jen.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/Jen.json" />
-        <option value="$PROJECT_DIR$/src/MinionCards/Bahman.json" />
         <option value="$PROJECT_DIR$/src/ItemCards/Usable.java" />
         <option value="$PROJECT_DIR$/src/GamePackage/Collectable.java" />
         <option value="$PROJECT_DIR$/src/GamePackage/GameObject.java" />
@@ -244,12 +369,19 @@
         <option value="$PROJECT_DIR$/src/GamePackage/ComputerAccount.java" />
         <option value="$PROJECT_DIR$/src/GamePackage/Force.java" />
         <option value="$PROJECT_DIR$/src/GamePackage/Battle.java" />
+        <option value="$PROJECT_DIR$/GraphicalModule/src/Accounts/mehdi.json" />
+        <option value="$PROJECT_DIR$/GraphicalModule/src/GamePackage/ShopMenu.java" />
+        <option value="$PROJECT_DIR$/untitled/src/GamePackage/Account.java" />
+        <option value="$PROJECT_DIR$/untitled/src/GamePackage/AccountGenerator.java" />
+        <option value="$PROJECT_DIR$/untitled/src/GamePackage/AccountMenu.java" />
+        <option value="$PROJECT_DIR$/untitled/src/MainMenu.css" />
+        <option value="$PROJECT_DIR$/untitled/src/GamePackage/MainMenu.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -258,6 +390,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,31 +401,25 @@
             <path>
               <item name="AP Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AP Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AP Project" type="462c0819:PsiDirectoryNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AP Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GamePackage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AP Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AP Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroCards" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AP Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AP Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MinionCards" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -302,9 +429,9 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559718801448" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/untitled/External Libraries" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -334,8 +461,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.FXMain">
+    <configuration name="FXMain" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="GamePackage.Main" />
+      <module name="JavaFxApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="GamePackage.Main" />
       <module name="AP Project" />
       <extension name="coverage">
@@ -348,6 +482,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.FXMain" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -385,6 +523,7 @@
       <workItem from="1562341490855" duration="8333000" />
       <workItem from="1562396027885" duration="35284000" />
       <workItem from="1562681081780" duration="607000" />
+      <workItem from="1562773322494" duration="2639000" />
     </task>
     <task id="LOCAL-00001" summary="3$ Spell Cards json added">
       <created>1556566082591</created>
@@ -418,7 +557,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306857000" />
+    <option name="totallyTimeSpent" value="309496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -430,10 +569,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49417248" visible="true" weight="0.21163167" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49417248" visible="true" weight="0.2147651" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Structure" order="2" sideWeight="0.5058275" side_tool="true" weight="0.138833" />
       <window_info id="Learn" order="3" />
@@ -443,17 +582,17 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30512017" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.30136988" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.30028328" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32810867" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.33994335" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32465753" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3243626" />
       <window_info anchor="right" id="Maven Projects" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -480,87 +619,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="6$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/UsableItemCards/ShockHammer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UsableItemCards/Baptism.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/ActivateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SpellCards/KingsGuard.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UsableItemCards/PhoenixFeather.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SpellCards/AllPoison.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/ChineseSword.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/Elixir.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/BladesOfAgility.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/Two-headedArrow.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/Nooshdaro.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/RandomDamage.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CollectibleItemCards/InvulnerabilityElixir.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -709,7 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -732,8 +789,8 @@
         <state relative-caret-position="180">
           <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
           <folding>
-            <element signature="e#227#228#0" expanded="false" />
-            <element signature="e#292#293#0" expanded="false" />
+            <element signature="e#227#228#0" />
+            <element signature="e#292#293#0" />
           </folding>
         </state>
       </provider>
@@ -750,8 +807,8 @@
         <state relative-caret-position="126">
           <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding>
-            <element signature="e#141#142#0" expanded="false" />
-            <element signature="e#215#216#0" expanded="false" />
+            <element signature="e#141#142#0" />
+            <element signature="e#215#216#0" />
           </folding>
         </state>
       </provider>
@@ -774,7 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -782,14 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -800,51 +848,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePackage/CardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/Usable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/ComputerAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
+        <state relative-caret-position="3298">
           <caret line="194" column="46" selection-start-line="194" selection-start-column="46" selection-end-line="194" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/BattleMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1590">
+        <state relative-caret-position="3808">
           <caret line="226" selection-start-line="226" selection-end-line="226" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3495">
+        <state relative-caret-position="3536">
           <caret line="236" selection-start-line="236" selection-end-line="236" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/Force.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
+        <state relative-caret-position="3366">
           <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="289">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GamePackage/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="221">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="e#351#352#0" expanded="true" />
@@ -853,17 +908,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/CardGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/GamePackage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        <state relative-caret-position="153">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <folding>
+            <element signature="method#main#0;class#Main#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePackage/Main.java">
+    <entry file="file://$PROJECT_DIR$/GraphicalModule/src/Accounts/mehdi.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePackage/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2078">
+          <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphicalModule/src/GamePackage/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphicalModule/src/GamePackage/ShopMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphicalModule/src/GamePackage/GameMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphicalModule/src/GamePackage/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="317" column="12" lean-forward="true" selection-start-line="317" selection-start-column="12" selection-end-line="317" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/AccountGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/AccountMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3257">
+          <caret line="150" column="52" selection-start-line="150" selection-start-column="52" selection-end-line="150" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/ShopMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2495">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/MainMenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="170" column="48" selection-start-line="170" selection-start-column="48" selection-end-line="170" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GamePackage/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -919,7 +1064,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>AP Project</last-edited>
+          <last-edited>JavaFxApplication</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

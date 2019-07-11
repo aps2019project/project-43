@@ -1,0 +1,16 @@
+{
+  "name" : "GreatGiant",
+  "moneyCost" : 600,
+  "manaCost" : 9,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 30,
+  "ap" : 8,
+  "attackRange" : 2,
+  "troopType" : "HYBRID",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

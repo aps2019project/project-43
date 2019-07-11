@@ -1,0 +1,59 @@
+
+#shopBackground{
+    -fx-background-image: url("backgroundShop.jpg");
+    -fx-background-repeat: round;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+
+#backButton{
+    -fx-background-image: url("BackButton.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-background-repeat: round;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+
+    -fx-padding: 20px 20px 20px 20px;
+}
+#backButton:hover{
+    -fx-effect: dropshadow(three-pass-box, lightskyblue, 10, 0.55, 0, 0);
+    -fx-cursor: hand;
+}
+#backButton:pressed{
+    -fx-cursor: closed-hand;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+.titleBox .label{
+    -fx-text-fill: linear-gradient(to top right, darkblue 0%, deepskyblue 40%, darkblue 100%);
+    -fx-font-family: "Edwardian Script ITC";
+    -fx-font-size: 114;
+}
+
+.tab * .tab-label{
+    -fx-rotate: 90;
+}
+.tab-label{
+    -fx-text-fill: linear-gradient(to top right, darkkhaki, darkred, darkkhaki);
+    -fx-font-family: Algerian;
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+}
+.tab{
+    -fx-background-color: transparent;
+}
+.tab-header-area{
+    -fx-background-color: transparent;
+    -fx-border-radius: 100px;
+    -fx-padding: -3 0 0 -5;
+}
+.tab-header-background{
+    -fx-background-color: transparent;
+}
+
+.card-background{
+    -fx-background-image: url("cardBackground/neutral_prismatic_unit@2x.png");
+}

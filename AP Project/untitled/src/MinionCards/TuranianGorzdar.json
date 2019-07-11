@@ -1,0 +1,12 @@
+{
+  "name" : "TuranianGorzdar",
+  "price" : 450,
+  "manaCost" : 2,
+  "info" : null,
+  "hp" : 3,
+  "ap" : 10,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

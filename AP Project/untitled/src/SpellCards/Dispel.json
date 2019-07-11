@@ -1,0 +1,12 @@
+{
+  "name" : "Dispel",
+  "price" : 2100,
+  "manaCost" : 0,
+  "buff" : "REMOVE",
+  "info" : "Remove Negative Buffs For One Ally Force or Positive Buffs For One Enemy Force",
+  "coolDown" : 0,
+  "target" : "FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

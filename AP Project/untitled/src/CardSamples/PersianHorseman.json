@@ -1,0 +1,16 @@
+{
+  "name" : "PersianHorseman",
+  "moneyCost" : 200,
+  "manaCost" : 4,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 10,
+  "ap" : 6,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

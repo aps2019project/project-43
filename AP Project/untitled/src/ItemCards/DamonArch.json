@@ -1,0 +1,12 @@
+{
+  "name" : "DamonArch",
+  "description" : "Disarm enemy force for one round, only for ranged and hybrid",
+  "buff" : "DISARM",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "cooldown" : 1,
+  "price" : 30000,
+  "target" : "ENEMY_FORCE",
+  "unused" : true
+}

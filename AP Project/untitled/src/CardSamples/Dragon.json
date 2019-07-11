@@ -1,0 +1,16 @@
+{
+  "name" : "Dragon",
+  "moneyCost" : 250,
+  "manaCost" : 5,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 9,
+  "ap" : 5,
+  "attackRange" : 4,
+  "troopType" : "RANGED",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

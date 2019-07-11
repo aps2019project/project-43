@@ -1,0 +1,12 @@
+{
+  "name" : "PoisonLake",
+  "price" : 900,
+  "manaCost" : 5,
+  "buff" : "POISONOUS_CELL",
+  "info" : "Convert the Selected Cells to Poisonous Cells for One Turn",
+  "coolDown" : 1,
+  "target" : "CELL",
+  "changeHP" : 1,
+  "changeAP" : 0,
+  "targetArea" : 3
+}

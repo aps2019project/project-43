@@ -1,0 +1,20 @@
+{
+  "name" : "GiantSnake",
+  "price" : 500,
+  "manaCost" : 8,
+  "info" : "Minion Up to 2 Cells away takes one more damage",
+  "hp" : 14,
+  "ap" : 7,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [{
+    "buff" : "DISHOLY",
+    "coolDown" : 100,
+    "target" : "ALLY_FORCE",
+    "changeHP" : 1,
+    "changeAP" : 1,
+    "targetArea" : 5,
+    "whichTurn" : 0
+  }],
+  "activateTime" : "ON_SPAWN"
+}

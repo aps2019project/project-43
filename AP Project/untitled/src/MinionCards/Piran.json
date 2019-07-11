@@ -1,0 +1,12 @@
+{
+  "name" : "Piran",
+  "price" : 400,
+  "manaCost" : 8,
+  "info" : "Won't Poison",
+  "hp" : 20,
+  "ap" : 12,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime": "ON_DEFEND"
+}

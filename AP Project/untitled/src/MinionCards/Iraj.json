@@ -1,0 +1,12 @@
+{
+  "name" : "Iraj",
+  "price" : 500,
+  "manaCost" : 4,
+  "info" : null,
+  "hp" : 6,
+  "ap" : 20,
+  "attackRange" : 3,
+  "troopType" : "RANGED",
+  "specialPower" : [ ],
+  "activateTime": null
+}

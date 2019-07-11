@@ -1,0 +1,14 @@
+{
+  "name" : "LightingBolt",
+  "moneyCost" : 1250,
+  "manaCost" : 2,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : "Deals 8 Damage to Enemy Hero",
+  "owner" : null,
+  "coolDown" : 1,
+  "target" : "ENEMY_HERO",
+  "changeHP" : -8,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

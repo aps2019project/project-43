@@ -1,0 +1,12 @@
+{
+  "name" : "HellFire",
+  "price" : 600,
+  "manaCost" : 3,
+  "buff" : "CELL_ON_FIRE",
+  "info" : "Convert the Selected Cells to Firing Cells for @ Turns",
+  "coolDown" : 2,
+  "target" : "CELL",
+  "changeHP" : 2,
+  "changeAP" : 0,
+  "targetArea" : 2
+}

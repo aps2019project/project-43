@@ -1,0 +1,20 @@
+{
+  "name" : "Foolad",
+  "price" : 650,
+  "manaCost" : 3,
+  "info" : "Has 12 Continuous Holy buffs",
+  "hp" : 1,
+  "ap" : 1,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "HOLY",
+    "coolDown" : 100,
+    "target" : "ALLY_FORCE",
+    "changeHP" : 12,
+    "changeAP" : 12,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "PASSIVE"
+}

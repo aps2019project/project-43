@@ -1,0 +1,47 @@
+
+.background{
+    -fx-background-image: url("playground/background@2x.jpg");
+    -fx-background-position: center;
+    -fx-background-size: cover
+}
+.midground {
+    -fx-background-image: url("playground/midground@2x.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.battle-cell{
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-background-radius: 30px;
+    -fx-border-color: grey;
+    -fx-border-radius: 30px;
+    /*-fx-border-width: 5px;*/
+}
+.battle-cell:hover{
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 2, 0.5, 0, 0);
+    /*-fx-scale-x: 1.2;*/
+    -fx-scale-y: 1.05;
+    -fx-cursor: hand;
+}
+.battle-cell:pressed{
+    -fx-cursor: closed-hand;
+}
+
+.enemy{
+    -fx-scale-x: -1;
+}
+.ally{
+    -fx-scale-x: 1;
+}
+.hero{
+    -fx-background-image: url("f5_tier2general_breathing.gif");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 114 114;
+}
+.hero-warlock{
+    -fx-background-image: url("f3_zirixfestive_breathing.gif");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 114 114;
+}

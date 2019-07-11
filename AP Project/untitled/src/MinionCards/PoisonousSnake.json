@@ -1,0 +1,20 @@
+{
+  "name" : "PoisonousSnake",
+  "price" : 300,
+  "manaCost" : 4,
+  "info" : "Poison The Enemy Up to 3 Turns",
+  "hp" : 5,
+  "ap" : 6,
+  "attackRange" : 4,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "POISON",
+    "coolDown" : 3,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

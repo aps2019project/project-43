@@ -1,0 +1,14 @@
+{
+  "name" : "TotalDisarm",
+  "moneyCost" : 1000,
+  "manaCost" : 0,
+  "effects" : [ "DISARM" ],
+  "cardID" : null,
+  "info" : "Disarm the EnemyForce until The Game Ends",
+  "owner" : null,
+  "coolDown" : 100,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

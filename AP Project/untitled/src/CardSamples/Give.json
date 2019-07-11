@@ -1,0 +1,16 @@
+{
+  "name" : "Give",
+  "moneyCost" : 450,
+  "manaCost" : 4,
+  "effects" : [ "ON_DEFEND" ],
+  "cardID" : null,
+  "info" : "Won't affected by cards(Nither negative buffs nor Attack Point",
+  "owner" : null,
+  "hp" : 5,
+  "ap" : 7,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

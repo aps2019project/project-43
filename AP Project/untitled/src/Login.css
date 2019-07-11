@@ -1,0 +1,78 @@
+#LoginPane{
+    -fx-background-image: url("backgroundLoginPage.jpg");
+    -fx-background-repeat: round;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, darkgrey, 10, 0.55, 0, 0);
+    -fx-start-margin: 10px;
+    -fx-end-margin: 20px;
+}
+
+.loginLabel {
+    -fx-text-fill: indigo;
+    -fx-effect: dropshadow(three-pass-box, lightskyblue, 10, 0.55, 0, 0);
+    -fx-font-family: Algerian;
+    -fx-font-weight: bold;
+    -fx-font-size: 180px;
+    -fx-padding: 50px;
+}
+#subTitle{
+    -fx-text-fill: indigo;
+    -fx-font-size: 32px;
+    -fx-font-family: Algerian;
+    -fx-text-alignment: center;
+    -fx-rotate: -30;
+}
+
+.loginButton{
+    -fx-text-fill: darkblue;
+    /*-fx-background-color: linear-gradient(to top, darkgray, #6A93CD, white);*/
+    -fx-background-color: linear-gradient(to right, #00d2ff 0%, #3a7bd5 25%, #00d2ff  50%, #3a7bd5 75%, #00d2ff 100%);
+    -fx-opacity: 0.45;
+    -fx-font-family: Algerian;
+    -fx-font-size: 40px;
+    -fx-cursor: hand;
+    -fx-background-radius: 400;
+    -fx-translate-y: -100;
+}
+.loginButton:hover{
+    /*-fx-background-color: linear-gradient(to bottom, darkgray, #6A93CD, white);*/
+    -fx-background-color: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%);
+    -fx-text-fill: indigo;
+    -fx-opacity: 1.0;
+}
+.loginButton:pressed{
+    -fx-translate-y: -97;
+    -fx-effect: dropshadow(gaussian, blueviolet, 10, 0.55, 0, 0);
+    -fx-cursor: closed-hand;
+}
+
+/*.overlay{*/
+/*    -fx-opacity: 0.55;*/
+/*    -fx-background-color: white;*/
+/*}*/
+
+/*.overlay-label{*/
+/*    -fx-text-fill: black;*/
+/*    -fx-font-size: 32px;*/
+/*}*/
+
+.field{
+    -fx-text-fill: black;
+    /*-fx-background-color: linear-gradient(to top, darkgray, #6A93CD, white);*/
+    -fx-background-color: linear-gradient(to right, #00d2ff 0%, #3a7bd5 25%, #00d2ff  50%, #3a7bd5 75%, #00d2ff 100%);
+    -fx-opacity: 0.45;
+    -fx-font-family: Algerian;
+    -fx-font-size: 48px;
+    -fx-cursor: text;
+    -fx-background-radius: 400;
+    -fx-translate-y: -100;
+}
+.field:hover, .field:focused{
+    /*-fx-background-color: linear-gradient(to bottom, darkgray, #6A93CD, white);*/
+    -fx-background-color: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%);
+    -fx-text-fill: pink;
+    -fx-opacity: 1.0;
+}
+
+

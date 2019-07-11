@@ -1,0 +1,30 @@
+{
+  "name" : "NaneSarma",
+  "moneyCost" : 500,
+  "manaCost" : 3,
+  "effects" : [ "ON_SPAWN" ],
+  "cardID" : null,
+  "info" : "Stun nearby enemy minions for one turn",
+  "owner" : null,
+  "hp" : 3,
+  "ap" : 4,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "STUN" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 1,
+    "target" : "ENEMY_MINION",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 2,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

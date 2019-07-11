@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31cc0edb-73d8-4764-adb3-748fa3c54ad2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ApProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ApProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AP Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP Project/src/GamePackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP Project/src/GamePackage/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,15 +31,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Battle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10950">
-              <caret line="756" column="21" selection-start-line="756" selection-start-column="21" selection-end-line="756" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Hero.java">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -52,11 +40,20 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+            <state relative-caret-position="102">
+              <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/AccountMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -64,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
+            <state relative-caret-position="34">
               <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
@@ -112,9 +109,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -125,23 +122,23 @@
         <subPane>
           <expand>
             <path>
-              <item name="project-43" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-43" type="462c0819:PsiDirectoryNode" />
+              <item name="AP43-7.10" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AP43-7.10" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-43" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-43" type="462c0819:PsiDirectoryNode" />
+              <item name="AP43-7.10" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AP43-7.10" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-43" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-43" type="462c0819:PsiDirectoryNode" />
+              <item name="AP43-7.10" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AP43-7.10" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-43" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-43" type="462c0819:PsiDirectoryNode" />
+              <item name="AP43-7.10" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AP43-7.10" type="462c0819:PsiDirectoryNode" />
               <item name="AP Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GamePackage" type="462c0819:PsiDirectoryNode" />
@@ -150,8 +147,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -160,10 +157,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556555577883" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AP Project" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -214,17 +211,18 @@
       <workItem from="1555671502355" duration="420000" />
       <workItem from="1562174758889" duration="1742000" />
       <workItem from="1562256705324" duration="679000" />
+      <workItem from="1562773099035" duration="39000" />
+      <workItem from="1562773196932" duration="124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4597000" />
+    <option name="totallyTimeSpent" value="4760000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26817447" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2784553" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -242,7 +240,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32786885" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -272,7 +270,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10950">
+        <state relative-caret-position="12410">
           <caret line="756" column="21" selection-start-line="756" selection-start-column="21" selection-end-line="756" selection-end-column="21" />
         </state>
       </provider>
@@ -285,7 +283,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="34">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
         </state>
       </provider>
@@ -311,8 +309,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AP Project/src/GamePackage/AccountMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,12 @@
+{
+  "name" : "KingGiant",
+  "price" : 600,
+  "manaCost" : 5,
+  "info" : null,
+  "hp" : 10,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime": "COMBO"
+}

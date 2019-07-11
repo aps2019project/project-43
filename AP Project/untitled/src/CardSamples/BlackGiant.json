@@ -1,0 +1,16 @@
+{
+  "name" : "BlackGiant",
+  "moneyCost" : 300,
+  "manaCost" : 9,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 14,
+  "ap" : 10,
+  "attackRange" : 7,
+  "troopType" : "HYBRID",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

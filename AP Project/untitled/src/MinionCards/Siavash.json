@@ -1,0 +1,20 @@
+{
+  "name" : "Siavash",
+  "price" : 350,
+  "manaCost" : 4,
+  "info" : "Deals 6 damage to enemy hero on death",
+  "hp" : 8,
+  "ap" : 5,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "ATTACK",
+    "coolDown" : 0,
+    "target" : "ENEMY_HERO",
+    "changeHP" : 6,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "ON_DEATH"
+}

@@ -1,0 +1,20 @@
+{
+  "name" : "PersianSwordman",
+  "price" : 400,
+  "manaCost" : 2,
+  "info" : "Stun the Enemy On Attack",
+  "hp" : 6,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "STUN",
+    "coolDown" : 0,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

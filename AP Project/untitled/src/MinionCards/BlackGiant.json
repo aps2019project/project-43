@@ -1,0 +1,12 @@
+{
+  "name" : "BlackGiant",
+  "price" : 300,
+  "manaCost" : 9,
+  "info" : null,
+  "hp" : 14,
+  "ap" : 10,
+  "attackRange" : 7,
+  "troopType" : "HYBRID",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

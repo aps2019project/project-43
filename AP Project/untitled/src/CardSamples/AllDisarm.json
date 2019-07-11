@@ -1,0 +1,14 @@
+{
+  "name" : "AllDisarm",
+  "moneyCost" : 2000,
+  "manaCost" : 9,
+  "effects" : [ "DISARM" ],
+  "cardID" : null,
+  "info" : "Disarm All Enemy Forces for One Turn",
+  "owner" : null,
+  "coolDown" : 1,
+  "target" : "ENEMY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 13
+}

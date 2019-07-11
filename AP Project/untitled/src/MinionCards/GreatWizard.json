@@ -1,0 +1,28 @@
+{
+  "name" : "GreatWizard",
+  "price" : 550,
+  "manaCost" : 6,
+  "info" : "Adds ti itself and nearby ally minions a power buff with AP increased by 2 and a Holy buff with Continuous effect",
+  "hp" : 6,
+  "ap" : 6,
+  "attackRange" : 5,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "HOLY_CONT",
+    "coolDown" : 100,
+    "target" : "ALLY_MINION",
+    "changeHP" : 1,
+    "changeAP" : 1,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  }, {
+    "buff" : "POWER",
+    "coolDown" : 100,
+    "target" : "ALLY_MINION",
+    "changeHP" : 0,
+    "changeAP" : 2,
+    "targetArea" : 3,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "PASSIVE"
+}

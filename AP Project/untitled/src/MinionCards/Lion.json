@@ -1,0 +1,20 @@
+{
+  "name" : "Lion",
+  "price" : 600,
+  "manaCost" : 2,
+  "info" : "Holy Buff doesn't Affect on its attack",
+  "hp" : 1,
+  "ap" : 8,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ {
+    "buff" : "UNHOLY",
+    "coolDown" : 100,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "activateTime" : "ON_ATTACK"
+}

@@ -1,0 +1,14 @@
+{
+  "name" : "HellFire",
+  "moneyCost" : 600,
+  "manaCost" : 3,
+  "effects" : [ "CELL_ON_FIRE" ],
+  "cardID" : null,
+  "info" : "Convert the Selected Cells to Firing Cells for @ Turns",
+  "owner" : null,
+  "coolDown" : 2,
+  "target" : "CELL",
+  "changeHP" : 0,
+  "changeAP" : 0,
+  "targetArea" : 2
+}

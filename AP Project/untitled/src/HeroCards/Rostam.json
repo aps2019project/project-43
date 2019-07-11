@@ -1,0 +1,15 @@
+{
+  "name" : "Rostam",
+  "moneyCost" : 8000,
+  "manaCost" : 0,
+  "effects" : [ "ON_ATTACK" ],
+  "cardID" : null,
+  "info" : " ",
+  "owner" : null,
+  "hp" : 55,
+  "ap" : 7,
+  "attackRange" : 4,
+  "coolDown" : 0,
+  "specialPower" : null,
+  "troopType" : "HYBRID"
+}

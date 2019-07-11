@@ -1,0 +1,16 @@
+{
+  "name" : "Ashkboos",
+  "moneyCost" : 400,
+  "manaCost" : 7,
+  "effects" : [ "ON_DEFEND" ],
+  "cardID" : null,
+  "info" : "Won't take damage from forces with less AP",
+  "owner" : null,
+  "hp" : 14,
+  "ap" : 8,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

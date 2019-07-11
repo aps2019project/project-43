@@ -1,0 +1,12 @@
+{
+  "name" : "ShockHammer",
+  "info" : "Ally hero when attack, disarm enemy's force for one round",
+  "buff" : "DISARM_ON_ATTACK",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 0,
+  "coolDown" : 1,
+  "price" : 15000,
+  "target" : "ENEMY_FORCE",
+  "targetArea" : 1
+}

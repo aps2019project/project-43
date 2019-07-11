@@ -1,0 +1,12 @@
+{
+  "name" : "AllAttack",
+  "price" : 1500,
+  "manaCost" : 4,
+  "buff" : "ATTACK",
+  "info" : "Decrease All Enemy Forces HP That Are In The Same Row By 6",
+  "coolDown" : 0,
+  "target" : "ENEMY_FORCES_COL",
+  "changeHP" : 6,
+  "changeAP" : 0,
+  "targetArea" : 1
+}

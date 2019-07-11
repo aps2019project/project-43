@@ -1,0 +1,12 @@
+{
+  "name" : "WisdomCrown",
+  "info" : "Increase Mana for first three round of one force",
+  "buff" : "MANA",
+  "changeAP" : 0,
+  "changeHP" : 0,
+  "changeMana" : 1,
+  "coolDown" : 3,
+  "price" : 300,
+  "target" : null,
+  "targetArea": 9
+}

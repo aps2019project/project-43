@@ -1,0 +1,16 @@
+{
+  "name" : "PersianArcher",
+  "moneyCost" : 300,
+  "manaCost" : 2,
+  "effects" : [ null ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 6,
+  "ap" : 4,
+  "attackRange" : 7,
+  "troopType" : "RANGED",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}

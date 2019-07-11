@@ -1,0 +1,12 @@
+{
+  "name" : "PersianHorseman",
+  "price" : 200,
+  "manaCost" : 4,
+  "info" : null,
+  "hp" : 10,
+  "ap" : 6,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ ],
+  "activateTime" : null
+}

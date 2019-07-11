@@ -1,0 +1,30 @@
+{
+  "name" : "PoisonousSnake",
+  "moneyCost" : 300,
+  "manaCost" : 4,
+  "effects" : [ "ON_ATTACK" ],
+  "cardID" : null,
+  "info" : "Poison The Enemy Up to 3 Turns",
+  "owner" : null,
+  "hp" : 5,
+  "ap" : 6,
+  "attackRange" : 4,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "name" : null,
+    "moneyCost" : 0,
+    "manaCost" : 0,
+    "effects" : [ "POISON" ],
+    "cardID" : null,
+    "info" : null,
+    "owner" : null,
+    "coolDown" : 3,
+    "target" : "ENEMY_FORCE",
+    "changeHP" : 0,
+    "changeAP" : 0,
+    "targetArea" : 1,
+    "whichTurn" : 0
+  } ],
+  "stunned" : false,
+  "disarmed" : false
+}

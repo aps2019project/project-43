@@ -1,0 +1,20 @@
+{
+  "name" : "Jen",
+  "price" : 500,
+  "manaCost" : 5,
+  "info" : "Adds ti itself and nearby ally minions a power buff with AP increased by 2 and a Holy buff with Continuous effect",
+  "hp" : 10,
+  "ap" : 4,
+  "attackRange" : 4,
+  "troopType" : "RANGED",
+  "specialPower" : [ {
+    "buff" : "POWER_CONT",
+    "coolDown" : 100,
+    "target" : "ALLY_MINION",
+    "changeHP" : 0,
+    "changeAP" : 1,
+    "targetArea" : 9,
+    "whichTurn" : 0
+  } ],
+  "activateTime": "ON_TURN"
+}

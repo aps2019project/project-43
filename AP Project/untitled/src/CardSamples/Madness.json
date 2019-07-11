@@ -1,0 +1,14 @@
+{
+  "name" : "Madness",
+  "moneyCost" : 650,
+  "manaCost" : 0,
+  "effects" : [ "DISARM" ],
+  "cardID" : null,
+  "info" : "Increase AttackPoint of the Ally Force by 4 but Disarm",
+  "owner" : null,
+  "coolDown" : 3,
+  "target" : "ALLY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 4,
+  "targetArea" : 1
+}

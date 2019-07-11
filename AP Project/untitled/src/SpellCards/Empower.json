@@ -1,0 +1,12 @@
+{
+  "name" : "Empower",
+  "price" : 250,
+  "manaCost" : 1,
+  "buff" : "POWER",
+  "info" : "Add 2 AttackPoint to an Ally Force",
+  "coolDown" : 1,
+  "target" : "ALLY_FORCE",
+  "changeHP" : 0,
+  "changeAP" : 2,
+  "targetArea" : 1
+}

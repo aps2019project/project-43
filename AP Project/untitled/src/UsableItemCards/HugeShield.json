@@ -1,0 +1,12 @@
+{
+  "name" : "HugeShield",
+  "info" : "Activate 12 Holy buff in ally Hero",
+  "buff" : "HOLY",
+  "changeAP" : 12,
+  "changeHP" : 12,
+  "changeMana" : 0,
+  "coolDown" : 1,
+  "price" : 4000,
+  "target" : "ALLY_HERO",
+  "targetArea" : 9
+}

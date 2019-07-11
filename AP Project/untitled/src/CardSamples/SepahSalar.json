@@ -1,0 +1,16 @@
+{
+  "name" : "SepahSalar",
+  "moneyCost" : 800,
+  "manaCost" : 7,
+  "effects" : [ "COMBO" ],
+  "cardID" : null,
+  "info" : null,
+  "owner" : null,
+  "hp" : 12,
+  "ap" : 4,
+  "attackRange" : 1,
+  "troopType" : "MELEE",
+  "specialPower" : [ null ],
+  "stunned" : false,
+  "disarmed" : false
+}
